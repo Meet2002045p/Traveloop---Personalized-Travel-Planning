@@ -9,57 +9,50 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="../js/tailwind-config.js"></script>
 <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/transition.js"></script>
 </head>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
-<!-- TopAppBar -->
-<header class="sticky top-0 z-50 flex justify-between items-center px-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
-<div class="flex items-center gap-6">
-<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
-<div class="hidden md:flex gap-8">
-<a class="font-body-md text-label-lg text-on-surface-variant hover:text-secondary transition-colors" href="traveloop_dashboard.html">Dashboard</a>
-<a class="font-body-md text-label-lg text-on-surface-variant hover:text-secondary transition-colors" href="my_trips.html">My Trips</a>
-<a class="font-body-md text-label-lg text-on-surface-variant hover:text-secondary transition-colors" href="city_activity_search.html">Explore</a>
-<a class="font-body-md text-label-lg text-secondary font-bold" href="trip_budget_breakdown.html">Budget</a>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<button class="p-2 hover:bg-surface-variant/50 rounded-full transition-colors active:scale-95">
-<span class="material-symbols-outlined text-primary">notifications</span>
-</button>
-<button class="p-2 hover:bg-surface-variant/50 rounded-full transition-colors active:scale-95">
-<span class="material-symbols-outlined text-primary">favorite</span>
-</button>
-<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border-2 border-white shadow-sm">
-<img alt="User profile" data-alt="A close-up portrait of a professional traveler with a warm, friendly expression, set against a soft-focus urban sunset background. The lighting is golden and high-key, reflecting a modern light-mode aesthetic. The style is clean and high-fidelity, maintaining the Traveloop brand's focus on exploration and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk4kQfL8K2GZCeAqV5T9OsQbc35EDEM2nGD16CCAy3JMGKcwVyimcH8EcV-7_KGQ_SrWwzn-57TlfmEbOxU_uAIxrGpEcl_roSID8R-Wn4-0hqMcTC48omBdIQa2lHIAQ7YBhaUoGAYBp8hUlY3sEzZDgSbmGaVvM4OuNdpojNawDrjjTGPaTNnX5ngadFdWf9GVfEpAsx3sPRX5N96SQkbP1bpaRqjow_PYnuyCBFQXUg5OM4BhC7fzlCsZYBGWjeAqB2LimxcKc"/>
-</div>
-</div>
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 w-full bg-surface/95 backdrop-blur-md border-b border-outline-variant/20 shadow-sm flex flex-col">
+    <!-- Top Row -->
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-3">
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary text-3xl">travel</span>
+            <div class="flex items-baseline gap-2">
+                <h1 class="font-display text-headline-md font-bold text-primary hidden sm:block">Traveloop</h1>
+                <span class="text-outline-variant hidden sm:block">|</span>
+                <h2 class="font-display text-title-md font-medium text-on-surface-variant">Traveloop</h2>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="relative hidden lg:block">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+                <input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary w-64 text-label-lg" placeholder="Search trips..." type="text"/>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">notifications</span>
+            <a href="login_signup.html" class="text-on-surface-variant cursor-pointer hover:text-secondary transition-colors flex items-center" title="Sign Out"><span class="material-symbols-outlined">logout</span></a>
+            <a href="user_profile_settings.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-highest shadow-sm block">
+                <img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpeCLalZVh7yZJgXsPIh7d0N5bIJiZQT65pCySTUxiQGPTl3236Xv9e-Q8ghq28TuSiZ1sO_j9W4IxtJaoYSAB7mHBLBgGJhBlx9DOccpv1WFlrK5ExH5xKhtUh9uhf3kDc5q3O9kzkGzrUSN9y0GR9fT4fEHWa3KQTeBN3hghAcC67XGUD5JltH8iRXzcE_vHxzrfSz_HkxGo8CUc_KeoyzSvaACz_wa66xrFkB0pSJDj2oD0x0rhNpx8dr1KiuWBhxD-rWirIQ4"/>
+            </a>
+        </div>
+    </div>
+    <!-- Bottom Row (Navigation) -->
+    <nav class="w-full overflow-x-auto scrollbar-hide border-t border-outline-variant/10 bg-surface-container-lowest/50">
+        <div class="flex items-center gap-6 px-margin-mobile md:px-margin-desktop py-3 min-w-max">
+            <a href="traveloop_dashboard.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">dashboard</span> Dashboard</a>
+            <a href="my_trips.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">map</span> My Trips</a>
+            <a href="city_activity_search.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">explore</span> Explore</a>
+            <a href="trip_budget_breakdown.html" class="flex items-center gap-2 text-secondary font-bold transition-colors border-b-2 border-secondary pb-1 -mb-[14px]"><span class="material-symbols-outlined text-sm">account_balance_wallet</span> Budget</a>
+            <a href="itinerary_builder.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">edit_document</span> Build Itinerary</a>
+            <a href="packing_checklist.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">checklist</span> Packing Checklist</a>
+            <a href="trip_notes_journal.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">menu_book</span> Trip Notes</a>
+            <a href="shared_itinerary.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">share</span> Shared</a>
+            
+        </div>
+    </nav>
 </header>
 <div class="flex">
-<!-- SideNavBar (Hidden on small screens) -->
-<aside class="fixed left-0 top-0 h-screen w-64 hidden lg:flex flex-col p-6 pt-24 bg-surface-container-low border-r border-outline-variant/30 shadow-sm z-40">
-<div class="flex flex-col gap-2 flex-grow">
-<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all active:scale-[0.98]" href="traveloop_dashboard.html">
-<span class="material-symbols-outlined">dashboard</span>
-<span class="font-body-md text-label-lg">Dashboard</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all active:scale-[0.98]" href="my_trips.html">
-<span class="material-symbols-outlined">map</span>
-<span class="font-body-md text-label-lg">My Trips</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all active:scale-[0.98]" href="city_activity_search.html">
-<span class="material-symbols-outlined">explore</span>
-<span class="font-body-md text-label-lg">Explore</span>
-</a>
-<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 font-semibold shadow-sm active:scale-[0.98]" href="trip_budget_breakdown.html">
-<span class="material-symbols-outlined">account_balance_wallet</span>
-<span class="font-body-md text-label-lg">Budget</span>
-</a>
-</div>
-<button class="mt-auto bg-primary text-on-primary rounded-lg px-4 py-4 font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all shadow-lg active:scale-95" onclick="window.location.href='create_new_trip.html'">
-<span class="material-symbols-outlined">add</span>
-                New Trip
-            </button>
-</aside>
+
 <!-- Main Content Canvas -->
 <main class="flex-grow lg:pl-64 min-h-screen px-margin-mobile md:px-margin-desktop py-12">
 <div class="max-w-6xl mx-auto space-y-gutter">
@@ -77,7 +70,7 @@
 <button class="flex items-center gap-2 px-6 py-3 rounded-xl border border-outline-variant bg-white text-on-surface font-semibold hover:bg-surface-container transition-all">
 <span class="material-symbols-outlined">download</span> Export PDF
                         </button>
-<button class="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-on-primary font-semibold hover:shadow-xl transition-all" onclick="window.location.href='trip_budget_breakdown.html'">
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-on-primary font-semibold hover:shadow-xl transition-all" onclick="document.getElementById('modal-edit-budget').classList.remove('hidden')">
 <span class="material-symbols-outlined">edit</span> Modify Budget
                         </button>
 </div>
@@ -88,22 +81,33 @@
 <div class="col-span-12 lg:col-span-8 bento-card p-8 flex flex-col justify-between min-h-[320px] relative overflow-hidden">
 <div class="absolute -right-16 -top-16 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl"></div>
 <div class="relative z-10">
-<h3 class="font-label-lg text-on-surface-variant mb-12 uppercase tracking-wider">Total Estimated Cost</h3>
+<h3 class="font-label-lg text-on-surface-variant mb-12 uppercase tracking-wider">Total Budgeted Cost</h3>
 <div class="flex flex-col md:flex-row md:items-baseline gap-4">
-<span class="font-display text-6xl md:text-8xl text-primary font-bold tracking-tighter">$4,850.00</span>
-<span class="bg-tertiary-container/10 text-on-tertiary-container px-4 py-1 rounded-full font-bold text-label-lg flex items-center gap-1">
+<span class="font-display text-6xl md:text-8xl text-primary font-bold tracking-tighter" id="total-spent">$0.00</span>
+<span id="budget-status" class="px-4 py-1 rounded-full font-bold text-label-lg flex items-center gap-1">
 <span class="material-symbols-outlined text-sm">warning</span> 12% over goal
                                 </span>
 </div>
 </div>
+
+<div class="relative z-10 mt-8">
+    <div class="flex justify-between items-center mb-2">
+        <span class="text-label-sm font-bold text-on-surface-variant">Spending Progress</span>
+        <span id="progress-pct" class="text-label-sm font-bold text-primary">0%</span>
+    </div>
+    <div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+        <div id="budget-progress-bar" class="h-full bg-primary transition-all duration-1000 ease-out shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)]" style="width: 0%"></div>
+    </div>
+</div>
+
 <div class="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t border-outline-variant/30">
 <div>
 <p class="text-label-sm text-outline mb-1 uppercase">Daily Average</p>
-<p class="text-headline-md text-primary font-bold">$485.00</p>
+<p class="text-headline-md text-primary font-bold" id="daily-avg">$0.00</p>
 </div>
 <div>
 <p class="text-label-sm text-outline mb-1 uppercase">Trip Goal</p>
-<p class="text-headline-md text-on-surface-variant font-bold">$4,200.00</p>
+<p class="text-headline-md text-on-surface-variant font-bold" id="trip-goal">$5,000.00</p>
 </div>
 <div>
 <p class="text-label-sm text-outline mb-1 uppercase">Collaborators</p>
@@ -238,7 +242,7 @@
 <th class="py-4 px-2 text-right">Amount</th>
 </tr>
 </thead>
-<tbody class="divide-y divide-outline-variant/10">
+<tbody id="transaction-list" class="divide-y divide-outline-variant/10">
 <tr class="hover:bg-surface-container-low transition-colors group">
 <td class="py-4 px-2 font-semibold text-primary">Emirates Flight (LHR -&gt; GOA)</td>
 <td class="py-4 px-2">
@@ -308,4 +312,379 @@
 <span class="material-symbols-outlined text-2xl">add</span>
 </button>
 </div>
+
+<!-- Traveloop AI Floating Assistant -->
+<div id="ai-assistant" class="fixed bottom-8 right-8 z-[200] flex flex-col items-end gap-4 pointer-events-none">
+    <!-- Chat Window (Hidden by default) -->
+    <div id="ai-chat-window" class="w-80 md:w-96 bg-surface/80 backdrop-blur-xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20 overflow-hidden flex flex-col transition-all duration-500 scale-90 opacity-0 translate-y-10 pointer-events-auto">
+        <div class="p-4 bg-primary text-on-primary flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+                </div>
+                <div>
+                    <p class="font-bold text-sm">Traveloop Assistant</p>
+                    <p class="text-[10px] opacity-80">Online | AI-Powered</p>
+                </div>
+            </div>
+            <button onclick="toggleAIChat()" class="hover:bg-white/10 rounded-full p-1 transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div id="chat-messages" class="flex-1 p-4 space-y-4 max-h-[300px] overflow-y-auto bg-surface-container-lowest/50">
+            <div class="flex gap-3">
+                <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-white text-[10px] flex-shrink-0">T</div>
+                <div class="bg-surface-container-high p-3 rounded-2xl rounded-tl-none text-xs text-on-surface">
+                    Hi! I'm your Traveloop Assistant. Need help planning your next adventure or finding the best flight deals?
+                </div>
+            </div>
+        </div>
+        <div class="p-4 bg-surface-container-low border-t border-outline-variant/10 flex gap-2">
+            <input id="ai-input" type="text" placeholder="Ask me anything..." class="flex-1 bg-surface-container-lowest border-none rounded-full px-4 py-2 text-xs focus:ring-2 focus:ring-secondary outline-none">
+            <button onclick="sendAIMessage()" class="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[18px]">send</span>
+            </button>
+        </div>
+    </div>
+    <!-- Floating Button -->
+    <button onclick="toggleAIChat()" class="w-16 h-16 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group">
+        <div class="absolute -top-1 -right-1 w-4 h-4 bg-error rounded-full border-2 border-surface animate-pulse"></div>
+        <span class="material-symbols-outlined text-[32px] group-hover:rotate-12 transition-transform">smart_toy</span>
+    </button>
+</div>
+
+<script>
+    const STORAGE_KEY = 'traveloop_budget_v1';
+    const GOAL_KEY = 'traveloop_budget_goal';
+
+    function init() {
+        renderAll();
+    }
+
+    function updateGoal() {
+        const val = document.getElementById('input-goal').value;
+        localStorage.setItem(GOAL_KEY, val);
+        document.getElementById('modal-edit-budget').classList.add('hidden');
+        renderAll();
+        alert('Budget goal updated!');
+    }
+
+    const expenseForm = document.getElementById('add-expense-form');
+    if (expenseForm) {
+        expenseForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const expense = {
+                id: Date.now(),
+                title: document.getElementById('exp-title').value,
+                amount: parseFloat(document.getElementById('exp-amount').value),
+                category: document.getElementById('exp-category').value,
+                date: document.getElementById('exp-date').value
+            };
+            
+            let expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            expenses.push(expense);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
+            
+            this.reset();
+            document.getElementById('modal-add-expense').classList.add('hidden');
+            renderAll();
+            alert('Expense saved!');
+        });
+    }
+
+    function deleteExpense(id) {
+        if(confirm('Delete this expense?')) {
+            let expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            expenses = expenses.filter(e => e.id !== id);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
+            renderAll();
+        }
+    }
+
+    function renderAll() {
+        const expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        const goal = parseFloat(localStorage.getItem(GOAL_KEY) || '5000');
+        
+        // Update Goal Displays
+        const totalSpentEl = document.getElementById('total-spent');
+        const tripGoalEl = document.getElementById('trip-goal');
+        const inputGoalEl = document.getElementById('input-goal');
+        
+        // Big number shows the budget goal as "Estimated Cost"
+        if (totalSpentEl) totalSpentEl.innerText = `$${goal.toLocaleString()}`;
+        if (tripGoalEl) tripGoalEl.innerText = `$${goal.toLocaleString()}`;
+        if (inputGoalEl) inputGoalEl.value = goal;
+
+        // Calculate actual spending
+        let totalSpent = 0;
+        let cats = { Transport: 0, Accommodation: 0, Activities: 0, Food: 0 };
+        expenses.forEach(e => {
+            totalSpent += e.amount;
+            if (cats[e.category] !== undefined) {
+                cats[e.category] += e.amount;
+            }
+        });
+
+        // Update stats
+        const dailyAvgEl = document.getElementById('daily-avg');
+        if (dailyAvgEl) dailyAvgEl.innerText = `$${(totalSpent / 10).toFixed(2)}`;
+
+        // Progress tracking
+        const progressBar = document.getElementById('budget-progress-bar');
+        const progressPct = document.getElementById('progress-pct');
+        const statusEl = document.getElementById('budget-status');
+        
+        const spentPercentage = (totalSpent / goal) * 100;
+        const displayPct = Math.min(spentPercentage, 100).toFixed(1);
+        
+        if (progressPct) progressPct.innerText = `${displayPct}% spent`;
+        if (progressBar) progressBar.style.width = `${Math.min(spentPercentage, 100)}%`;
+
+        if (statusEl) {
+            if (totalSpent > goal) {
+                statusEl.className = 'px-4 py-1 rounded-full font-bold text-label-lg flex items-center gap-1 bg-error-container text-on-error-container';
+                statusEl.innerHTML = `<span class="material-symbols-outlined text-sm">warning</span> Over Budget`;
+            } else {
+                statusEl.className = 'px-4 py-1 rounded-full font-bold text-label-lg flex items-center gap-1 bg-secondary-container text-on-secondary-container';
+                statusEl.innerHTML = `<span class="material-symbols-outlined text-sm">check_circle</span> On Track`;
+            }
+        }
+
+        // Render Table
+        const list = document.getElementById('transaction-list');
+        if (list) {
+            list.innerHTML = expenses.map(e => `
+                <tr class="hover:bg-surface-container-low transition-colors group border-b border-outline-variant/10">
+                    <td class="py-4 px-2 font-semibold text-primary">${e.title}</td>
+                    <td class="py-4 px-2">
+                        <span class="px-3 py-1 rounded-full ${getCatClass(e.category)} text-[10px] font-bold uppercase">${e.category}</span>
+                    </td>
+                    <td class="py-4 px-2 text-on-surface-variant">${e.date}</td>
+                    <td class="py-4 px-2 text-right font-bold">$${e.amount.toLocaleString()}</td>
+                    <td class="py-4 px-2 text-right opacity-0 group-hover:opacity-100">
+                        <button onclick="deleteExpense(${e.id})" class="material-symbols-outlined text-error text-sm">delete</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Category Breakdown
+        const categorySpans = document.querySelectorAll('.bento-card .w-full.mt-8 .flex span.font-bold');
+        const keys = ['Transport', 'Accommodation', 'Activities', 'Food'];
+        categorySpans.forEach((el, i) => {
+            if (keys[i]) el.innerText = `$${cats[keys[i]].toLocaleString()}`;
+        });
+    }
+
+    function getCatClass(cat) {
+        if(cat === 'Transport') return 'bg-primary-container text-on-primary-fixed';
+        if(cat === 'Accommodation') return 'bg-secondary-container text-on-secondary-container';
+        if(cat === 'Activities') return 'bg-tertiary-fixed text-on-tertiary-fixed-variant';
+        return 'bg-surface-container-highest text-on-primary-container';
+    }
+
+    init();
+</script>
+
+<style>
+    #chat-messages::-webkit-scrollbar { width: 4px; }
+    #chat-messages::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
+</style>
+
+
+<!-- Modify Budget Modal -->
+<div id="modal-edit-budget" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity">
+    <div class="bg-surface rounded-2xl w-full max-w-sm shadow-2xl relative">
+        <div class="p-8">
+            <h3 class="font-display text-headline-md font-bold text-primary mb-4">Set Trip Goal</h3>
+            <div class="space-y-4">
+                <div class="space-y-2">
+                    <label class="text-label-lg font-bold">Total Budget Goal ($)</label>
+                    <input type="number" id="input-goal" value="5000" class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 outline-none">
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="document.getElementById('modal-edit-budget').classList.add('hidden')" class="flex-1 py-3 border border-outline rounded-xl font-bold hover:bg-surface-container">Cancel</button>
+                    <button onclick="updateGoal()" class="flex-1 py-3 bg-primary text-on-primary rounded-xl font-bold shadow-md">Save Goal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Expense Modal -->
+<div id="modal-add-expense" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity">
+    <div class="bg-surface rounded-2xl w-full max-w-md shadow-2xl relative">
+        <button onclick="document.getElementById('modal-add-expense').classList.add('hidden')" class="absolute top-4 right-4 w-10 h-10 bg-surface-container-high rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="p-8">
+            <h3 class="font-display text-headline-md font-bold text-primary mb-4">Add Expense</h3>
+            <form id="add-expense-form" class="space-y-4">
+                <div class="space-y-2">
+                    <label class="text-label-lg font-bold">Description</label>
+                    <input type="text" id="exp-title" required placeholder="e.g., Flight to Rome" class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="text-label-lg font-bold">Amount ($)</label>
+                        <input type="number" id="exp-amount" required class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 outline-none">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-label-lg font-bold">Category</label>
+                        <select id="exp-category" class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 outline-none">
+                            <option>Transport</option>
+                            <option>Accommodation</option>
+                            <option>Activities</option>
+                            <option>Food</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-label-lg font-bold">Date</label>
+                    <input type="date" id="exp-date" required class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 outline-none">
+                </div>
+                <button type="submit" class="w-full py-3 bg-secondary text-on-secondary rounded-xl font-bold shadow-md hover:brightness-110 transition-all">Save Expense</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Floating Add Expense Button (Desktop) -->
+<button onclick="document.getElementById('modal-add-expense').classList.remove('hidden')" class="fixed bottom-28 right-8 w-16 h-16 bg-secondary text-on-secondary rounded-full shadow-2xl hidden lg:flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+    <span class="material-symbols-outlined text-3xl">add_shopping_cart</span>
+</button>
+
+<script>
+    const STORAGE_KEY = 'traveloop_budget_v1';
+    const GOAL_KEY = 'traveloop_budget_goal';
+
+    function init() {
+        renderAll();
+    }
+
+    function updateGoal() {
+        const val = document.getElementById('input-goal').value;
+        localStorage.setItem(GOAL_KEY, val);
+        document.getElementById('modal-edit-budget').classList.add('hidden');
+        renderAll();
+        alert('Budget goal updated!');
+    }
+
+    const expenseForm = document.getElementById('add-expense-form');
+    if (expenseForm) {
+        expenseForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const expense = {
+                id: Date.now(),
+                title: document.getElementById('exp-title').value,
+                amount: parseFloat(document.getElementById('exp-amount').value),
+                category: document.getElementById('exp-category').value,
+                date: document.getElementById('exp-date').value
+            };
+            
+            let expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            expenses.push(expense);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
+            
+            this.reset();
+            document.getElementById('modal-add-expense').classList.add('hidden');
+            renderAll();
+            alert('Expense saved!');
+        });
+    }
+
+    function deleteExpense(id) {
+        if(confirm('Delete this expense?')) {
+            let expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            expenses = expenses.filter(e => e.id !== id);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
+            renderAll();
+        }
+    }
+
+    function renderAll() {
+        const expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        const goal = parseFloat(localStorage.getItem(GOAL_KEY) || '5000');
+        
+        // Update Goal Displays
+        const totalSpentEl = document.getElementById('total-spent');
+        const tripGoalEl = document.getElementById('trip-goal');
+        const inputGoalEl = document.getElementById('input-goal');
+        
+        // Big number shows the budget goal as "Estimated Cost"
+        if (totalSpentEl) totalSpentEl.innerText = `$${goal.toLocaleString()}`;
+        if (tripGoalEl) tripGoalEl.innerText = `$${goal.toLocaleString()}`;
+        if (inputGoalEl) inputGoalEl.value = goal;
+
+        // Calculate actual spending
+        let totalSpent = 0;
+        let cats = { Transport: 0, Accommodation: 0, Activities: 0, Food: 0 };
+        expenses.forEach(e => {
+            totalSpent += e.amount;
+            if (cats[e.category] !== undefined) {
+                cats[e.category] += e.amount;
+            }
+        });
+
+        // Update stats
+        const dailyAvgEl = document.getElementById('daily-avg');
+        if (dailyAvgEl) dailyAvgEl.innerText = `$${(totalSpent / 10).toFixed(2)}`;
+
+        // Progress tracking
+        const progressBar = document.getElementById('budget-progress-bar');
+        const progressPct = document.getElementById('progress-pct');
+        const statusEl = document.getElementById('budget-status');
+        
+        const spentPercentage = (totalSpent / goal) * 100;
+        const displayPct = Math.min(spentPercentage, 100).toFixed(1);
+        
+        if (progressPct) progressPct.innerText = `${displayPct}% spent`;
+        if (progressBar) progressBar.style.width = `${Math.min(spentPercentage, 100)}%`;
+
+        if (statusEl) {
+            if (totalSpent > goal) {
+                statusEl.className = 'px-4 py-1 rounded-full font-bold text-label-lg flex items-center gap-1 bg-error-container text-on-error-container';
+                statusEl.innerHTML = `<span class="material-symbols-outlined text-sm">warning</span> Over Budget`;
+            } else {
+                statusEl.className = 'px-4 py-1 rounded-full font-bold text-label-lg flex items-center gap-1 bg-secondary-container text-on-secondary-container';
+                statusEl.innerHTML = `<span class="material-symbols-outlined text-sm">check_circle</span> On Track`;
+            }
+        }
+
+        // Render Table
+        const list = document.getElementById('transaction-list');
+        if (list) {
+            list.innerHTML = expenses.map(e => `
+                <tr class="hover:bg-surface-container-low transition-colors group border-b border-outline-variant/10">
+                    <td class="py-4 px-2 font-semibold text-primary">${e.title}</td>
+                    <td class="py-4 px-2">
+                        <span class="px-3 py-1 rounded-full ${getCatClass(e.category)} text-[10px] font-bold uppercase">${e.category}</span>
+                    </td>
+                    <td class="py-4 px-2 text-on-surface-variant">${e.date}</td>
+                    <td class="py-4 px-2 text-right font-bold">$${e.amount.toLocaleString()}</td>
+                    <td class="py-4 px-2 text-right opacity-0 group-hover:opacity-100">
+                        <button onclick="deleteExpense(${e.id})" class="material-symbols-outlined text-error text-sm">delete</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Category Breakdown
+        const categorySpans = document.querySelectorAll('.bento-card .w-full.mt-8 .flex span.font-bold');
+        const keys = ['Transport', 'Accommodation', 'Activities', 'Food'];
+        categorySpans.forEach((el, i) => {
+            if (keys[i]) el.innerText = `$${cats[keys[i]].toLocaleString()}`;
+        });
+    }
+
+    function getCatClass(cat) {
+        if(cat === 'Transport') return 'bg-primary-container text-on-primary-fixed';
+        if(cat === 'Accommodation') return 'bg-secondary-container text-on-secondary-container';
+        if(cat === 'Activities') return 'bg-tertiary-fixed text-on-tertiary-fixed-variant';
+        return 'bg-surface-container-highest text-on-primary-container';
+    }
+
+    init();
+</script>
+
 </body></html>

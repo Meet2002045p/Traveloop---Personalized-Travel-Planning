@@ -9,30 +9,47 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="../js/tailwind-config.js"></script>
 <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/transition.js"></script>
 </head>
 <body class="bg-background text-on-background font-body-md min-h-screen">
-<!-- TopAppBar -->
-<header class="sticky top-0 z-50 flex justify-between items-center px-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
-<div class="flex items-center gap-8">
-<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
-<nav class="hidden md:flex gap-6">
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-lg" href="traveloop_dashboard.html">Dashboard</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-lg" href="my_trips.html">My Trips</a>
-<a class="text-secondary font-bold font-label-lg" href="city_activity_search.html">Explore</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-lg" href="trip_budget_breakdown.html">Budget</a>
-</nav>
-</div>
-<div class="flex items-center gap-4">
-<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors active:scale-95 duration-200">
-<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-</button>
-<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors active:scale-95 duration-200">
-<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
-</button>
-<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-high ml-2 shadow-sm">
-<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a person smiling with natural lighting. The style is modern and high-end, fitting a travel app's airy aesthetic. Soft focus background with warm, subtle golden hour tones that complement a light-mode interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNLiWZA6E_cY3Hge4VqFpC08fAsPLCCG8fywtciGYTKaHlynz3KAw6mcMXctpXwEDYgjPgGYkwA-oOU0hNMzYP7-d_6AGUzyehAy0WMMlhXN9353sE6AGfr9Odtjo5EezxMbXayoLBTEnBUpPgOyWwnry2lQJGQa4VLZCRXLjD_lxmVZkdEhNoM7r5kNEdGZLmpLCpdvdNsR9P72Ndrc8nY9cy9A1wkOTu4F0XgEfVBpQrny1I9UCkvXkzJwQN4n1QhUGP7ysbDF4"/>
-</div>
-</div>
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 w-full bg-surface/95 backdrop-blur-md border-b border-outline-variant/20 shadow-sm flex flex-col">
+    <!-- Top Row -->
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-3">
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary text-3xl">travel</span>
+            <div class="flex items-baseline gap-2">
+                <h1 class="font-display text-headline-md font-bold text-primary hidden sm:block">Traveloop</h1>
+                <span class="text-outline-variant hidden sm:block">|</span>
+                <h2 class="font-display text-title-md font-medium text-on-surface-variant">Trending Destinations</h2>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="relative hidden lg:block">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+                <input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary w-64 text-label-lg" placeholder="Search trips..." type="text"/>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">notifications</span>
+            <a href="login_signup.html" class="text-on-surface-variant cursor-pointer hover:text-secondary transition-colors flex items-center" title="Sign Out"><span class="material-symbols-outlined">logout</span></a>
+            <a href="user_profile_settings.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-highest shadow-sm block">
+                <img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpeCLalZVh7yZJgXsPIh7d0N5bIJiZQT65pCySTUxiQGPTl3236Xv9e-Q8ghq28TuSiZ1sO_j9W4IxtJaoYSAB7mHBLBgGJhBlx9DOccpv1WFlrK5ExH5xKhtUh9uhf3kDc5q3O9kzkGzrUSN9y0GR9fT4fEHWa3KQTeBN3hghAcC67XGUD5JltH8iRXzcE_vHxzrfSz_HkxGo8CUc_KeoyzSvaACz_wa66xrFkB0pSJDj2oD0x0rhNpx8dr1KiuWBhxD-rWirIQ4"/>
+            </a>
+        </div>
+    </div>
+    <!-- Bottom Row (Navigation) -->
+    <nav class="w-full overflow-x-auto scrollbar-hide border-t border-outline-variant/10 bg-surface-container-lowest/50">
+        <div class="flex items-center gap-6 px-margin-mobile md:px-margin-desktop py-3 min-w-max">
+            <a href="traveloop_dashboard.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">dashboard</span> Dashboard</a>
+            <a href="my_trips.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">map</span> My Trips</a>
+            <a href="city_activity_search.html" class="flex items-center gap-2 text-secondary font-bold transition-colors border-b-2 border-secondary pb-1 -mb-[14px]"><span class="material-symbols-outlined text-sm">explore</span> Explore</a>
+            <a href="trip_budget_breakdown.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">account_balance_wallet</span> Budget</a>
+            <a href="itinerary_builder.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">edit_document</span> Build Itinerary</a>
+            <a href="packing_checklist.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">checklist</span> Packing Checklist</a>
+            <a href="trip_notes_journal.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">menu_book</span> Trip Notes</a>
+            <a href="shared_itinerary.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">share</span> Shared</a>
+            
+        </div>
+    </nav>
 </header>
 <main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
 <!-- Hero Search Section -->
@@ -77,7 +94,7 @@
 </div>
 <div class="flex gap-6 overflow-x-auto hide-scrollbar pb-4 -mx-margin-mobile px-margin-mobile md:-mx-0 md:px-0">
 <!-- Trending Card 1 -->
-<div class="flex-shrink-0 w-80 group cursor-pointer">
+<div class="flex-shrink-0 w-80 group cursor-pointer" onclick="openExploreModal(this)">
 <div class="relative h-96 rounded-xl overflow-hidden shadow-md mb-4">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A cinematic wide shot of London's Big Ben and the Parliament building during the blue hour. The lighting is soft and moody with the city lights reflecting in the Thames river. The image has a clean, high-fidelity travel magazine aesthetic with cool blues and warm golden interior lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaIGkf35nVfDYBA-SAmkZu0pzF0Wf7wHk9jW2v0STclRBsvkX5zGNVU2jOZ_Y_G-o1yXyseUkukK5tJihyKMK0Pofxz2bsi50ygS9TAFEHGFaZYaHvB5kmUzeM7EhaG3_VrkqiLPxjZIH5RNzDJRVo3gHHjvLO6WjC7JGtQg6EpZnkBo86Wx7OVs1zzFVARnxyytsX868-Wf6B0IhopU-NvwB-_wuf9RBey_hUuaW63fCzoK5PYFUtSG5IqS4usLed9pEKXPQDcKc"/>
 <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
@@ -88,7 +105,7 @@
 </div>
 </div>
 <!-- Trending Card 2 -->
-<div class="flex-shrink-0 w-80 group cursor-pointer">
+<div class="flex-shrink-0 w-80 group cursor-pointer" onclick="openExploreModal(this)">
 <div class="relative h-96 rounded-xl overflow-hidden shadow-md mb-4">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A lush tropical resort in Bali with tiered infinity pools overlooking a deep jungle valley at sunrise. The atmosphere is serene and misty with soft morning light filtering through palm leaves. Vibrant greens and soft teals dominate the palette, capturing a peaceful, luxury exploration vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8nOE3yHucELQfkdLlYgsUen95XYLQaKi_vcwoCZ7ybG3dGfZppICjCb6BCTJhRMbLTj00DwvEdNBbklBIkldGZPKf5AZreyWDGK1JT90X5doeSPLJ1_LDcnk2Vktw0Fgk2xE7AaVUtZ1QYgHOZYdPscObq3LEzneEERsDLOwqMRI8XhWcG-IhBwxhKFhxm3fgR8uHlDBt8BHLZQsJwqCiRrWuQC7uJ_X8OZvJewZlil1ZEKzcDZiPgP2dqbhPEhMu4p9VsrS7e4Y"/>
 <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
@@ -99,7 +116,7 @@
 </div>
 </div>
 <!-- Trending Card 3 -->
-<div class="flex-shrink-0 w-80 group cursor-pointer">
+<div class="flex-shrink-0 w-80 group cursor-pointer" onclick="openExploreModal(this)">
 <div class="relative h-96 rounded-xl overflow-hidden shadow-md mb-4">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="The winding canals of Venice, Italy, with a traditional gondola passing under a historic stone bridge in the soft afternoon light. The architecture is rich with texture and warm terracotta tones. The overall mood is romantic and timeless, presented with professional high-dynamic range photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFKc6iQIJVQEfgm6LVlDXws5VC7blHP-LEhrSONjdNFpcjhfDykTnhSqaaeN9oTE2swCnORBWA63lWovjRm8jiGa9ZfSLcsJNFlA1S-xLpOoB73NADFtm77KmKUKt-HVeqVllmfOrQsNUEETBq4rw99uBqWcJOnqVHuNQKKTMreuUikEM3TCtQqymvOsQveHXcAyZjF983XG_609086Sq8lQDTEfFFpq9e-XWjSEMPhuig9OJIpl334L9GmjvKet9Ci6Np6falCxY"/>
 <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
@@ -110,7 +127,7 @@
 </div>
 </div>
 <!-- Trending Card 4 -->
-<div class="flex-shrink-0 w-80 group cursor-pointer">
+<div class="flex-shrink-0 w-80 group cursor-pointer" onclick="openExploreModal(this)">
 <div class="relative h-96 rounded-xl overflow-hidden shadow-md mb-4">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A historic Japanese pagoda in Kyoto surrounded by vibrant cherry blossoms in full bloom. The lighting is soft and airy with a pale blue sky. The image feels fresh and inspiring, utilizing a delicate color palette of pinks, whites, and dark wood textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOC_7YdlCzBXB8cckQnq5AipK6rObL3k_jnNvP2XEUZ8H6Vrr2wueFVI_dcf98-KJgGdbHGtEOcPGIhULQcXObUjW0PU2UWkN5kfkW8fffA3eJnZ7fEDDDQAQ9vEoJcCdSCbl9FZpGRaMSll-eReRRNwwRcQO7aI4HrC9rZOfleXvgNs1rR5R29xPlc3ztUu7wi4ywVLk4MwUAdajzTTtRdjnMNeSxgPhgKwqsrz4LIk12-kA0eR_Ln2I_RexdRCgAJLevDy5tIEw"/>
 <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
@@ -135,7 +152,7 @@
 <!-- Bento-style Grid -->
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
 <!-- Result 1 -->
-<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-outline-variant/10 group">
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-outline-variant/10 group cursor-pointer" onclick="openExploreModal(this)">
 <div class="relative h-56">
 <img class="w-full h-full object-cover" data-alt="A view of the Eiffel Tower from a Parisian balcony with flowers in the foreground. The light is bright and midday, creating a crisp, modern aesthetic. The sky is a clear Horizon Teal blue, emphasizing a sense of wanderlust and high-end travel discovery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz3jQtJgF7ZKBuwV8Qb5WTnxpGC33ybNLuib6KzHpieXkX_MNOp_DnzQhMnoGWT2ajR2aQ8SyQaU58ASgvlngFx7U-X8448rtCFbFOnsyF1Te2lf41vT40JTI5OARi-QbsTXCzaPdmzHKvwWCCR8lo-a5tib219qtV2lEOggtHNZB5vBQHQcQNWQtAEsqb4yRyiCJh0DSNAdspXq0VIrtQCV1Lhvtqm70jZwn-kz2bWP7XfD2xyJa_V3Yx39g8eIXmmwS7m7dcrg4"/>
 <button class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/40 transition-colors">
@@ -160,7 +177,7 @@
 </div>
 </div>
 <!-- Result 2 -->
-<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-outline-variant/10 group">
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-outline-variant/10 group cursor-pointer" onclick="openExploreModal(this)">
 <div class="relative h-56">
 <img class="w-full h-full object-cover" data-alt="A close-up shot of colorful pasta and a glass of wine on a rustic table in a sun-drenched Italian courtyard. The lighting is warm and golden, highlighting textures of fresh basil and flour. The image represents an authentic culinary activity in Rome, with a rich and inviting color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF_jxNahPSd-WZbWBhG06DfNuoFQVd2w-18UVTJI6q5dFLA87rgUmCFaN2H1B3v4C4AorNJfePJDlbTLfd6jNxjT6dOrCMFAhVRFYdOcxSMHWx62UPMqgKnMCXCTsj7cMmW_NiGF1e-t1rSsY-m1gQngvTyd6ut3sTJmSFSF-F8Lava9zPELGz38H-YiABu9yXnPneFjFc0qypNefGfoS4blbZEFNOVLHnDD-iLBrs997LoKHXDtTwpvvfpfWL8vqrqOKwKi-u7GM"/>
 <button class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/40 transition-colors">
@@ -185,7 +202,7 @@
 </div>
 </div>
 <!-- Result 3 -->
-<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-outline-variant/10 group">
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-outline-variant/10 group cursor-pointer" onclick="openExploreModal(this)">
 <div class="relative h-56">
 <img class="w-full h-full object-cover" data-alt="A modern architectural marvel building in Dubai silhouetted against a vibrant sunset sky of orange and deep purple. The scene is high-contrast and luxurious. The lighting captures the glass reflections and city lights, embodying the precision and excitement of a futuristic metropolis." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5O9lmYadDKfAKux5ftw6QYocuGvUukDi3YCKp3_JfgbMqXg9bVDoUEXwaMIkH3JTDa4F-3rjBmbdL-lfcWAFHergJ9K6CWxdkjhoc9HZz6QVG_ZQGJDLDsQcRMbHZn8617JrEj44CWv-b8O7p249rfYs4NfrvOAJigB_zRX4lp8llrpNPvX-wEw53dOYCjoPLrdJa1cYyq-9QP1GBwpYdgTB6aWTKVqG6oozZ67obZ2h4sggIhAQJfDmFuoEtHve_HJ4gku50HGU"/>
 <button class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/40 transition-colors">
@@ -210,7 +227,7 @@
 </div>
 </div>
 <!-- Result 4 -->
-<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-outline-variant/10 group">
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-outline-variant/10 group cursor-pointer" onclick="openExploreModal(this)">
 <div class="relative h-56">
 <img class="w-full h-full object-cover" data-alt="A traditional blue-domed church in Oia, Santorini, overlooking the vast turquoise Aegean Sea. The bright sunlight creates deep, sharp shadows and brilliant whites. The aesthetic is extremely airy and clean, utilizing a Mediterranean color palette of crisp white and deep sea blue." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5lJYZfzxP1ZC28dGKuRU2HKyzuya6rcgQY4bzyrgxCL-kRk87KkFoL2RbtCLUZXrmbSHPq54NmHHzOPSeXvRGDbdA2aQUuWhv5av-l1XqFIfhg4-ar1vS0H2n_vvIHQkKDI3nZDR7iPJZepZ4voZ7ZUW23bdldqTuY2FEaNVWTJ6JuFRObh96llvBzdgwzSDSFvpcKNKPCdUVNFy62f5gGZsfBQSxkg7RiCOZ64vkQPegVPrtKyz9bqFs9CTimC9cRlrNSu0tPak"/>
 <button class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/40 transition-colors">
@@ -235,7 +252,7 @@
 </div>
 </div>
 <!-- Result 5 -->
-<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-outline-variant/10 group">
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-outline-variant/10 group cursor-pointer" onclick="openExploreModal(this)">
 <div class="relative h-56">
 <img class="w-full h-full object-cover" data-alt="People snorkeling in the crystal clear, shallow waters of the Maldives over a vibrant coral reef teeming with tropical fish. The underwater lighting is bright and dappled with surface ripples. The image evokes an effortless, collaborative adventure spirit with soft teals and brilliant blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAezhgRVOv7MkocfgmTVCJTyIsjRoMM2BqVlB-pMz5HlEJ29Vs8rjtXq0GFCTsgzAjTdFj8GoN_6jGDr1dmG_eFnyWkvPB4G-k4dTs9G-kCi-MhOSv57tx-EgHPtFtiBWZ0aXRFHZtSVM2yJ1MpBI0rbGRj98gMkJ9XojiynbkjxCM5cgZV8xciJWpj4k4hkicD191oP5GeOaldES-eRalbGvHsZ93K3F-1Ikg4PUo9hFeyiPB3LhXWI3wT38Bifxvjab7ynMcfg7Y"/>
 <button class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/40 transition-colors">
@@ -260,7 +277,7 @@
 </div>
 </div>
 <!-- Result 6 -->
-<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-outline-variant/10 group">
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-outline-variant/10 group cursor-pointer" onclick="openExploreModal(this)">
 <div class="relative h-56">
 <img class="w-full h-full object-cover" data-alt="The Golden Gate Bridge in San Francisco partially shrouded in the famous rolling fog during the morning light. The bridge's international orange color pops against the soft grey mist and pale blue sky. The composition is clean and iconic, representing a classic urban discovery destination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZNer7n64rsrPHvWbeOT6rIolCBkdNFL1Xenf43bLAdH3ydp4GELo0qvVF_2VG7BerAnb2YHubm9oPA5_E8MFgPVBOhXes49D9jSjOZHnpR4_RylMGLJ9YrfZXZR5TEFq9g60VH4fC56Gp_SEly1AbRVo3NgFZBmRSU6eyQL2ZqSXxQsB324Cg2DCOvh_s7fu-Suh714NG3s0bLvBVAYs0VIuoaSudSLUukiaVf6xrfNdUnM31A9SpepGb2hTbszQSCb8YYNc5qQc"/>
 <button class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/40 transition-colors">
@@ -327,4 +344,183 @@
 <button class="fixed bottom-24 right-6 md:bottom-12 md:right-12 w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-2xl flex items-center justify-center active:scale-95 transition-transform z-40">
 <span class="material-symbols-outlined" data-icon="add">add</span>
 </button>
+
+<!-- Explore Detail Modal -->
+<div id="explore-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 md:p-8 transition-opacity">
+    <div class="bg-surface rounded-2xl w-full max-w-4xl max-h-full overflow-y-auto shadow-2xl relative shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+        <button onclick="closeExploreModal()" class="absolute top-4 right-4 w-10 h-10 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full text-white flex items-center justify-center transition-all z-10 shadow-lg">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="h-64 md:h-80 w-full relative">
+            <img id="modal-img" src="" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent"></div>
+            <div class="absolute bottom-6 left-8">
+                <span id="modal-tag" class="bg-secondary-container text-on-secondary-container text-label-sm px-3 py-1 rounded-full font-bold uppercase tracking-wider mb-2 inline-block shadow-md">Popular</span>
+                <h3 id="modal-title" class="text-on-surface font-display text-headline-lg font-bold">London, UK</h3>
+            </div>
+        </div>
+        <div class="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h5 class="text-xs font-bold text-outline-variant uppercase tracking-wider mb-3">About this Destination</h5>
+                <p id="modal-desc" class="text-body-md text-on-surface-variant mb-6">Discover the perfect blend of history and modern culture. From iconic landmarks to hidden gems, this location offers an unforgettable experience for every traveler.</p>
+                <h5 class="text-xs font-bold text-outline-variant uppercase tracking-wider mb-3">Estimated Planning</h5>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 bg-surface-container-lowest border border-outline-variant/20 rounded-xl shadow-sm">
+                        <p class="text-xs text-outline mb-1">Avg. Budget</p>
+                        <p id="modal-budget" class="font-display text-title-lg text-secondary font-bold">$2,800</p>
+                    </div>
+                    <div class="p-4 bg-surface-container-lowest border border-outline-variant/20 rounded-xl shadow-sm">
+                        <p class="text-xs text-outline mb-1">Recommended</p>
+                        <p id="modal-days" class="font-label-lg text-on-surface">5-7 Days</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h5 class="text-xs font-bold text-outline-variant uppercase tracking-wider mb-3">Top Highlights</h5>
+                <div id="modal-highlights" class="space-y-4">
+                    <div class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant/10 rounded-lg shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center"><span class="material-symbols-outlined">museum</span></div>
+                        <p class="font-label-lg text-on-surface">Iconic Museums</p>
+                    </div>
+                    <div class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant/10 rounded-lg shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center"><span class="material-symbols-outlined">restaurant</span></div>
+                        <p class="font-label-lg text-on-surface">Local Cuisine</p>
+                    </div>
+                    <div class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant/10 rounded-lg shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center"><span class="material-symbols-outlined">photo_camera</span></div>
+                        <p class="font-label-lg text-on-surface">Breathtaking Views</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-6 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-end gap-4">
+            <button class="px-6 py-2 border border-outline-variant/50 rounded-lg font-bold text-on-surface hover:bg-surface-variant transition-colors" onclick="closeExploreModal()">Close</button>
+            <button class="px-6 py-2 bg-secondary text-on-secondary rounded-lg font-bold hover:brightness-110 transition-colors shadow-md">Start Planning</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openExploreModal(card) {
+        const modal = document.getElementById('explore-modal');
+        const img = card.querySelector('img').src;
+        const title = card.querySelector('h3, h4').innerText;
+        const tag = card.querySelector('span[class*="bg-secondary-container"], p[class*="text-secondary"], p[class*="text-on-tertiary-container"]').innerText;
+        
+        document.getElementById('modal-img').src = img;
+        document.getElementById('modal-title').innerText = title;
+        document.getElementById('modal-tag').innerText = tag;
+        
+        // Randomize some mock data for the prototype
+        const budgets = ["$1,500", "$2,200", "$3,500", "$4,800"];
+        const days = ["3-5 Days", "5-7 Days", "7-10 Days", "10-14 Days"];
+        document.getElementById('modal-budget').innerText = budgets[Math.floor(Math.random() * budgets.length)];
+        document.getElementById('modal-days').innerText = days[Math.floor(Math.random() * days.length)];
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+
+    function closeExploreModal() {
+        const modal = document.getElementById('explore-modal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Close on backdrop click
+    document.getElementById('explore-modal').addEventListener('click', function(e) {
+        if (e.target === this) closeExploreModal();
+    });
+</script>
+
+
+<!-- Traveloop AI Floating Assistant -->
+<div id="ai-assistant" class="fixed bottom-8 right-8 z-[200] flex flex-col items-end gap-4 pointer-events-none">
+    <!-- Chat Window (Hidden by default) -->
+    <div id="ai-chat-window" class="w-80 md:w-96 bg-surface/80 backdrop-blur-xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20 overflow-hidden flex flex-col transition-all duration-500 scale-90 opacity-0 translate-y-10 pointer-events-auto">
+        <div class="p-4 bg-primary text-on-primary flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+                </div>
+                <div>
+                    <p class="font-bold text-sm">Traveloop Assistant</p>
+                    <p class="text-[10px] opacity-80">Online | AI-Powered</p>
+                </div>
+            </div>
+            <button onclick="toggleAIChat()" class="hover:bg-white/10 rounded-full p-1 transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div id="chat-messages" class="flex-1 p-4 space-y-4 max-h-[300px] overflow-y-auto bg-surface-container-lowest/50">
+            <div class="flex gap-3">
+                <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-white text-[10px] flex-shrink-0">T</div>
+                <div class="bg-surface-container-high p-3 rounded-2xl rounded-tl-none text-xs text-on-surface">
+                    Hi! I'm your Traveloop Assistant. Need help planning your next adventure or finding the best flight deals?
+                </div>
+            </div>
+        </div>
+        <div class="p-4 bg-surface-container-low border-t border-outline-variant/10 flex gap-2">
+            <input id="ai-input" type="text" placeholder="Ask me anything..." class="flex-1 bg-surface-container-lowest border-none rounded-full px-4 py-2 text-xs focus:ring-2 focus:ring-secondary outline-none">
+            <button onclick="sendAIMessage()" class="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[18px]">send</span>
+            </button>
+        </div>
+    </div>
+    <!-- Floating Button -->
+    <button onclick="toggleAIChat()" class="w-16 h-16 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group">
+        <div class="absolute -top-1 -right-1 w-4 h-4 bg-error rounded-full border-2 border-surface animate-pulse"></div>
+        <span class="material-symbols-outlined text-[32px] group-hover:rotate-12 transition-transform">smart_toy</span>
+    </button>
+</div>
+
+<script>
+    function toggleAIChat() {
+        const window = document.getElementById('ai-chat-window');
+        const isHidden = window.classList.contains('opacity-0');
+        if (isHidden) {
+            window.classList.remove('opacity-0', 'scale-90', 'translate-y-10');
+            window.classList.add('opacity-100', 'scale-100', 'translate-y-0');
+        } else {
+            window.classList.add('opacity-0', 'scale-90', 'translate-y-10');
+            window.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
+        }
+    }
+
+    function sendAIMessage() {
+        const input = document.getElementById('ai-input');
+        const container = document.getElementById('chat-messages');
+        const text = input.value.trim();
+        if (!text) return;
+
+        // User message
+        const userMsg = document.createElement('div');
+        userMsg.className = 'flex gap-3 justify-end';
+        userMsg.innerHTML = `
+            <div class="bg-secondary text-white p-3 rounded-2xl rounded-tr-none text-xs shadow-sm max-w-[80%]">${text}</div>
+        `;
+        container.appendChild(userMsg);
+        input.value = '';
+
+        // Bot typing effect
+        setTimeout(() => {
+            const botMsg = document.createElement('div');
+            botMsg.className = 'flex gap-3';
+            botMsg.innerHTML = `
+                <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-white text-[10px] flex-shrink-0">T</div>
+                <div class="bg-surface-container-high p-3 rounded-2xl rounded-tl-none text-xs text-on-surface shadow-sm max-w-[80%]">
+                    Searching for the best itineraries for "${text}"... One moment! ✈️
+                </div>
+            `;
+            container.appendChild(botMsg);
+            container.scrollTop = container.scrollHeight;
+        }, 1000);
+    }
+</script>
+
+<style>
+    #chat-messages::-webkit-scrollbar { width: 4px; }
+    #chat-messages::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
+</style>
+
 </body></html>

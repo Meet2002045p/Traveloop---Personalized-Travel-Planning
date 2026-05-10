@@ -10,76 +10,59 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../css/style.css">
 <script src="../js/tailwind-config.js"></script>
+    <script src="../js/transition.js"></script>
 </head>
 <body class="bg-surface text-on-surface font-body-md min-h-screen overflow-x-hidden">
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 w-full bg-surface/95 backdrop-blur-md border-b border-outline-variant/20 shadow-sm flex flex-col">
+    <!-- Top Row -->
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-3">
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary text-3xl">travel</span>
+            <div class="flex items-baseline gap-2">
+                <h1 class="font-display text-headline-md font-bold text-primary hidden sm:block">Traveloop</h1>
+                <span class="text-outline-variant hidden sm:block">|</span>
+                <h2 class="font-display text-title-md font-medium text-on-surface-variant">Traveloop</h2>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="relative hidden lg:block">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+                <input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary w-64 text-label-lg" placeholder="Search trips..." type="text"/>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">notifications</span>
+            <a href="login_signup.html" class="text-on-surface-variant cursor-pointer hover:text-secondary transition-colors flex items-center" title="Sign Out"><span class="material-symbols-outlined">logout</span></a>
+            <a href="user_profile_settings.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-highest shadow-sm block">
+                <img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpeCLalZVh7yZJgXsPIh7d0N5bIJiZQT65pCySTUxiQGPTl3236Xv9e-Q8ghq28TuSiZ1sO_j9W4IxtJaoYSAB7mHBLBgGJhBlx9DOccpv1WFlrK5ExH5xKhtUh9uhf3kDc5q3O9kzkGzrUSN9y0GR9fT4fEHWa3KQTeBN3hghAcC67XGUD5JltH8iRXzcE_vHxzrfSz_HkxGo8CUc_KeoyzSvaACz_wa66xrFkB0pSJDj2oD0x0rhNpx8dr1KiuWBhxD-rWirIQ4"/>
+            </a>
+        </div>
+    </div>
+    <!-- Bottom Row (Navigation) -->
+    <nav class="w-full overflow-x-auto scrollbar-hide border-t border-outline-variant/10 bg-surface-container-lowest/50">
+        <div class="flex items-center gap-6 px-margin-mobile md:px-margin-desktop py-3 min-w-max">
+            <a href="traveloop_dashboard.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">dashboard</span> Dashboard</a>
+            <a href="my_trips.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">map</span> My Trips</a>
+            <a href="city_activity_search.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">explore</span> Explore</a>
+            <a href="trip_budget_breakdown.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">account_balance_wallet</span> Budget</a>
+            <a href="itinerary_builder.html" class="flex items-center gap-2 text-secondary font-bold transition-colors border-b-2 border-secondary pb-1 -mb-[14px]"><span class="material-symbols-outlined text-sm">edit_document</span> Build Itinerary</a>
+            <a href="packing_checklist.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">checklist</span> Packing Checklist</a>
+            <a href="trip_notes_journal.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">menu_book</span> Trip Notes</a>
+            <a href="shared_itinerary.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">share</span> Shared</a>
+            
+        </div>
+    </nav>
+</header>
 <!-- Top Navigation -->
-<nav class="sticky top-0 z-50 flex justify-between items-center px-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md shadow-sm border-b border-outline-variant/20">
-<div class="flex items-center gap-8">
-<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
-<div class="hidden md:flex gap-6 items-center">
-<a class="font-display text-label-lg font-bold text-secondary transition-colors" href="traveloop_dashboard.html">Dashboard</a>
-<a class="font-display text-label-lg text-on-surface-variant hover:text-secondary transition-colors" href="my_trips.html">My Trips</a>
-<a class="font-display text-label-lg text-on-surface-variant hover:text-secondary transition-colors" href="city_activity_search.html">Explore</a>
-<a class="font-display text-label-lg text-on-surface-variant hover:text-secondary transition-colors" href="trip_budget_breakdown.html">Budget</a>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
-<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">favorite</button>
-<div class="h-10 w-10 rounded-full bg-surface-container-highest border border-outline-variant/30 overflow-hidden">
-<img alt="User profile" class="h-full w-full object-cover" data-alt="A professional headshot of a smiling young adult with warm, natural lighting. The person has a friendly expression, set against a soft-focus, minimalist background that complements the modern, clean aesthetic of the travel planning interface. The overall mood is approachable and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOu-wHz-4orrSLamHS0mduJYL3eAAhfcdlg4j4ShFcInhjyv_Qii9445LXJvN-x4MXBRBgZS6zO0Dhv5l289NEex1H9y5CZOwcLV8gv7l4IOUqcW_yvK71_kUwqSeTkDp_uNtLFMOzeMg7ZNJQqSKRpgn9I8tl6X-Edt3O39QrWXoKtQltHrhh0wbQiUkt7GQD2aKFiaEWGcoSdTGnhRyswEkWMIDCH7pzgy-CUO0CkpfESK4INy8ozN1BFxNj84HXN85Jg5f7GVA"/>
-</div>
-</div>
-</nav>
+
 <!-- Sidebar (Left) -->
-<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col p-6 pt-24 bg-surface-container-low border-r border-outline-variant/30 z-40 hidden md:flex">
-<div class="mb-8 flex flex-col gap-2">
-<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
-<span class="text-label-sm text-on-surface-variant opacity-70">Trip Planner</span>
-</div>
-<button class="w-full bg-secondary text-on-secondary py-3 px-4 rounded-lg font-display text-label-lg font-semibold flex items-center justify-center gap-2 mb-8 hover:opacity-90 active:scale-[0.98] transition-all shadow-sm" onclick="window.location.href='create_new_trip.html'">
-<span class="material-symbols-outlined">add</span>
-            New Trip
-        </button>
-<nav class="flex flex-col gap-1">
-<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 font-semibold shadow-sm transition-all" href="traveloop_dashboard.html">
-<span class="material-symbols-outlined">dashboard</span>
-<span class="font-body-md text-label-lg">Dashboard</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all" href="my_trips.html">
-<span class="material-symbols-outlined">map</span>
-<span class="font-body-md text-label-lg">My Trips</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all" href="city_activity_search.html">
-<span class="material-symbols-outlined">explore</span>
-<span class="font-body-md text-label-lg">Explore</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all" href="trip_budget_breakdown.html">
-<span class="material-symbols-outlined">account_balance_wallet</span>
-<span class="font-body-md text-label-lg">Budget</span>
-</a>
-</nav>
-</aside>
+
 <!-- Main Content Canvas -->
-<main class="md:ml-64 flex flex-col lg:flex-row min-h-[calc(100vh-73px)]">
+<main class=" flex flex-col lg:flex-row min-h-[calc(100vh-73px)]">
 <!-- Center Itinerary View -->
 <section class="flex-1 p-gutter lg:p-10 bg-surface">
-<header class="mb-10">
-<div class="flex items-center gap-2 text-label-sm text-secondary font-semibold uppercase tracking-wider mb-2">
-<span class="material-symbols-outlined text-[18px]">event_repeat</span>
-                    European Escape 2024
-                </div>
-<div class="flex justify-between items-end">
-<h1 class="font-display text-display text-on-surface">Paris Itinerary</h1>
-<div class="flex -space-x-3">
-<img alt="Collaborator" class="h-10 w-10 rounded-full border-2 border-white" data-alt="A portrait of a creative individual with a soft natural background, highlighting a clean and modern professional look suitable for a collaborative user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvSBzKoQnhfvj6dzDaS1abLFO6FBKf9aEognmpcN2FJVRfHlIIYgEVQTcwPnEJ4uXwBXR2-byZb5qTfBd6jKrexa1GNsyqPrUFYQQMDuTn7-Uzy6jKrYklDVNnF4DHPgzXa1XZ35G-aDDXrMYCNoeoAljCtkFBytmiMBpRplfx3cTFlqUUWXpk8SNFB1Cr_0b6HghWig4pUl4HCd1yPueP8IjNhTDG_UKMiQmCe4DWO-NmUTEo9W7mSWZggCVOp76A3ZSY8ECE7rA"/>
-<img alt="Collaborator" class="h-10 w-10 rounded-full border-2 border-white" data-alt="Portrait of a diverse professional woman in a bright, modern setting with soft lighting, reflecting a warm and collaborative spirit within a high-end digital workspace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9xTBjyeCVHcVh1WXakcV12LuzEGg00gdzoNqE7FuhxVEt62lAH650LQdtxyDXcXCgiYDfYkgtWuCH0OuYa8lJD7yt8ZsteKffJzVIv0a3VghaM2wiIs8tF29xr7fWSo9crYdJtmSOETW4u2HIEJDZcJE9ITJc1n9j2OWLwMVF1hhO70iJOj0T44ly7vpn9TuQrOzwYYEXsRvGPIE1aoqqwKehgls_8917MqZkFJF-mxdQdzqFL33ft0tp2wZzyJlT_Yp7CFhrOcU"/>
-<div class="h-10 w-10 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center text-label-sm font-bold text-primary">+3</div>
-</div>
-</div>
-</header>
+
 <!-- Day-Wise Layout (Center) -->
-<div class="grid grid-cols-1 gap-8 relative">
+<div id="timeline-container" class="grid grid-cols-1 gap-8 relative">
 <!-- Timeline Vertical Line -->
 <div class="absolute left-[24px] top-4 bottom-4 w-px bg-outline-variant/40 border-l border-dashed border-secondary/30 hidden sm:block"></div>
 <!-- Timeline Item: Morning -->
@@ -142,7 +125,7 @@
 <p class="font-display text-label-lg text-on-surface">Add an afternoon activity</p>
 <p class="text-label-sm text-on-surface-variant">Drag from explore or click to create new</p>
 </div>
-<button class="px-6 py-2 rounded-full border border-secondary text-secondary font-display text-label-sm hover:bg-secondary hover:text-on-secondary transition-all">
+<button onclick="document.getElementById('modal-add-activity').classList.remove('hidden')" class="px-6 py-2 rounded-full border border-secondary text-secondary font-display text-label-sm hover:bg-secondary hover:text-on-secondary transition-all">
                             Add Now
                         </button>
 </div>
@@ -150,64 +133,7 @@
 </div>
 </section>
 <!-- Right Sidebar: Search & Map -->
-<aside class="w-full lg:w-96 flex flex-col bg-surface-container border-l border-outline-variant/20 p-6 overflow-y-auto">
-<!-- Search Section -->
-<div class="mb-10">
-<h4 class="font-display text-label-lg text-primary uppercase tracking-widest mb-6">Explore Nearby</h4>
-<div class="relative mb-6">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="w-full h-12 pl-12 pr-4 bg-surface rounded-xl border border-outline-variant/50 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all text-body-md" placeholder="Museums, parks, cafes..." type="text"/>
-</div>
-<!-- Suggestions Bento -->
-<div class="grid grid-cols-1 gap-4">
-<div class="group cursor-pointer">
-<div class="relative h-24 rounded-xl overflow-hidden mb-2">
-<img alt="Louvre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A cinematic, wide-angle shot of the Louvre Museum at night, with the iconic glass pyramids illuminated from within. The lighting is dramatic and warm, contrasting with the cool blue of the twilight sky. The image emphasizes the architectural grandeur and cultural richness of Paris in a high-fidelity, modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC45KvMbuxlBxCJv1xGdrqBVv_1LHpofRpopwmGsLYpHJMHcfxxqGKn9Hd-TMO9SXmeSu_I-57HBOkeGXmpbod693srLgLBAeMh2RGsu1i9WFpf2l73mazh2XHNRV24p6GWVXrufCI9aS4ESNNqJPOESoH0LmbCWQRcrUdX0mOCcGlgJQ6o3gl4qek-DzYO9p9TZu45brFEDW9VdPa3lWZfeXuwdfW_Masq_J_qMiaZlxhOAe5L6k9cS-ieLtLqmJGC0Obv51AZnZ8"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-<div class="absolute bottom-3 left-3 text-white">
-<p class="text-label-sm font-bold">The Louvre Museum</p>
-<p class="text-[10px] opacity-80">4.8 ★ (120k reviews)</p>
-</div>
-</div>
-</div>
-<div class="group cursor-pointer">
-<div class="relative h-24 rounded-xl overflow-hidden mb-2">
-<img alt="Montmartre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A vibrant street scene in Montmartre, Paris, featuring the Sacré-Cœur Basilica in the background. The morning light is crisp and bright, highlighting the white stone of the church and the colorful storefronts of the winding streets. The atmosphere is lively and inviting, capturing the quintessential charm of a Parisian neighborhood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTwNYqfPPOn77Ou4D0x8V1X3dbPT4wVS2q0iGXUfmZs4VEtmCvQJd7NHFCcDLnj2Z0mQGuPuRVz8hIm1EoIFWC8z6xokuxVN2cF2ReCF8FOvK94P5ZD3dmOJYZlrNTFC2Hd_ZEZeNWSiWQiNDpG44aG-GsmiXOInGqTKVSbonaUOoAnvVTGHxFL1XtTkF44JJNYpsCkWuFrHmSVeP12Tiyw_u66M02cA-JAcojO1wNrYEnEYh5nHrA-OCjmPgBCgFYPavo6Vv7KP4"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-<div class="absolute bottom-3 left-3 text-white">
-<p class="text-label-sm font-bold">Montmartre Walk</p>
-<p class="text-[10px] opacity-80">4.5 ★ (45k reviews)</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Map Preview -->
-<div class="mt-auto">
-<div class="flex justify-between items-center mb-4">
-<h4 class="font-display text-label-lg text-primary uppercase tracking-widest">Map View</h4>
-<button class="text-secondary text-label-sm font-bold">Expand</button>
-</div>
-<div class="relative h-64 rounded-2xl overflow-hidden border border-outline-variant/30 shadow-lg">
-<img alt="Map of Paris" class="w-full h-full object-cover" data-alt="A stylized, minimalist map illustration of central Paris with highlighted routes and icons for major landmarks like the Eiffel Tower and Notre Dame. The color palette is modern and airy, utilizing Wanderlust Blue and Horizon Teal accents to signify an organized itinerary. The overall look is clean, functional, and aesthetically pleasing." data-location="Paris" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm8WskMQQPLggzO6VAZg_P8wvDq5J4DKdYpqKus8cMFZxIlxbWgvolJWIRcmb4bsYsWiYXbrS0C1bFiGwMiRVS0t9Gx5ZJXgzFfZ9qsO1U0LGjo4oREJfTzDVGy0Cc45kwgHQ6xqRNoMB7F4YQvaVbCs78TFKkvBQdLMfoPkH-TCRBP42lACMO2nLZALvSMeGrziuqARIryKdiU-jO6AEQ_uKRNgvuXNd3pJQdqUfeEcv-6jVX5p2cWrcUAUMPLAomctY28tUIWJQ"/>
-<div class="absolute inset-0 bg-secondary/5 pointer-events-none"></div>
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-<div class="w-8 h-8 bg-secondary rounded-full border-4 border-white shadow-xl flex items-center justify-center animate-pulse">
-<span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
-</div>
-</div>
-</div>
-<div class="mt-4 p-4 bg-surface-container-low rounded-xl border border-outline-variant/20">
-<div class="flex items-center justify-between mb-2">
-<span class="text-label-sm text-on-surface-variant">Estimated Travel Time</span>
-<span class="text-label-sm font-bold text-primary">24 mins</span>
-</div>
-<div class="w-full h-1 bg-outline-variant/20 rounded-full overflow-hidden">
-<div class="w-3/4 h-full bg-secondary rounded-full"></div>
-</div>
-</div>
-</div>
-</aside>
+
 </main>
 <!-- Footer Component -->
 <footer class="w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-highest border-t border-outline-variant/50">
@@ -225,4 +151,260 @@
 <button class="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-2xl flex items-center justify-center z-50">
 <span class="material-symbols-outlined text-[28px]">add</span>
 </button>
+
+<!-- Traveloop AI Floating Assistant -->
+<div id="ai-assistant" class="fixed bottom-8 right-8 z-[200] flex flex-col items-end gap-4 pointer-events-none">
+    <!-- Chat Window (Hidden by default) -->
+    <div id="ai-chat-window" class="w-80 md:w-96 bg-surface/80 backdrop-blur-xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20 overflow-hidden flex flex-col transition-all duration-500 scale-90 opacity-0 translate-y-10 pointer-events-auto">
+        <div class="p-4 bg-primary text-on-primary flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+                </div>
+                <div>
+                    <p class="font-bold text-sm">Traveloop Assistant</p>
+                    <p class="text-[10px] opacity-80">Online | AI-Powered</p>
+                </div>
+            </div>
+            <button onclick="toggleAIChat()" class="hover:bg-white/10 rounded-full p-1 transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div id="chat-messages" class="flex-1 p-4 space-y-4 max-h-[300px] overflow-y-auto bg-surface-container-lowest/50">
+            <div class="flex gap-3">
+                <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-white text-[10px] flex-shrink-0">T</div>
+                <div class="bg-surface-container-high p-3 rounded-2xl rounded-tl-none text-xs text-on-surface">
+                    Hi! I'm your Traveloop Assistant. Need help planning your next adventure or finding the best flight deals?
+                </div>
+            </div>
+        </div>
+        <div class="p-4 bg-surface-container-low border-t border-outline-variant/10 flex gap-2">
+            <input id="ai-input" type="text" placeholder="Ask me anything..." class="flex-1 bg-surface-container-lowest border-none rounded-full px-4 py-2 text-xs focus:ring-2 focus:ring-secondary outline-none">
+            <button onclick="sendAIMessage()" class="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[18px]">send</span>
+            </button>
+        </div>
+    </div>
+    <!-- Floating Button -->
+    <button onclick="toggleAIChat()" class="w-16 h-16 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group">
+        <div class="absolute -top-1 -right-1 w-4 h-4 bg-error rounded-full border-2 border-surface animate-pulse"></div>
+        <span class="material-symbols-outlined text-[32px] group-hover:rotate-12 transition-transform">smart_toy</span>
+    </button>
+</div>
+
+
+
+
+<!-- Add Activity Modal -->
+<div id="modal-add-activity" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity">
+    <div class="bg-surface rounded-2xl w-full max-w-lg shadow-2xl relative shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+        <button onclick="document.getElementById('modal-add-activity').classList.add('hidden')" class="absolute top-4 right-4 w-10 h-10 bg-surface-container-high rounded-full flex items-center justify-center transition-all z-10 shadow-sm">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="p-8">
+            <h3 class="font-display text-headline-md font-bold text-primary mb-4">Add New Activity</h3>
+            <form id="add-activity-form" class="space-y-4">
+                <div class="space-y-2">
+                    <label class="text-label-lg font-bold">Activity Title</label>
+                    <input type="text" id="act-title" required placeholder="e.g., Dinner at Seine" class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 outline-none focus:ring-2 focus:ring-secondary/20">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="text-label-lg font-bold">Time</label>
+                        <input type="time" id="act-time" required class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 outline-none">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-label-lg font-bold">Category</label>
+                        <select id="act-category" class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 outline-none">
+                            <option>Sightseeing</option>
+                            <option>Culinary</option>
+                            <option>Relaxation</option>
+                            <option>Shopping</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-label-lg font-bold">Activity Image</label>
+                    <div class="relative h-24 w-full border-2 border-dashed border-outline-variant/50 rounded-xl flex flex-col items-center justify-center bg-surface-container-lowest hover:bg-secondary/5 transition-all cursor-pointer overflow-hidden group">
+                        <input type="file" id="act-image" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer z-10">
+                        <img id="act-preview" class="absolute inset-0 w-full h-full object-cover hidden">
+                        <span class="material-symbols-outlined text-2xl text-outline-variant group-hover:text-secondary">add_a_photo</span>
+                        <p class="text-[10px] text-outline group-hover:text-secondary">Upload Photo</p>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-label-lg font-bold">Description</label>
+                    <textarea id="act-desc" rows="2" placeholder="What will you do?" class="w-full bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-4 outline-none focus:ring-2 focus:ring-secondary/20"></textarea>
+                </div>
+                <div class="flex gap-4 pt-4">
+                    <button type="button" onclick="document.getElementById('modal-add-activity').classList.add('hidden')" class="flex-1 py-3 border border-outline text-on-surface rounded-xl font-bold hover:bg-surface-container-high transition-all">Cancel</button>
+                    <button type="submit" class="flex-1 py-3 bg-secondary text-on-secondary rounded-xl font-bold shadow-md hover:brightness-110 transition-all">Add to Plan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    async function compressImage(base64Str, maxWidth = 300, maxHeight = 300) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.src = base64Str;
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+
+                if (width > height) {
+                    if (width > maxWidth) {
+                        height *= maxWidth / width;
+                        width = maxWidth;
+                    }
+                } else {
+                    if (height > maxHeight) {
+                        width *= maxHeight / height;
+                        height = maxHeight;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+                resolve(canvas.toDataURL('image/jpeg', 0.5)); // Compress to 70% quality
+            };
+        });
+    }
+    
+    // Robust activity saving and rendering
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('add-activity-form');
+        const container = document.getElementById('timeline-container');
+        const actImageInput = document.getElementById('act-image');
+        const actPreview = document.getElementById('act-preview');
+
+        if (!form || !container) {
+            console.error('Itinerary Builder: Required elements missing!');
+            return;
+        }
+
+        // Handle image preview
+        actImageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('Image is too large. Please keep it under 2MB.');
+                    this.value = '';
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    actPreview.src = e.target.result;
+                    actPreview.classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Submit handler
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const activity = {
+                id: 'act-' + Date.now(),
+                title: document.getElementById('act-title').value,
+                time: document.getElementById('act-time').value,
+                category: document.getElementById('act-category').value,
+                desc: document.getElementById('act-desc').value,
+                image: actPreview.src ? await compressImage(actPreview.src) : 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=400'
+            };
+
+            try {
+                saveActivity(activity);
+                renderActivityCard(activity);
+                
+                form.reset();
+                actPreview.classList.add('hidden');
+                document.getElementById('modal-add-activity').classList.add('hidden');
+                alert('Success! Activity added to your plan.');
+            } catch (err) { if (confirm('Browser storage is full! Your itinerary has too many high-quality photos. Would you like to clear your history to start fresh?')) { localStorage.clear(); location.reload(); } }
+        });
+
+        function saveActivity(activity) {
+            let activities = JSON.parse(localStorage.getItem('traveloop_itinerary') || '[]');
+            activities.push(activity);
+            localStorage.setItem('traveloop_itinerary', JSON.stringify(activities));
+        }
+
+        function renderActivityCard(activity) {
+            const newItem = document.createElement('div');
+            newItem.className = 'relative pl-0 sm:pl-16 group animate-in fade-in slide-in-from-bottom-4 duration-500';
+            
+            let formattedTime = activity.time;
+            try {
+                const [h, m] = activity.time.split(':');
+                const hh = parseInt(h);
+                const suffix = hh >= 12 ? 'PM' : 'AM';
+                const hour12 = hh % 12 || 12;
+                formattedTime = `${hour12}:${m} ${suffix}`;
+            } catch(e) {}
+
+            newItem.innerHTML = `
+                <div class="absolute left-4 top-1 w-4 h-4 rounded-full bg-secondary border-4 border-surface shadow-[0_0_0_4px_rgba(0,106,97,0.1)] hidden sm:block z-10"></div>
+                <div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 shadow-sm hover:shadow-md transition-all duration-300">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="w-full md:w-32 h-32 rounded-lg overflow-hidden shrink-0">
+                            <img alt="${activity.title}" class="w-full h-full object-cover" src="${activity.image}"/>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <span class="text-label-sm text-secondary font-bold uppercase mb-1 block">${formattedTime} — ${activity.category}</span>
+                                    <h3 class="font-display text-headline-md text-on-surface">${activity.title}</h3>
+                                </div>
+                                <div class="flex gap-1">
+                                    <button onclick="deleteActivity('${activity.id}', this)" class="material-symbols-outlined text-outline-variant hover:text-error transition-colors">delete</button>
+                                    <button class="material-symbols-outlined text-outline-variant hover:text-primary transition-colors">more_vert</button>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant text-body-md mb-4 leading-relaxed">${activity.desc}</p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-label-sm">Saved Plan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Smart insertion
+            const emptyState = container.querySelector('.border-dashed');
+            if (emptyState) {
+                const parent = emptyState.closest('.relative');
+                container.insertBefore(newItem, parent);
+            } else {
+                container.appendChild(newItem);
+            }
+        }
+
+        // Global delete function
+        window.deleteActivity = function(id, btn) {
+            if(confirm('Remove this activity?')) {
+                let activities = JSON.parse(localStorage.getItem('traveloop_itinerary') || '[]');
+                activities = activities.filter(a => a.id !== id);
+                localStorage.setItem('traveloop_itinerary', JSON.stringify(activities));
+                btn.closest('.group').remove();
+            }
+        };
+
+        // Load existing
+        let activities = JSON.parse(localStorage.getItem('traveloop_itinerary') || '[]');
+        activities.forEach(renderActivityCard);
+    });
+</script>
+
+
+
+
 </body></html>

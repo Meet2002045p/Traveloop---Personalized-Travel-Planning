@@ -8,61 +8,61 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="../css/style.css">
-<script src="../js/tailwind-config.js"></script>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/tailwind-config.js"></script>
+    <script src="js/transition.js"></script>
 </head>
 <body class="bg-background text-on-background min-h-screen flex flex-col">
-<!-- TopAppBar -->
-<header class="sticky top-0 z-50 flex justify-between items-center px-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md dark:bg-inverse-surface/80 shadow-sm border-b border-outline-variant/20">
-<div class="flex items-center gap-8">
-<h1 class="font-display text-headline-md font-bold text-primary dark:text-inverse-primary">Traveloop</h1>
-<div class="hidden md:flex items-center gap-6">
-<span class="text-secondary dark:text-secondary-fixed-dim font-bold font-body-md text-label-lg cursor-pointer">Dashboard</span>
-<span class="text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-md text-label-lg cursor-pointer">Analytics</span>
-<span class="text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-md text-label-lg cursor-pointer">Users</span>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<button class="p-2 text-on-surface-variant hover:bg-surface-variant/20 rounded-full transition-all active:scale-95 duration-200">
-<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-</button>
-<div class="flex items-center gap-3 pl-4 border-l border-outline-variant/30">
-<div class="text-right hidden sm:block">
-<p class="font-label-lg text-label-lg text-on-surface">Admin User</p>
-<p class="font-label-sm text-label-sm text-on-surface-variant">Super Admin</p>
-</div>
-<img alt="User profile" class="w-10 h-10 rounded-full border-2 border-surface shadow-sm" data-alt="A professional headshot of a middle-aged man with a friendly expression, wearing a minimalist navy blue blazer. The lighting is soft and studio-quality, creating a clean light-mode aesthetic against a neutral light gray background. The overall style is corporate yet approachable, aligning with a modern digital platform's administrator profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB_Ym0Z7XB8O48ruiiYhLSy4SgJYsHv7icpAbBOfSuuL_tDGK662ZkHBp9lxtj3eDmGc_0JDC-BPOfE34_YfubmNXJFvvz1UzL-iAIKSicR3YdtN5p4yTDDpgoZhyBD-2Wcisxe6gqfeOsdzjHoLhMqPl3stfL3TJpvMPQf9KaxHGg59h8gFrd4XHili7Oo64tppnHdUXyXMM-e4UlzCPnBjg69cdxg2cOazoYvCY3LQERZ4Zf004bks6_UtrB5aZjOYG1XMpay_w"/>
-</div>
-</div>
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 w-full bg-surface/95 backdrop-blur-md border-b border-outline-variant/20 shadow-sm flex flex-col">
+    <!-- Top Row -->
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-3">
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary text-3xl">travel</span>
+            <div class="flex items-baseline gap-2">
+                <h1 class="font-display text-headline-md font-bold text-primary hidden sm:block">Traveloop</h1>
+                <span class="text-outline-variant hidden sm:block">|</span>
+                <h2 class="font-display text-title-md font-medium text-on-surface-variant">System Analytics</h2>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="relative hidden lg:block">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+                <input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary w-64 text-label-lg" placeholder="Search trips..." type="text"/>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">notifications</span>
+            <a href="../pages/login_signup.html" class="text-on-surface-variant cursor-pointer hover:text-secondary transition-colors flex items-center" title="Sign Out"><span class="material-symbols-outlined">logout</span></a>
+            <a href="../pages/user_profile_settings.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-highest shadow-sm block">
+                <img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpeCLalZVh7yZJgXsPIh7d0N5bIJiZQT65pCySTUxiQGPTl3236Xv9e-Q8ghq28TuSiZ1sO_j9W4IxtJaoYSAB7mHBLBgGJhBlx9DOccpv1WFlrK5ExH5xKhtUh9uhf3kDc5q3O9kzkGzrUSN9y0GR9fT4fEHWa3KQTeBN3hghAcC67XGUD5JltH8iRXzcE_vHxzrfSz_HkxGo8CUc_KeoyzSvaACz_wa66xrFkB0pSJDj2oD0x0rhNpx8dr1KiuWBhxD-rWirIQ4"/>
+            </a>
+        </div>
+    </div>
+    <!-- Bottom Row (Navigation) -->
+    <nav class="w-full overflow-x-auto scrollbar-hide border-t border-outline-variant/10 bg-surface-container-lowest/50">
+    <div class="flex items-center gap-6 px-margin-mobile md:px-margin-desktop py-3 min-w-max">
+        <a href="index.html" class="flex items-center gap-2 text-secondary font-bold transition-colors border-b-2 border-secondary pb-1 -mb-[14px]">
+            <span class="material-symbols-outlined text-sm">bar_chart</span> Overview
+        </a>
+        <a href="users.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50">
+            <span class="material-symbols-outlined text-sm">group</span> Users
+        </a>
+        <a href="trips.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50">
+            <span class="material-symbols-outlined text-sm">flight_takeoff</span> Trips
+        </a>
+        <a href="destinations.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50">
+            <span class="material-symbols-outlined text-sm">location_city</span> Destinations
+        </a>
+        <a href="settings.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50">
+            <span class="material-symbols-outlined text-sm">settings</span> Settings
+        </a>
+        <a href="../pages/traveloop_dashboard.html" class="ml-4 bg-surface-container-high text-on-surface px-4 py-2 rounded-lg font-bold flex items-center gap-2 shadow-sm hover:brightness-110 transition-all text-sm">
+            <span class="material-symbols-outlined text-sm">open_in_new</span> Return to App
+        </a>
+    </div>
+</nav>
 </header>
 <div class="flex flex-1">
-<!-- SideNavBar -->
-<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col p-6 pt-24 bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant/30 shadow-sm hidden md:flex">
-<nav class="flex flex-col gap-2 flex-1">
-<div class="flex items-center gap-3 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg px-4 py-3 font-semibold shadow-sm transition-transform active:scale-[0.98]">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-<span class="font-body-md text-label-lg">Dashboard</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300 active:scale-[0.98]">
-<span class="material-symbols-outlined" data-icon="map">map</span>
-<span class="font-body-md text-label-lg">My Trips</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300 active:scale-[0.98]">
-<span class="material-symbols-outlined" data-icon="explore">explore</span>
-<span class="font-body-md text-label-lg">Explore</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300 active:scale-[0.98]">
-<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
-<span class="font-body-md text-label-lg">Budget</span>
-</div>
-</nav>
-<div class="mt-auto">
-<button class="w-full py-3 px-4 bg-secondary text-on-secondary rounded-lg font-label-lg flex items-center justify-center gap-2 shadow-md hover:opacity-90 transition-all active:scale-95" onclick="window.location.href='create_new_trip.html'">
-<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
-                    New Trip
-                </button>
-</div>
-</aside>
+
 <!-- Main Content Area -->
 <main class="flex-1 md:ml-64 p-8 md:p-12 overflow-y-auto">
 <!-- Breadcrumbs -->
