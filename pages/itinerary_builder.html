@@ -10,74 +10,59 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../css/style.css">
 <script src="../js/tailwind-config.js"></script>
+    <script src="../js/transition.js"></script>
 </head>
 <body class="bg-surface text-on-surface font-body-md min-h-screen overflow-x-hidden">
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 w-full bg-surface/95 backdrop-blur-md border-b border-outline-variant/20 shadow-sm flex flex-col">
+    <!-- Top Row -->
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-3">
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary text-3xl">travel</span>
+            <div class="flex items-baseline gap-2">
+                <h1 class="font-display text-headline-md font-bold text-primary hidden sm:block">Traveloop</h1>
+                <span class="text-outline-variant hidden sm:block">|</span>
+                <h2 class="font-display text-title-md font-medium text-on-surface-variant">Traveloop</h2>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="relative hidden lg:block">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+                <input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary w-64 text-label-lg" placeholder="Search trips..." type="text"/>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">notifications</span>
+            <a href="login_signup.html" class="text-on-surface-variant cursor-pointer hover:text-secondary transition-colors flex items-center" title="Sign Out"><span class="material-symbols-outlined">logout</span></a>
+            <a href="user_profile_settings.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-highest shadow-sm block">
+                <img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpeCLalZVh7yZJgXsPIh7d0N5bIJiZQT65pCySTUxiQGPTl3236Xv9e-Q8ghq28TuSiZ1sO_j9W4IxtJaoYSAB7mHBLBgGJhBlx9DOccpv1WFlrK5ExH5xKhtUh9uhf3kDc5q3O9kzkGzrUSN9y0GR9fT4fEHWa3KQTeBN3hghAcC67XGUD5JltH8iRXzcE_vHxzrfSz_HkxGo8CUc_KeoyzSvaACz_wa66xrFkB0pSJDj2oD0x0rhNpx8dr1KiuWBhxD-rWirIQ4"/>
+            </a>
+        </div>
+    </div>
+    <!-- Bottom Row (Navigation) -->
+    <nav class="w-full overflow-x-auto scrollbar-hide border-t border-outline-variant/10 bg-surface-container-lowest/50">
+        <div class="flex items-center gap-6 px-margin-mobile md:px-margin-desktop py-3 min-w-max">
+            <a href="traveloop_dashboard.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">dashboard</span> Dashboard</a>
+            <a href="my_trips.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">map</span> My Trips</a>
+            <a href="city_activity_search.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">explore</span> Explore</a>
+            <a href="trip_budget_breakdown.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">account_balance_wallet</span> Budget</a>
+            <a href="itinerary_builder.html" class="flex items-center gap-2 text-secondary font-bold transition-colors border-b-2 border-secondary pb-1 -mb-[14px]"><span class="material-symbols-outlined text-sm">edit_document</span> Build Itinerary</a>
+            <a href="packing_checklist.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">checklist</span> Packing Checklist</a>
+            <a href="trip_notes_journal.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">menu_book</span> Trip Notes</a>
+            <a href="shared_itinerary.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">share</span> Shared</a>
+            <button class="ml-4 bg-secondary text-on-secondary px-4 py-2 rounded-lg font-bold flex items-center gap-2 shadow-sm hover:brightness-110 transition-all text-sm" onclick="window.location.href='create_new_trip.html'">
+                <span class="material-symbols-outlined text-sm" data-icon="add">add</span> New Trip
+            </button>
+        </div>
+    </nav>
+</header>
 <!-- Top Navigation -->
-<nav class="sticky top-0 z-50 flex justify-between items-center px-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md shadow-sm border-b border-outline-variant/20">
-<div class="flex items-center gap-8">
-<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
-<div class="hidden md:flex gap-6 items-center">
-<a class="font-display text-label-lg font-bold text-secondary transition-colors" href="traveloop_dashboard.html">Dashboard</a>
-<a class="font-display text-label-lg text-on-surface-variant hover:text-secondary transition-colors" href="my_trips.html">My Trips</a>
-<a class="font-display text-label-lg text-on-surface-variant hover:text-secondary transition-colors" href="city_activity_search.html">Explore</a>
-<a class="font-display text-label-lg text-on-surface-variant hover:text-secondary transition-colors" href="trip_budget_breakdown.html">Budget</a>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
-<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">favorite</button>
-<div class="h-10 w-10 rounded-full bg-surface-container-highest border border-outline-variant/30 overflow-hidden">
-<img alt="User profile" class="h-full w-full object-cover" data-alt="A professional headshot of a smiling young adult with warm, natural lighting. The person has a friendly expression, set against a soft-focus, minimalist background that complements the modern, clean aesthetic of the travel planning interface. The overall mood is approachable and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOu-wHz-4orrSLamHS0mduJYL3eAAhfcdlg4j4ShFcInhjyv_Qii9445LXJvN-x4MXBRBgZS6zO0Dhv5l289NEex1H9y5CZOwcLV8gv7l4IOUqcW_yvK71_kUwqSeTkDp_uNtLFMOzeMg7ZNJQqSKRpgn9I8tl6X-Edt3O39QrWXoKtQltHrhh0wbQiUkt7GQD2aKFiaEWGcoSdTGnhRyswEkWMIDCH7pzgy-CUO0CkpfESK4INy8ozN1BFxNj84HXN85Jg5f7GVA"/>
-</div>
-</div>
-</nav>
+
 <!-- Sidebar (Left) -->
-<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col p-6 pt-24 bg-surface-container-low border-r border-outline-variant/30 z-40 hidden md:flex">
-<div class="mb-8 flex flex-col gap-2">
-<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
-<span class="text-label-sm text-on-surface-variant opacity-70">Trip Planner</span>
-</div>
-<button class="w-full bg-secondary text-on-secondary py-3 px-4 rounded-lg font-display text-label-lg font-semibold flex items-center justify-center gap-2 mb-8 hover:opacity-90 active:scale-[0.98] transition-all shadow-sm" onclick="window.location.href='create_new_trip.html'">
-<span class="material-symbols-outlined">add</span>
-            New Trip
-        </button>
-<nav class="flex flex-col gap-1">
-<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 font-semibold shadow-sm transition-all" href="traveloop_dashboard.html">
-<span class="material-symbols-outlined">dashboard</span>
-<span class="font-body-md text-label-lg">Dashboard</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all" href="my_trips.html">
-<span class="material-symbols-outlined">map</span>
-<span class="font-body-md text-label-lg">My Trips</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all" href="city_activity_search.html">
-<span class="material-symbols-outlined">explore</span>
-<span class="font-body-md text-label-lg">Explore</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all" href="trip_budget_breakdown.html">
-<span class="material-symbols-outlined">account_balance_wallet</span>
-<span class="font-body-md text-label-lg">Budget</span>
-</a>
-</nav>
-</aside>
+
 <!-- Main Content Canvas -->
-<main class="md:ml-64 flex flex-col lg:flex-row min-h-[calc(100vh-73px)]">
+<main class=" flex flex-col lg:flex-row min-h-[calc(100vh-73px)]">
 <!-- Center Itinerary View -->
 <section class="flex-1 p-gutter lg:p-10 bg-surface">
-<header class="mb-10">
-<div class="flex items-center gap-2 text-label-sm text-secondary font-semibold uppercase tracking-wider mb-2">
-<span class="material-symbols-outlined text-[18px]">event_repeat</span>
-                    European Escape 2024
-                </div>
-<div class="flex justify-between items-end">
-<h1 class="font-display text-display text-on-surface">Paris Itinerary</h1>
-<div class="flex -space-x-3">
-<img alt="Collaborator" class="h-10 w-10 rounded-full border-2 border-white" data-alt="A portrait of a creative individual with a soft natural background, highlighting a clean and modern professional look suitable for a collaborative user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvSBzKoQnhfvj6dzDaS1abLFO6FBKf9aEognmpcN2FJVRfHlIIYgEVQTcwPnEJ4uXwBXR2-byZb5qTfBd6jKrexa1GNsyqPrUFYQQMDuTn7-Uzy6jKrYklDVNnF4DHPgzXa1XZ35G-aDDXrMYCNoeoAljCtkFBytmiMBpRplfx3cTFlqUUWXpk8SNFB1Cr_0b6HghWig4pUl4HCd1yPueP8IjNhTDG_UKMiQmCe4DWO-NmUTEo9W7mSWZggCVOp76A3ZSY8ECE7rA"/>
-<img alt="Collaborator" class="h-10 w-10 rounded-full border-2 border-white" data-alt="Portrait of a diverse professional woman in a bright, modern setting with soft lighting, reflecting a warm and collaborative spirit within a high-end digital workspace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9xTBjyeCVHcVh1WXakcV12LuzEGg00gdzoNqE7FuhxVEt62lAH650LQdtxyDXcXCgiYDfYkgtWuCH0OuYa8lJD7yt8ZsteKffJzVIv0a3VghaM2wiIs8tF29xr7fWSo9crYdJtmSOETW4u2HIEJDZcJE9ITJc1n9j2OWLwMVF1hhO70iJOj0T44ly7vpn9TuQrOzwYYEXsRvGPIE1aoqqwKehgls_8917MqZkFJF-mxdQdzqFL33ft0tp2wZzyJlT_Yp7CFhrOcU"/>
-<div class="h-10 w-10 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center text-label-sm font-bold text-primary">+3</div>
-</div>
-</div>
-</header>
+
 <!-- Day-Wise Layout (Center) -->
 <div class="grid grid-cols-1 gap-8 relative">
 <!-- Timeline Vertical Line -->
@@ -150,64 +135,7 @@
 </div>
 </section>
 <!-- Right Sidebar: Search & Map -->
-<aside class="w-full lg:w-96 flex flex-col bg-surface-container border-l border-outline-variant/20 p-6 overflow-y-auto">
-<!-- Search Section -->
-<div class="mb-10">
-<h4 class="font-display text-label-lg text-primary uppercase tracking-widest mb-6">Explore Nearby</h4>
-<div class="relative mb-6">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="w-full h-12 pl-12 pr-4 bg-surface rounded-xl border border-outline-variant/50 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all text-body-md" placeholder="Museums, parks, cafes..." type="text"/>
-</div>
-<!-- Suggestions Bento -->
-<div class="grid grid-cols-1 gap-4">
-<div class="group cursor-pointer">
-<div class="relative h-24 rounded-xl overflow-hidden mb-2">
-<img alt="Louvre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A cinematic, wide-angle shot of the Louvre Museum at night, with the iconic glass pyramids illuminated from within. The lighting is dramatic and warm, contrasting with the cool blue of the twilight sky. The image emphasizes the architectural grandeur and cultural richness of Paris in a high-fidelity, modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC45KvMbuxlBxCJv1xGdrqBVv_1LHpofRpopwmGsLYpHJMHcfxxqGKn9Hd-TMO9SXmeSu_I-57HBOkeGXmpbod693srLgLBAeMh2RGsu1i9WFpf2l73mazh2XHNRV24p6GWVXrufCI9aS4ESNNqJPOESoH0LmbCWQRcrUdX0mOCcGlgJQ6o3gl4qek-DzYO9p9TZu45brFEDW9VdPa3lWZfeXuwdfW_Masq_J_qMiaZlxhOAe5L6k9cS-ieLtLqmJGC0Obv51AZnZ8"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-<div class="absolute bottom-3 left-3 text-white">
-<p class="text-label-sm font-bold">The Louvre Museum</p>
-<p class="text-[10px] opacity-80">4.8 ★ (120k reviews)</p>
-</div>
-</div>
-</div>
-<div class="group cursor-pointer">
-<div class="relative h-24 rounded-xl overflow-hidden mb-2">
-<img alt="Montmartre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A vibrant street scene in Montmartre, Paris, featuring the Sacré-Cœur Basilica in the background. The morning light is crisp and bright, highlighting the white stone of the church and the colorful storefronts of the winding streets. The atmosphere is lively and inviting, capturing the quintessential charm of a Parisian neighborhood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTwNYqfPPOn77Ou4D0x8V1X3dbPT4wVS2q0iGXUfmZs4VEtmCvQJd7NHFCcDLnj2Z0mQGuPuRVz8hIm1EoIFWC8z6xokuxVN2cF2ReCF8FOvK94P5ZD3dmOJYZlrNTFC2Hd_ZEZeNWSiWQiNDpG44aG-GsmiXOInGqTKVSbonaUOoAnvVTGHxFL1XtTkF44JJNYpsCkWuFrHmSVeP12Tiyw_u66M02cA-JAcojO1wNrYEnEYh5nHrA-OCjmPgBCgFYPavo6Vv7KP4"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-<div class="absolute bottom-3 left-3 text-white">
-<p class="text-label-sm font-bold">Montmartre Walk</p>
-<p class="text-[10px] opacity-80">4.5 ★ (45k reviews)</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Map Preview -->
-<div class="mt-auto">
-<div class="flex justify-between items-center mb-4">
-<h4 class="font-display text-label-lg text-primary uppercase tracking-widest">Map View</h4>
-<button class="text-secondary text-label-sm font-bold">Expand</button>
-</div>
-<div class="relative h-64 rounded-2xl overflow-hidden border border-outline-variant/30 shadow-lg">
-<img alt="Map of Paris" class="w-full h-full object-cover" data-alt="A stylized, minimalist map illustration of central Paris with highlighted routes and icons for major landmarks like the Eiffel Tower and Notre Dame. The color palette is modern and airy, utilizing Wanderlust Blue and Horizon Teal accents to signify an organized itinerary. The overall look is clean, functional, and aesthetically pleasing." data-location="Paris" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm8WskMQQPLggzO6VAZg_P8wvDq5J4DKdYpqKus8cMFZxIlxbWgvolJWIRcmb4bsYsWiYXbrS0C1bFiGwMiRVS0t9Gx5ZJXgzFfZ9qsO1U0LGjo4oREJfTzDVGy0Cc45kwgHQ6xqRNoMB7F4YQvaVbCs78TFKkvBQdLMfoPkH-TCRBP42lACMO2nLZALvSMeGrziuqARIryKdiU-jO6AEQ_uKRNgvuXNd3pJQdqUfeEcv-6jVX5p2cWrcUAUMPLAomctY28tUIWJQ"/>
-<div class="absolute inset-0 bg-secondary/5 pointer-events-none"></div>
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-<div class="w-8 h-8 bg-secondary rounded-full border-4 border-white shadow-xl flex items-center justify-center animate-pulse">
-<span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
-</div>
-</div>
-</div>
-<div class="mt-4 p-4 bg-surface-container-low rounded-xl border border-outline-variant/20">
-<div class="flex items-center justify-between mb-2">
-<span class="text-label-sm text-on-surface-variant">Estimated Travel Time</span>
-<span class="text-label-sm font-bold text-primary">24 mins</span>
-</div>
-<div class="w-full h-1 bg-outline-variant/20 rounded-full overflow-hidden">
-<div class="w-3/4 h-full bg-secondary rounded-full"></div>
-</div>
-</div>
-</div>
-</aside>
+
 </main>
 <!-- Footer Component -->
 <footer class="w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-highest border-t border-outline-variant/50">

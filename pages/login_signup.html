@@ -8,14 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="../js/tailwind-config.js"></script>
+    <script src="../js/transition.js"></script>
 </head>
 <body class="bg-background text-on-background min-h-screen flex flex-col">
 <!-- Top Navigation Anchor (Manual construction based on JSON hierarchy, but simplified for transactional page per rules) -->
-<header class="fixed top-0 left-0 w-full z-50 px-margin-mobile md:px-margin-desktop py-6 flex justify-between items-center bg-transparent pointer-events-none">
-<div class="pointer-events-auto">
-<h1 class="font-display text-headline-md font-bold text-primary">Traveloop</h1>
-</div>
-</header>
+
 <main class="flex-grow flex items-stretch">
 <div class="w-full flex flex-col md:flex-row">
 <!-- Left Side: Form Content -->
@@ -49,7 +46,7 @@
 <input class="w-5 h-5 rounded border-outline-variant text-secondary focus:ring-secondary" id="remember" type="checkbox"/>
 <label class="font-body-md text-on-surface-variant select-none" for="remember">Remember me for 30 days</label>
 </div>
-<button class="w-full h-12 bg-gradient-to-r from-secondary to-secondary-fixed-dim text-on-secondary font-label-lg rounded-lg shadow-md hover:shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2" onclick="window.location.href='login_signup.html'" type="submit">
+<button class="w-full h-12 bg-gradient-to-r from-secondary to-secondary-fixed-dim text-on-secondary font-label-lg rounded-lg shadow-md hover:shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2" onclick="window.location.href=\'traveloop_dashboard.html\'" type="submit">
 <span>Login</span>
 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
 </button>
@@ -59,11 +56,11 @@
 <div class="relative flex justify-center text-label-sm"><span class="bg-surface-container-lowest px-4 text-outline">OR CONTINUE WITH</span></div>
 </div>
 <div class="grid grid-cols-2 gap-4">
-<button class="flex items-center justify-center gap-2 h-12 border border-outline-variant/30 rounded-lg hover:bg-surface-variant/20 transition-all active:scale-95">
+<button onclick="window.location.href='traveloop_dashboard.html'" type="button" class="flex items-center justify-center gap-2 h-12 border border-outline-variant/30 rounded-lg hover:bg-surface-variant/20 transition-all active:scale-95">
 <img alt="Google Logo" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2rgYFig9JMUTeT4tAKPvTPbNWJn0vqVQTNf3lmFAZTPMedHOR6XokQ-CbWjUx7uWNsaxbEfJ2kGcShtXjQXyWj7XX7Bn2E0ue4Icl15cd-5VOFOlLv3eUDJrSQz-gqYz2PYAhhmPFBZHHFWwQjDz_yDgPeXXtv8WXcneDuvxGsc3kLGqzcJiI_VOPB_WD003_mizyTx3agDGRghMvPwVEUpRIsrXn_GcgAYPbPBuPKl6oZshdjhq8uudTlGdHC9nXakTczBWpmKQ"/>
 <span class="font-label-lg text-on-surface">Google</span>
 </button>
-<button class="flex items-center justify-center gap-2 h-12 border border-outline-variant/30 rounded-lg hover:bg-surface-variant/20 transition-all active:scale-95">
+<button onclick="window.location.href='traveloop_dashboard.html'" type="button" class="flex items-center justify-center gap-2 h-12 border border-outline-variant/30 rounded-lg hover:bg-surface-variant/20 transition-all active:scale-95">
 <span class="material-symbols-outlined text-primary" data-weight="fill">ios</span>
 <span class="font-label-lg text-on-surface">Apple</span>
 </button>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Traveloop Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/tailwind-config.js"></script>
+    <script src="js/transition.js"></script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 w-full bg-surface/95 backdrop-blur-md border-b border-outline-variant/20 shadow-sm flex flex-col">
+    <!-- Top Row -->
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-3">
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary text-3xl">travel</span>
+            <div class="flex items-baseline gap-2">
+                <h1 class="font-display text-headline-md font-bold text-primary hidden sm:block">Traveloop</h1>
+                <span class="text-outline-variant hidden sm:block">|</span>
+                <h2 class="font-display text-title-md font-medium text-on-surface-variant">System Analytics</h2>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="relative hidden lg:block">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+                <input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary w-64 text-label-lg" placeholder="Search trips..." type="text"/>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">notifications</span>
+            <a href="../pages/login_signup.html" class="text-on-surface-variant cursor-pointer hover:text-secondary transition-colors flex items-center" title="Sign Out"><span class="material-symbols-outlined">logout</span></a>
+            <a href="../pages/user_profile_settings.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-highest shadow-sm block">
+                <img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpeCLalZVh7yZJgXsPIh7d0N5bIJiZQT65pCySTUxiQGPTl3236Xv9e-Q8ghq28TuSiZ1sO_j9W4IxtJaoYSAB7mHBLBgGJhBlx9DOccpv1WFlrK5ExH5xKhtUh9uhf3kDc5q3O9kzkGzrUSN9y0GR9fT4fEHWa3KQTeBN3hghAcC67XGUD5JltH8iRXzcE_vHxzrfSz_HkxGo8CUc_KeoyzSvaACz_wa66xrFkB0pSJDj2oD0x0rhNpx8dr1KiuWBhxD-rWirIQ4"/>
+            </a>
+        </div>
+    </div>
+    <!-- Bottom Row (Navigation) -->
+    <nav class="w-full overflow-x-auto scrollbar-hide border-t border-outline-variant/10 bg-surface-container-lowest/50">
+    <div class="flex items-center gap-6 px-margin-mobile md:px-margin-desktop py-3 min-w-max">
+        <a href="index.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50">
+            <span class="material-symbols-outlined text-sm">bar_chart</span> Overview
+        </a>
+        <a href="users.html" class="flex items-center gap-2 text-secondary font-bold transition-colors border-b-2 border-secondary pb-1 -mb-[14px]">
+            <span class="material-symbols-outlined text-sm">group</span> Users
+        </a>
+        <a href="trips.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50">
+            <span class="material-symbols-outlined text-sm">flight_takeoff</span> Trips
+        </a>
+        <a href="destinations.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50">
+            <span class="material-symbols-outlined text-sm">location_city</span> Destinations
+        </a>
+        <a href="settings.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50">
+            <span class="material-symbols-outlined text-sm">settings</span> Settings
+        </a>
+        <a href="../pages/traveloop_dashboard.html" class="ml-4 bg-surface-container-high text-on-surface px-4 py-2 rounded-lg font-bold flex items-center gap-2 shadow-sm hover:brightness-110 transition-all text-sm">
+            <span class="material-symbols-outlined text-sm">open_in_new</span> Return to App
+        </a>
+    </div>
+</nav>
+</header>
+<div class="flex flex-1">
+
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-8 md:p-12 overflow-y-auto">
+<div class="mb-10">
+    <h2 class="font-display text-headline-lg text-on-surface mb-2">User Management</h2>
+    <p class="font-body-md text-on-surface-variant">View, edit, and manage all registered users.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm overflow-hidden mb-section-gap">
+    <div class="p-8 border-b border-outline-variant/20 flex justify-between items-center">
+        <h4 class="font-display text-headline-md text-on-surface">All Users</h4>
+        <button class="bg-secondary text-on-secondary px-4 py-2 rounded-lg font-bold flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">person_add</span> Add User</button>
+    </div>
+    <table class="w-full text-left">
+        <thead>
+            <tr class="bg-surface-container-low/50">
+                <th class="px-8 py-4 text-label-sm font-label-lg text-on-surface-variant uppercase tracking-wider">User</th>
+                <th class="px-8 py-4 text-label-sm font-label-lg text-on-surface-variant uppercase tracking-wider">Role</th>
+                <th class="px-8 py-4 text-label-sm font-label-lg text-on-surface-variant uppercase tracking-wider">Status</th>
+                <th class="px-8 py-4 text-label-sm font-label-lg text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-outline-variant/10">
+            <tr class="hover:bg-surface-variant/10">
+                <td class="px-8 py-5"><div class="font-label-lg">Elena Kostic</div><div class="text-outline text-sm">elena@example.com</div></td>
+                <td class="px-8 py-5">User</td>
+                <td class="px-8 py-5"><span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold">Active</span></td>
+                <td class="px-8 py-5 text-right"><button class="text-secondary hover:underline text-sm font-bold">Edit</button></td>
+            </tr>
+            <tr class="hover:bg-surface-variant/10">
+                <td class="px-8 py-5"><div class="font-label-lg">Marcus Reed</div><div class="text-outline text-sm">m.reed@agency.com</div></td>
+                <td class="px-8 py-5">Admin</td>
+                <td class="px-8 py-5"><span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold">Active</span></td>
+                <td class="px-8 py-5 text-right"><button class="text-secondary hover:underline text-sm font-bold">Edit</button></td>
+            </tr>
+            <tr class="hover:bg-surface-variant/10">
+                <td class="px-8 py-5"><div class="font-label-lg">Sarah Lopez</div><div class="text-outline text-sm">sarah.l@webmail.com</div></td>
+                <td class="px-8 py-5">User</td>
+                <td class="px-8 py-5"><span class="px-3 py-1 bg-surface-container-high text-primary rounded-full text-xs font-bold">Inactive</span></td>
+                <td class="px-8 py-5 text-right"><button class="text-secondary hover:underline text-sm font-bold">Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-highest dark:bg-surface-variant border-t border-outline-variant/50 shadow-[flat_no_shadows]">
+<div class="flex flex-col md:flex-row items-center gap-8">
+<h3 class="font-display text-headline-md font-bold text-primary dark:text-inverse-primary">Traveloop</h3>
+<p class="font-body-md text-label-sm text-on-surface-variant">© 2024 Traveloop. Explore with precision.</p>
+</div>
+<div class="flex items-center gap-6">
+<a class="text-on-surface-variant font-body-md text-label-sm hover:text-secondary underline transition-all cursor-pointer" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-body-md text-label-sm hover:text-secondary underline transition-all cursor-pointer" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-body-md text-label-sm hover:text-secondary underline transition-all cursor-pointer" href="#">Help Center</a>
+</div>
+</footer>
+<!-- FAB (Suppressed on Admin/Settings as per Mandate, but defined here for structure) -->
+<!-- <button class="fixed bottom-8 right-8 w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform z-40">
+        <span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+    </button> -->
+</body></html>

@@ -9,58 +9,54 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../css/style.css">
 <script src="../js/tailwind-config.js"></script>
+    <script src="../js/transition.js"></script>
 </head>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
-<!-- TopAppBar -->
-<header class="sticky top-0 z-50 flex justify-between items-center px-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md dark:bg-inverse-surface/80 border-b border-outline-variant/20 shadow-sm">
-<div class="flex items-center gap-8">
-<h1 class="font-display text-headline-md font-bold text-primary dark:text-inverse-primary">Traveloop</h1>
-<div class="hidden md:flex relative group">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="pl-12 pr-6 py-2.5 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary w-80 text-label-lg transition-all" placeholder="Search itineraries..." type="text"/>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors">
-<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
-</button>
-<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors relative">
-<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
-</button>
-<div class="w-10 h-10 rounded-full border-2 border-secondary overflow-hidden active:scale-95 duration-200 cursor-pointer">
-<img alt="User profile" data-alt="A professional close-up portrait of a young woman with a warm, confident expression. She is in a brightly lit studio setting with soft, high-key lighting that creates a clean, modern aesthetic. Her features are sharp and clear, reflecting a high-fidelity and collaborative brand personality. The background is a soft, out-of-focus neutral tone that complements the light mode UI of the Traveloop platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmFB5XtIK2Q3uZbkhT0OlE3litlfu_fqsYtUtb_PW_zvwB5rtFUmnc1wQ0stGuBj6GPQfBkagGbAezmVXSpU_OYEvjAornD99xHNGf_eZwC3RgPl_plkvABjhNtO7vM7i29NZ_YUPYCRNFlzSo-YkPTTQ2hJi3UD55egqZB3Pm_CpFzDcea41gHyqo6EBJ68abuY0wEwtTCw4dLWPEFgzkMviSQ_tRWfRUqeye1KZctiQvkgj1OEyu50SoyHQfanMBns98bkHCNKU"/>
-</div>
-</div>
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 w-full bg-surface/95 backdrop-blur-md border-b border-outline-variant/20 shadow-sm flex flex-col">
+    <!-- Top Row -->
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-3">
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary text-3xl">travel</span>
+            <div class="flex items-baseline gap-2">
+                <h1 class="font-display text-headline-md font-bold text-primary hidden sm:block">Traveloop</h1>
+                <span class="text-outline-variant hidden sm:block">|</span>
+                <h2 class="font-display text-title-md font-medium text-on-surface-variant">My Trips</h2>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="relative hidden lg:block">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+                <input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary w-64 text-label-lg" placeholder="Search trips..." type="text"/>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">notifications</span>
+            <a href="login_signup.html" class="text-on-surface-variant cursor-pointer hover:text-secondary transition-colors flex items-center" title="Sign Out"><span class="material-symbols-outlined">logout</span></a>
+            <a href="user_profile_settings.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-highest shadow-sm block">
+                <img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpeCLalZVh7yZJgXsPIh7d0N5bIJiZQT65pCySTUxiQGPTl3236Xv9e-Q8ghq28TuSiZ1sO_j9W4IxtJaoYSAB7mHBLBgGJhBlx9DOccpv1WFlrK5ExH5xKhtUh9uhf3kDc5q3O9kzkGzrUSN9y0GR9fT4fEHWa3KQTeBN3hghAcC67XGUD5JltH8iRXzcE_vHxzrfSz_HkxGo8CUc_KeoyzSvaACz_wa66xrFkB0pSJDj2oD0x0rhNpx8dr1KiuWBhxD-rWirIQ4"/>
+            </a>
+        </div>
+    </div>
+    <!-- Bottom Row (Navigation) -->
+    <nav class="w-full overflow-x-auto scrollbar-hide border-t border-outline-variant/10 bg-surface-container-lowest/50">
+        <div class="flex items-center gap-6 px-margin-mobile md:px-margin-desktop py-3 min-w-max">
+            <a href="traveloop_dashboard.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">dashboard</span> Dashboard</a>
+            <a href="my_trips.html" class="flex items-center gap-2 text-secondary font-bold transition-colors border-b-2 border-secondary pb-1 -mb-[14px]"><span class="material-symbols-outlined text-sm">map</span> My Trips</a>
+            <a href="city_activity_search.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">explore</span> Explore</a>
+            <a href="trip_budget_breakdown.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">account_balance_wallet</span> Budget</a>
+            <a href="itinerary_builder.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">edit_document</span> Build Itinerary</a>
+            <a href="packing_checklist.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">checklist</span> Packing Checklist</a>
+            <a href="trip_notes_journal.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">menu_book</span> Trip Notes</a>
+            <a href="shared_itinerary.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">share</span> Shared</a>
+            <button class="ml-4 bg-secondary text-on-secondary px-4 py-2 rounded-lg font-bold flex items-center gap-2 shadow-sm hover:brightness-110 transition-all text-sm" onclick="window.location.href='create_new_trip.html'">
+                <span class="material-symbols-outlined text-sm" data-icon="add">add</span> New Trip
+            </button>
+        </div>
+    </nav>
 </header>
 <div class="flex min-h-screen">
-<!-- SideNavBar -->
-<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col p-6 pt-24 bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant/30 shadow-sm hidden md:flex">
-<nav class="space-y-2 flex-grow">
-<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 hover:bg-surface-variant/40 transition-all duration-300 active:scale-[0.98] transition-transform" href="traveloop_dashboard.html">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-<span class="font-body-md text-label-lg">Dashboard</span>
-</a>
-<a class="flex items-center gap-3 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg px-4 py-3 font-semibold shadow-sm active:scale-[0.98] transition-transform" href="my_trips.html">
-<span class="material-symbols-outlined" data-icon="map">map</span>
-<span class="font-body-md text-label-lg">My Trips</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 hover:bg-surface-variant/40 transition-all duration-300 active:scale-[0.98] transition-transform" href="city_activity_search.html">
-<span class="material-symbols-outlined" data-icon="explore">explore</span>
-<span class="font-body-md text-label-lg">Explore</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 hover:bg-surface-variant/40 transition-all duration-300 active:scale-[0.98] transition-transform" href="trip_budget_breakdown.html">
-<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
-<span class="font-body-md text-label-lg">Budget</span>
-</a>
-</nav>
-<button class="mt-auto bg-secondary text-on-secondary font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:brightness-110 transition-all active:scale-95" onclick="window.location.href='create_new_trip.html'">
-<span class="material-symbols-outlined" data-icon="add">add</span>
-                New Trip
-            </button>
-</aside>
+
 <!-- Main Content -->
-<main class="flex-1 md:ml-64 p-6 md:p-12 pb-32">
+<main class="flex-1 p-6 md:p-12 pb-32">
 <div class="max-w-container-max mx-auto">
 <!-- Page Header & Filters -->
 <section class="mb-section-gap">
@@ -77,161 +73,272 @@
 </div>
 </section>
 <!-- Trip List Grid -->
-<section class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-<!-- Trip Card 1 -->
-<div class="group relative flex flex-col bg-surface-container-lowest rounded-[16px] overflow-hidden ambient-shadow hover:-translate-y-1 transition-all duration-300">
-<div class="relative h-56 w-full overflow-hidden">
-<img alt="Paris" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A cinematic wide-angle shot of the Eiffel Tower at sunset, with warm golden light bathing the surrounding Parisian streets. The sky is a mix of soft pinks and deep purples, evoking a sense of wanderlust and romantic exploration. The composition is clean and balanced, aligning with a modern airy travel aesthetic. High-fidelity details capture the intricate lattice of the tower against the atmospheric depth of the evening sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgJOjgR7-we3W8G20PVCul5ucvzArDGAzzBs5oXseK1Dq3LeR8B5KxbOBHuvGl78-4rAkGMtDZ3UO3EiwmBwMnG5MfspVOYBvD31DwAfujD7iG9mXpgC_1kw442EC8JwQxkH5qBM_Gn1y2aiRmUkA6YVDRWqqfqTyp4jTn_pRwFxjOpM_rPB1A9J6jOS379Qf-0ofdMcrIPCElmUsxLDizZGRKAUAhMbofm3qNufdOUqw7rsKKBN833Jk9TsMKGCkqvYOnQfdi-sM"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-<div class="absolute bottom-4 left-4">
-<span class="bg-secondary-container text-on-secondary-container text-label-sm px-3 py-1 rounded-full font-bold uppercase tracking-wider mb-2 inline-block">Active</span>
-<h3 class="text-white font-display text-headline-md">Spring in Paris</h3>
-</div>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<div class="flex items-center gap-2 text-secondary font-medium mb-4">
-<span class="material-symbols-outlined text-[18px]">calendar_today</span>
-<span class="text-label-lg">Apr 12 - Apr 20, 2024</span>
-</div>
-<p class="text-on-surface-variant text-body-md mb-6 line-clamp-2">Exploring the Louvre, coffee at Montmartre, and a day trip to Versailles.</p>
-<div class="flex items-center gap-2 mb-6">
-<div class="flex -space-x-2">
-<img class="w-8 h-8 rounded-full border-2 border-white" data-alt="A focused headshot of a smiling young traveler in casual clothing against a bright outdoor background. The lighting is soft and natural, emphasizing a collaborative and friendly vibe suitable for a shared trip planning app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCR_u7OypXy_NrDIdGSJ6ApB-b6LL3Oqm0MalnkOdUCeAUA4wdD5zazLXWF100unfKZFu3clbAdI9_ISFFgaaGq66XN35phI5gxY7R__9uETLa2Z-UnXa8EHsKu9hfBN6aN91rwHWD4yLWmbbflyk6-mX6A63z41gKI4oy504sVsuSrltQ1zKEJX_4RKm-mxfoKJ12Q6X4NAITrWAq1nzN-X1uw1aB2Y3WuNDxGhOZtJBax1hgvAusEGlWfJYacO_ygnreCxxMZ1Y"/>
-<img class="w-8 h-8 rounded-full border-2 border-white" data-alt="A profile picture of a woman with an adventurous expression, wearing a sun hat in a vibrant outdoor setting. High-key lighting creates a clean, professional look that integrates seamlessly with a modern airy UI design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMbx-XhaVv76QaCTpKDwi7IZDAPI5T0LzZ0chBiP62vg3Rcxdf9oIEKnZSPLIW3bB1GQ6Y62dHdO4Qpa0pJfoblJzZc0vIWRl7CorWnLq_NdIjlxHnzK_CwwkckHLU7NqgQHqbxGlGNSjHZuUuBm42uy8HgNzLC-crU4aLZN4KO8iIkpu0qJUJtRv2o9wfpTcd6dke0ADEpCDYWLMTndz6Fz24_1IWp4GxUFqxi-tnRtQHX0E1DGrHw8XCoDeudwUhdHxaAldDZhc"/>
-<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-white flex items-center justify-center text-label-sm text-primary font-bold">+2</div>
-</div>
-<span class="text-label-sm text-outline ml-2">Collaborative planning</span>
-</div>
-<div class="mt-auto pt-6 border-t border-outline-variant/30 flex justify-between items-center">
-<div class="flex gap-2">
-<button class="p-2 text-on-surface-variant hover:text-secondary hover:bg-secondary/10 rounded-lg transition-all active:scale-90" title="Edit Trip">
-<span class="material-symbols-outlined">edit</span>
-</button>
-<button class="p-2 text-error hover:bg-error/10 rounded-lg transition-all active:scale-90" title="Delete Trip">
-<span class="material-symbols-outlined">delete</span>
-</button>
-</div>
-<button class="flex items-center gap-2 bg-secondary/10 text-secondary font-bold px-6 py-2 rounded-lg hover:bg-secondary hover:text-on-secondary transition-all active:scale-95">
-                                    View
-                                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Trip Card 2 -->
-<div class="group relative flex flex-col bg-surface-container-lowest rounded-[16px] overflow-hidden ambient-shadow hover:-translate-y-1 transition-all duration-300">
-<div class="relative h-56 w-full overflow-hidden">
-<img alt="Kyoto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A breathtaking view of a traditional wooden pagoda in Kyoto, Japan, surrounded by vibrant cherry blossoms. The lighting is soft morning light, creating a serene and precise atmospheric depth. The style is modern airy, with clean lines and high-fidelity textures. The overall mood is peaceful and inspiring, reflecting the horizon-focused brand identity of Traveloop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU9dbHhRn0Ek3Nm7iocnR9_P0CSbcuEKqXjmjfbaKJNZyVl9xTa31XTzBj9EVdfAQSl6QcCzcgKs3gjE8lJZbkR2PtZqqw7RD1vXbuWETK1rFAWGzx1EldD0UvvaHRfKYWjew1VCjbKon3DUzPq6WUC_sPeVaO_7L2TerEMZnngN3k9reJByBgk-5qM37X3wv1IyQJ2r-994Ly01ius9eDlcAf-tpm8kb4MpoFEkfr11rziqws8j2KdNtY6fQ1yPptec80FmQOk18"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-<div class="absolute bottom-4 left-4">
-<span class="bg-surface-container-highest text-primary text-label-sm px-3 py-1 rounded-full font-bold uppercase tracking-wider mb-2 inline-block">Draft</span>
-<h3 class="text-white font-display text-headline-md">Zen Kyoto Escape</h3>
-</div>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<div class="flex items-center gap-2 text-secondary font-medium mb-4">
-<span class="material-symbols-outlined text-[18px]">calendar_today</span>
-<span class="text-label-lg">May 24 - Jun 02, 2024</span>
-</div>
-<p class="text-on-surface-variant text-body-md mb-6 line-clamp-2">Bamboo groves of Arashiyama, Fushimi Inari shrines, and tea ceremonies.</p>
-<div class="flex items-center gap-2 mb-6">
-<div class="flex -space-x-2">
-<img class="w-8 h-8 rounded-full border-2 border-white" data-alt="A portrait of a male traveler with glasses, smiling in a clean studio setting with bright, even lighting. The visual style is minimal and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR7bvHhY6SAUhSXSHOWmFHktmI8AOixcvhJrWafeHwdNkzI5lQu4jECZnI0WLH0LSI_Y2Ow8gsK-4DMsDoIDiZ7Nor6eWiRsHL3iZ76oQrKD4NDUoM785IpwghL8Ef3pnHiD9cgPMFYAx8FYgSL0Wjlxgao4s4xXfPGQVBT2MUzB9UDvyuZ-XKgPSJU-dMqrNb8rcwLKr4iWkDfSXkVU51dwbi4s2gKDBciG_8NXJvjtthev2KrQHVJXWmIvfW232HpF6H-hVOigw"/>
-</div>
-<span class="text-label-sm text-outline ml-2">Personal Trip</span>
-</div>
-<div class="mt-auto pt-6 border-t border-outline-variant/30 flex justify-between items-center">
-<div class="flex gap-2">
-<button class="p-2 text-on-surface-variant hover:text-secondary hover:bg-secondary/10 rounded-lg transition-all active:scale-90" title="Edit Trip">
-<span class="material-symbols-outlined">edit</span>
-</button>
-<button class="p-2 text-error hover:bg-error/10 rounded-lg transition-all active:scale-90" title="Delete Trip">
-<span class="material-symbols-outlined">delete</span>
-</button>
-</div>
-<button class="flex items-center gap-2 bg-secondary/10 text-secondary font-bold px-6 py-2 rounded-lg hover:bg-secondary hover:text-on-secondary transition-all active:scale-95">
-                                    View
-                                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Trip Card 3 -->
-<div class="group relative flex flex-col bg-surface-container-lowest rounded-[16px] overflow-hidden ambient-shadow hover:-translate-y-1 transition-all duration-300">
-<div class="relative h-56 w-full overflow-hidden">
-<img alt="Bali" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A stunning drone perspective of a tropical beach in Bali with crystal-clear turquoise waters and white sands. The lighting is high-noon bright, creating intense colors and sharp shadows that indicate a sense of discovery and thrill. The aesthetic is clean and modern, highlighting the collaborative planning aspect of the Traveloop platform. The high-fidelity photography captures the expansive horizon." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAubFwz8uvtL1hIfq8dW1eVJuLy-fphEAR0svgxBYc42ARzDgQuYOWWrfSEW4M3QX_p32voWuc_JU7B40KwopfW5UMVdeFFzmvFNbrQPpUo5G7lWqlxDErrCqP8WaFQjp-wzq-oBbSJY_IEXjZyHPQaTk9-UgaSuHS05OSCO2bhB2hb4_Ntsv8X2Rw10NzJk368YPQK6zQo9OO8Vd1TT5YEp4JQu5N_IsDtEC8PFNO-FK7ka3Plsab8GJc_h5yutaQYNC105g96_E8"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-<div class="absolute bottom-4 left-4">
-<span class="bg-secondary-container text-on-secondary-container text-label-sm px-3 py-1 rounded-full font-bold uppercase tracking-wider mb-2 inline-block">Active</span>
-<h3 class="text-white font-display text-headline-md">Bali Surf &amp; Soul</h3>
-</div>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<div class="flex items-center gap-2 text-secondary font-medium mb-4">
-<span class="material-symbols-outlined text-[18px]">calendar_today</span>
-<span class="text-label-lg">Jul 05 - Jul 18, 2024</span>
-</div>
-<p class="text-on-surface-variant text-body-md mb-6 line-clamp-2">Uluwatu surf sessions, Ubud yoga retreats, and North Bali waterfall trek.</p>
-<div class="flex items-center gap-2 mb-6">
-<div class="flex -space-x-2">
-<img class="w-8 h-8 rounded-full border-2 border-white" data-alt="A portrait of a woman looking thoughtfully at the camera, lit by soft side lighting. The style is modern and high-fidelity, conveying a sense of reliability and precision in trip planning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQFPQkzR1W9Su-FsACQtSGZlXMUFOWMe6ThAZAVhPMOO_q8q5gYjygMMRp2a5aAAStfV-0NhFQC3tqzMdnuSQaXobGSG9CTgfbDQIgV9OMc8z0FuBM-uK0nMXUBSUIUv51mC8LQkX7VUNIMaCTZozRXyOSZ7n42-IJSoHQavnGVKFNneC7CGySCYE8mHQa66IXsaf6wpybsWJFtRZxkRQq26LvMhVypyJvzc2w91qAt4dR-iiCOgEKU6OzMKA-PDyNUhpXZw5XZIk"/>
-<img class="w-8 h-8 rounded-full border-2 border-white" data-alt="A professional headshot of a man with a friendly smile, set against a blurred city background. The lighting is bright and airy, typical of a modern UI brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC88DMR1uewJegMtL-RSN_c8o1vS4AlNo6BBM3ahgC49VBqAr-91h2IOaS-gJ4L5fi_hIqtTypYrkY_HjWbUAnM-eCKapsHXzeRnKj4hQKOacRkbgjlLEry4sHVVJyoxsrBs5QRCt14xdBoasy14fLi9MffPYQvpjSL8NzjCKCdr5DWd-WFYjIbKPkVB6vTjY_SGeKbPyvOTghI6DTGjWF8kF0--f8x2liWeVxWDyOWiyRpRohUWTdZdfdtXYNv3lw2kroTZ4pHieo"/>
-</div>
-<span class="text-label-sm text-outline ml-2">Shared with 2 others</span>
-</div>
-<div class="mt-auto pt-6 border-t border-outline-variant/30 flex justify-between items-center">
-<div class="flex gap-2">
-<button class="p-2 text-on-surface-variant hover:text-secondary hover:bg-secondary/10 rounded-lg transition-all active:scale-90" title="Edit Trip">
-<span class="material-symbols-outlined">edit</span>
-</button>
-<button class="p-2 text-error hover:bg-error/10 rounded-lg transition-all active:scale-90" title="Delete Trip">
-<span class="material-symbols-outlined">delete</span>
-</button>
-</div>
-<button class="flex items-center gap-2 bg-secondary/10 text-secondary font-bold px-6 py-2 rounded-lg hover:bg-secondary hover:text-on-secondary transition-all active:scale-95">
-                                    View
-                                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</button>
-</div>
-</div>
-</div>
+<section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Trip Card 1: Paris -->
+    <div class="group relative flex flex-col bg-surface-container-lowest rounded-[16px] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-outline-variant/10">
+        <div class="relative h-48 w-full overflow-hidden">
+            <img alt="Paris" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgJOjgR7-we3W8G20PVCul5ucvzArDGAzzBs5oXseK1Dq3LeR8B5KxbOBHuvGl78-4rAkGMtDZ3UO3EiwmBwMnG5MfspVOYBvD31DwAfujD7iG9mXpgC_1kw442EC8JwQxkH5qBM_Gn1y2aiRmUkA6YVDRWqqfqTyp4jTn_pRwFxjOpM_rPB1A9J6jOS379Qf-0ofdMcrIPCElmUsxLDizZGRKAUAhMbofm3qNufdOUqw7rsKKBN833Jk9TsMKGCkqvYOnQfdi-sM"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4">
+                <span class="bg-secondary-container text-on-secondary-container text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider mb-1 inline-block">Active</span>
+                <h3 class="text-white font-display text-title-md">Spring in Paris</h3>
+            </div>
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+            <div class="flex items-center gap-2 text-secondary font-medium mb-3">
+                <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                <span class="text-label-md">Apr 12 - Apr 20</span>
+            </div>
+            <p class="text-on-surface-variant text-body-sm mb-4 line-clamp-2">Exploring the Louvre, coffee at Montmartre, and a day trip to Versailles.</p>
+            <div class="flex items-center gap-2 mb-4">
+                <div class="flex -space-x-1.5">
+                    <img class="w-6 h-6 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCR_u7OypXy_NrDIdGSJ6ApB-b6LL3Oqm0MalnkOdUCeAUA4wdD5zazLXWF100unfKZFu3clbAdI9_ISFFgaaGq66XN35phI5gxY7R__9uETLa2Z-UnXa8EHsKu9hfBN6aN91rwHWD4yLWmbbflyk6-mX6A63z41gKI4oy504sVsuSrltQ1zKEJX_4RKm-mxfoKJ12Q6X4NAITrWAq1nzN-X1uw1aB2Y3WuNDxGhOZtJBax1hgvAusEGlWfJYacO_ygnreCxxMZ1Y"/>
+                    <div class="w-6 h-6 rounded-full bg-surface-container-highest border-2 border-white flex items-center justify-center text-[10px] text-primary font-bold">+2</div>
+                </div>
+                <span class="text-[10px] text-outline">Collaborative</span>
+            </div>
+            <div class="mt-auto pt-4 border-t border-outline-variant/30 flex justify-between items-center">
+                <div class="flex gap-1">
+                    <button class="p-1.5 text-on-surface-variant hover:text-secondary hover:bg-secondary/10 rounded-lg transition-all" title="Edit Trip"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button class="p-1.5 text-error hover:bg-error/10 rounded-lg transition-all" title="Delete Trip"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                </div>
+                <button class="flex items-center gap-1.5 bg-secondary text-on-secondary font-bold px-4 py-1.5 rounded-lg hover:brightness-110 transition-all text-xs" onclick="document.getElementById('modal-paris').classList.remove('hidden')">
+                    View <span class="material-symbols-outlined text-[14px]">visibility</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trip Card 2: Kyoto -->
+    <div class="group relative flex flex-col bg-surface-container-lowest rounded-[16px] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-outline-variant/10">
+        <div class="relative h-48 w-full overflow-hidden">
+            <img alt="Kyoto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU9dbHhRn0Ek3Nm7iocnR9_P0CSbcuEKqXjmjfbaKJNZyVl9xTa31XTzBj9EVdfAQSl6QcCzcgKs3gjE8lJZbkR2PtZqqw7RD1vXbuWETK1rFAWGzx1EldD0UvvaHRfKYWjew1VCjbKon3DUzPq6WUC_sPeVaO_7L2TerEMZnngN3k9reJByBgk-5qM37X3wv1IyQJ2r-994Ly01ius9eDlcAf-tpm8kb4MpoFEkfr11rziqws8j2KdNtY6fQ1yPptec80FmQOk18"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4">
+                <span class="bg-surface-container-highest text-primary text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider mb-1 inline-block">Draft</span>
+                <h3 class="text-white font-display text-title-md">Zen Kyoto Escape</h3>
+            </div>
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+            <div class="flex items-center gap-2 text-secondary font-medium mb-3">
+                <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                <span class="text-label-md">May 24 - Jun 02</span>
+            </div>
+            <p class="text-on-surface-variant text-body-sm mb-4 line-clamp-2">Bamboo groves of Arashiyama, Fushimi Inari shrines, and tea ceremonies.</p>
+            <div class="flex items-center gap-2 mb-4">
+                <div class="flex">
+                    <img class="w-6 h-6 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR7bvHhY6SAUhSXSHOWmFHktmI8AOixcvhJrWafeHwdNkzI5lQu4jECZnI0WLH0LSI_Y2Ow8gsK-4DMsDoIDiZ7Nor6eWiRsHL3iZ76oQrKD4NDUoM785IpwghL8Ef3pnHiD9cgPMFYAx8FYgSL0Wjlxgao4s4xXfPGQVBT2MUzB9UDvyuZ-XKgPSJU-dMqrNb8rcwLKr4iWkDfSXkVU51dwbi4s2gKDBciG_8NXJvjtthev2KrQHVJXWmIvfW232HpF6H-hVOigw"/>
+                </div>
+                <span class="text-[10px] text-outline">Personal</span>
+            </div>
+            <div class="mt-auto pt-4 border-t border-outline-variant/30 flex justify-between items-center">
+                <div class="flex gap-1">
+                    <button class="p-1.5 text-on-surface-variant hover:text-secondary hover:bg-secondary/10 rounded-lg transition-all" title="Edit Trip"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button class="p-1.5 text-error hover:bg-error/10 rounded-lg transition-all" title="Delete Trip"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                </div>
+                <button class="flex items-center gap-1.5 bg-secondary text-on-secondary font-bold px-4 py-1.5 rounded-lg hover:brightness-110 transition-all text-xs" onclick="document.getElementById('modal-kyoto').classList.remove('hidden')">
+                    View <span class="material-symbols-outlined text-[14px]">visibility</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trip Card 3: Bali -->
+    <div class="group relative flex flex-col bg-surface-container-lowest rounded-[16px] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-outline-variant/10">
+        <div class="relative h-48 w-full overflow-hidden">
+            <img alt="Bali" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAubFwz8uvtL1hIfq8dW1eVJuLy-fphEAR0svgxBYc42ARzDgQuYOWWrfSEW4M3QX_p32voWuc_JU7B40KwopfW5UMVdeFFzmvFNbrQPpUo5G7lWqlxDErrCqP8WaFQjp-wzq-oBbSJY_IEXjZyHPQaTk9-UgaSuHS05OSCO2bhB2hb4_Ntsv8X2Rw10NzJk368YPQK6zQo9OO8Vd1TT5YEp4JQu5N_IsDtEC8PFNO-FK7ka3Plsab8GJc_h5yutaQYNC105g96_E8"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4">
+                <span class="bg-secondary-container text-on-secondary-container text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider mb-1 inline-block">Active</span>
+                <h3 class="text-white font-display text-title-md">Bali Surf & Soul</h3>
+            </div>
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+            <div class="flex items-center gap-2 text-secondary font-medium mb-3">
+                <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                <span class="text-label-md">Jul 05 - Jul 18</span>
+            </div>
+            <p class="text-on-surface-variant text-body-sm mb-4 line-clamp-2">Uluwatu surf sessions, Ubud yoga retreats, and North Bali waterfall trek.</p>
+            <div class="flex items-center gap-2 mb-4">
+                <div class="flex -space-x-1.5">
+                    <img class="w-6 h-6 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQFPQkzR1W9Su-FsACQtSGZlXMUFOWMe6ThAZAVhPMOO_q8q5gYjygMMRp2a5aAAStfV-0NhFQC3tqzMdnuSQaXobGSG9CTgfbDQIgV9OMc8z0FuBM-uK0nMXUBSUIUv51mC8LQkX7VUNIMaCTZozRXyOSZ7n42-IJSoHQavnGVKFNneC7CGySCYE8mHQa66IXsaf6wpybsWJFtRZxkRQq26LvMhVypyJvzc2w91qAt4dR-iiCOgEKU6OzMKA-PDyNUhpXZw5XZIk"/>
+                    <img class="w-6 h-6 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC88DMR1uewJegMtL-RSN_c8o1vS4AlNo6BBM3ahgC49VBqAr-91h2IOaS-gJ4L5fi_hIqtTypYrkY_HjWbUAnM-eCKapsHXzeRnKj4hQKOacRkbgjlLEry4sHVVJyoxsrBs5QRCt14xdBoasy14fLi9MffPYQvpjSL8NzjCKCdr5DWd-WFYjIbKPkVB6vTjY_SGeKbPyvOTghI6DTGjWF8kF0--f8x2liWeVxWDyOWiyRpRohUWTdZdfdtXYNv3lw2kroTZ4pHieo"/>
+                </div>
+                <span class="text-[10px] text-outline ml-1">Shared</span>
+            </div>
+            <div class="mt-auto pt-4 border-t border-outline-variant/30 flex justify-between items-center">
+                <div class="flex gap-1">
+                    <button class="p-1.5 text-on-surface-variant hover:text-secondary hover:bg-secondary/10 rounded-lg transition-all" title="Edit Trip"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button class="p-1.5 text-error hover:bg-error/10 rounded-lg transition-all" title="Delete Trip"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                </div>
+                <button class="flex items-center gap-1.5 bg-secondary text-on-secondary font-bold px-4 py-1.5 rounded-lg hover:brightness-110 transition-all text-xs" onclick="document.getElementById('modal-bali').classList.remove('hidden')">
+                    View <span class="material-symbols-outlined text-[14px]">visibility</span>
+                </button>
+            </div>
+        </div>
+    </div>
 </section>
+<!-- Modals -->
+<div id="modal-paris" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 md:p-8 transition-opacity">
+    <div class="bg-surface rounded-2xl w-full max-w-4xl max-h-full overflow-y-auto shadow-2xl relative shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+        <button onclick="document.getElementById('modal-paris').classList.add('hidden')" class="absolute top-4 right-4 w-10 h-10 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full text-white flex items-center justify-center transition-all z-10 shadow-lg">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="h-64 md:h-80 w-full relative">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgJOjgR7-we3W8G20PVCul5ucvzArDGAzzBs5oXseK1Dq3LeR8B5KxbOBHuvGl78-4rAkGMtDZ3UO3EiwmBwMnG5MfspVOYBvD31DwAfujD7iG9mXpgC_1kw442EC8JwQxkH5qBM_Gn1y2aiRmUkA6YVDRWqqfqTyp4jTn_pRwFxjOpM_rPB1A9J6jOS379Qf-0ofdMcrIPCElmUsxLDizZGRKAUAhMbofm3qNufdOUqw7rsKKBN833Jk9TsMKGCkqvYOnQfdi-sM" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent"></div>
+            <div class="absolute bottom-6 left-8">
+                <span class="bg-secondary-container text-on-secondary-container text-label-sm px-3 py-1 rounded-full font-bold uppercase tracking-wider mb-2 inline-block shadow-md">Active</span>
+                <h3 class="text-on-surface font-display text-headline-lg font-bold">Spring in Paris</h3>
+            </div>
+        </div>
+        <div class="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h5 class="text-xs font-bold text-outline-variant uppercase tracking-wider mb-3">Trip Overview</h5>
+                <p class="text-body-md text-on-surface-variant mb-6">Exploring the Louvre, coffee at Montmartre, and a day trip to Versailles. A perfect blend of culture, history, and romance in the city of light.</p>
+                <h5 class="text-xs font-bold text-outline-variant uppercase tracking-wider mb-3">Financials & Type</h5>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 bg-surface-container-lowest border border-outline-variant/20 rounded-xl shadow-sm">
+                        <p class="text-xs text-outline mb-1">Total Budget</p>
+                        <p class="font-display text-title-lg text-secondary font-bold">$2,400</p>
+                    </div>
+                    <div class="p-4 bg-surface-container-lowest border border-outline-variant/20 rounded-xl shadow-sm">
+                        <p class="text-xs text-outline mb-1">Trip Type</p>
+                        <p class="font-label-lg text-on-surface">Cultural</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h5 class="text-xs font-bold text-outline-variant uppercase tracking-wider mb-3">Key Destinations</h5>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant/10 rounded-lg shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center"><span class="material-symbols-outlined">museum</span></div>
+                        <p class="font-label-lg text-on-surface">Louvre Museum</p>
+                    </div>
+                    <div class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant/10 rounded-lg shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center"><span class="material-symbols-outlined">coffee</span></div>
+                        <p class="font-label-lg text-on-surface">Montmartre</p>
+                    </div>
+                    <div class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant/10 rounded-lg shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center"><span class="material-symbols-outlined">castle</span></div>
+                        <p class="font-label-lg text-on-surface">Palace of Versailles</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-6 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-end gap-4">
+            <button class="px-6 py-2 border border-outline-variant/50 rounded-lg font-bold text-on-surface hover:bg-surface-variant transition-colors" onclick="document.getElementById('modal-paris').classList.add('hidden')">Close</button>
+            <button class="px-6 py-2 bg-secondary text-on-secondary rounded-lg font-bold hover:brightness-110 transition-colors shadow-md">Edit Itinerary</button>
+        </div>
+    </div>
 </div>
-</main>
+
+<div id="modal-kyoto" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 md:p-8 transition-opacity">
+    <div class="bg-surface rounded-2xl w-full max-w-4xl max-h-full overflow-y-auto shadow-2xl relative shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+        <button onclick="document.getElementById('modal-kyoto').classList.add('hidden')" class="absolute top-4 right-4 w-10 h-10 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full text-white flex items-center justify-center transition-all z-10 shadow-lg">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="h-64 md:h-80 w-full relative">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU9dbHhRn0Ek3Nm7iocnR9_P0CSbcuEKqXjmjfbaKJNZyVl9xTa31XTzBj9EVdfAQSl6QcCzcgKs3gjE8lJZbkR2PtZqqw7RD1vXbuWETK1rFAWGzx1EldD0UvvaHRfKYWjew1VCjbKon3DUzPq6WUC_sPeVaO_7L2TerEMZnngN3k9reJByBgk-5qM37X3wv1IyQJ2r-994Ly01ius9eDlcAf-tpm8kb4MpoFEkfr11rziqws8j2KdNtY6fQ1yPptec80FmQOk18" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent"></div>
+            <div class="absolute bottom-6 left-8">
+                <span class="bg-surface-container-highest text-primary text-label-sm px-3 py-1 rounded-full font-bold uppercase tracking-wider mb-2 inline-block shadow-md">Draft</span>
+                <h3 class="text-on-surface font-display text-headline-lg font-bold">Zen Kyoto Escape</h3>
+            </div>
+        </div>
+        <div class="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h5 class="text-xs font-bold text-outline-variant uppercase tracking-wider mb-3">Trip Overview</h5>
+                <p class="text-body-md text-on-surface-variant mb-6">Bamboo groves of Arashiyama, Fushimi Inari shrines, and tea ceremonies. A peaceful escape dedicated to introspection and history.</p>
+                <h5 class="text-xs font-bold text-outline-variant uppercase tracking-wider mb-3">Financials & Type</h5>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 bg-surface-container-lowest border border-outline-variant/20 rounded-xl shadow-sm">
+                        <p class="text-xs text-outline mb-1">Total Budget</p>
+                        <p class="font-display text-title-lg text-primary font-bold">$3,500</p>
+                    </div>
+                    <div class="p-4 bg-surface-container-lowest border border-outline-variant/20 rounded-xl shadow-sm">
+                        <p class="text-xs text-outline mb-1">Trip Type</p>
+                        <p class="font-label-lg text-on-surface">Personal Retreat</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h5 class="text-xs font-bold text-outline-variant uppercase tracking-wider mb-3">Key Destinations</h5>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant/10 rounded-lg shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center"><span class="material-symbols-outlined">nature</span></div>
+                        <p class="font-label-lg text-on-surface">Arashiyama Grove</p>
+                    </div>
+                    <div class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant/10 rounded-lg shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center"><span class="material-symbols-outlined">temple_buddhist</span></div>
+                        <p class="font-label-lg text-on-surface">Fushimi Inari</p>
+                    </div>
+                    <div class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant/10 rounded-lg shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center"><span class="material-symbols-outlined">fort</span></div>
+                        <p class="font-label-lg text-on-surface">Kinkaku-ji</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-6 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-end gap-4">
+            <button class="px-6 py-2 border border-outline-variant/50 rounded-lg font-bold text-on-surface hover:bg-surface-variant transition-colors" onclick="document.getElementById('modal-kyoto').classList.add('hidden')">Close</button>
+            <button class="px-6 py-2 bg-primary text-on-primary rounded-lg font-bold hover:brightness-110 transition-colors shadow-md">Edit Itinerary</button>
+        </div>
+    </div>
 </div>
-<!-- FAB (Suppressed based on relevance check, but rendered as this is a core trip dashboard) -->
-<button class="fixed bottom-8 right-8 w-16 h-16 bg-secondary text-on-secondary rounded-full shadow-[0_10px_40px_-10px_rgba(0,106,97,0.5)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all md:hidden z-40">
-<span class="material-symbols-outlined" data-icon="add">add</span>
-</button>
-<!-- BottomNavBar (Mobile) -->
-<nav class="fixed bottom-0 left-0 w-full bg-surface/80 backdrop-blur-md flex justify-around items-center py-4 px-6 md:hidden z-50 border-t border-outline-variant/20">
-<button class="flex flex-col items-center gap-1 text-on-surface-variant" onclick="window.location.href='traveloop_dashboard.html'">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-<span class="text-[10px] font-semibold">Dashboard</span>
-</button>
-<button class="flex flex-col items-center gap-1 text-secondary" onclick="window.location.href='my_trips.html'">
-<span class="material-symbols-outlined" data-icon="map" style="font-variation-settings: 'FILL' 1;">map</span>
-<span class="text-[10px] font-bold">My Trips</span>
-</button>
-<button class="flex flex-col items-center gap-1 text-on-surface-variant" onclick="window.location.href='city_activity_search.html'">
-<span class="material-symbols-outlined" data-icon="explore">explore</span>
-<span class="text-[10px] font-semibold">Explore</span>
-</button>
-<button class="flex flex-col items-center gap-1 text-on-surface-variant" onclick="window.location.href='trip_budget_breakdown.html'">
-<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
-<span class="text-[10px] font-semibold">Budget</span>
-</button>
-</nav>
-<!-- Footer -->
-<footer class="w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-highest dark:bg-surface-variant border-t border-outline-variant/50 md:ml-64 md:w-[calc(100%-16rem)]">
-<div class="flex flex-col md:flex-row items-center gap-8">
-<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
-<span class="font-body-md text-label-sm text-on-surface-variant dark:text-on-surface">© 2024 Traveloop. Explore with precision.</span>
+
+<div id="modal-bali" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 md:p-8 transition-opacity">
+    <div class="bg-surface rounded-2xl w-full max-w-4xl max-h-full overflow-y-auto shadow-2xl relative shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+        <button onclick="document.getElementById('modal-bali').classList.add('hidden')" class="absolute top-4 right-4 w-10 h-10 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full text-white flex items-center justify-center transition-all z-10 shadow-lg">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="h-64 md:h-80 w-full relative">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAubFwz8uvtL1hIfq8dW1eVJuLy-fphEAR0svgxBYc42ARzDgQuYOWWrfSEW4M3QX_p32voWuc_JU7B40KwopfW5UMVdeFFzmvFNbrQPpUo5G7lWqlxDErrCqP8WaFQjp-wzq-oBbSJY_IEXjZyHPQaTk9-UgaSuHS05OSCO2bhB2hb4_Ntsv8X2Rw10NzJk368YPQK6zQo9OO8Vd1TT5YEp4JQu5N_IsDtEC8PFNO-FK7ka3Plsab8GJc_h5yutaQYNC105g96_E8" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent"></div>
+            <div class="absolute bottom-6 left-8">
+                <span class="bg-secondary-container text-on-secondary-container text-label-sm px-3 py-1 rounded-full font-bold uppercase tracking-wider mb-2 inline-block shadow-md">Active</span>
+                <h3 class="text-on-surface font-display text-headline-lg font-bold">Bali Surf & Soul</h3>
+            </div>
+        </div>
+        <div class="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h5 class="text-xs font-bold text-outline-variant uppercase tracking-wider mb-3">Trip Overview</h5>
+                <p class="text-body-md text-on-surface-variant mb-6">Uluwatu surf sessions, Ubud yoga retreats, and North Bali waterfall treks. Recharging the soul in the island of gods.</p>
+                <h5 class="text-xs font-bold text-outline-variant uppercase tracking-wider mb-3">Financials & Type</h5>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 bg-surface-container-lowest border border-outline-variant/20 rounded-xl shadow-sm">
+                        <p class="text-xs text-outline mb-1">Total Budget</p>
+                        <p class="font-display text-title-lg text-secondary font-bold">$1,800</p>
+                    </div>
+                    <div class="p-4 bg-surface-container-lowest border border-outline-variant/20 rounded-xl shadow-sm">
+                        <p class="text-xs text-outline mb-1">Trip Type</p>
+                        <p class="font-label-lg text-on-surface">Wellness/Adventure</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h5 class="text-xs font-bold text-outline-variant uppercase tracking-wider mb-3">Key Destinations</h5>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant/10 rounded-lg shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center"><span class="material-symbols-outlined">water</span></div>
+                        <p class="font-label-lg text-on-surface">Uluwatu Coast</p>
+                    </div>
+                    <div class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant/10 rounded-lg shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center"><span class="material-symbols-outlined">self_improvement</span></div>
+                        <p class="font-label-lg text-on-surface">Ubud Yoga Barn</p>
+                    </div>
+                    <div class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant/10 rounded-lg shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center"><span class="material-symbols-outlined">local_bar</span></div>
+                        <p class="font-label-lg text-on-surface">Seminyak</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-6 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-end gap-4">
+            <button class="px-6 py-2 border border-outline-variant/50 rounded-lg font-bold text-on-surface hover:bg-surface-variant transition-colors" onclick="document.getElementById('modal-bali').classList.add('hidden')">Close</button>
+            <button class="px-6 py-2 bg-secondary text-on-secondary rounded-lg font-bold hover:brightness-110 transition-colors shadow-md">Edit Itinerary</button>
+        </div>
+    </div>
 </div>
-<div class="flex gap-6">
-<a class="font-body-md text-label-sm text-on-surface-variant hover:text-secondary underline transition-all cursor-pointer" href="#">Privacy Policy</a>
-<a class="font-body-md text-label-sm text-on-surface-variant hover:text-secondary underline transition-all cursor-pointer" href="#">Terms of Service</a>
-<a class="font-body-md text-label-sm text-on-surface-variant hover:text-secondary underline transition-all cursor-pointer" href="#">Help Center</a>
-</div>
-</footer>
+
 </body></html>

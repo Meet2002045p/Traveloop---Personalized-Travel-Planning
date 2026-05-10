@@ -9,65 +9,55 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script src="../js/tailwind-config.js"></script>
 <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/transition.js"></script>
 </head>
 <body class="bg-background text-on-background font-body-md min-h-screen">
 <!-- TopAppBar Navigation -->
-<header class="sticky top-0 z-50 flex justify-between items-center px-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md dark:bg-inverse-surface/80 shadow-sm border-b border-outline-variant/20">
-<div class="flex items-center gap-8">
-<span class="font-display text-headline-md font-bold text-primary dark:text-inverse-primary">Traveloop</span>
-<nav class="hidden md:flex items-center gap-6">
-<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-label-lg" href="traveloop_dashboard.html">Dashboard</a>
-<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-label-lg" href="my_trips.html">My Trips</a>
-<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-label-lg" href="city_activity_search.html">Explore</a>
-<a class="text-secondary dark:text-secondary-fixed-dim font-bold font-label-lg" href="user_profile_settings.html">Profile</a>
-</nav>
-</div>
-<div class="flex items-center gap-4">
-<button class="p-2 text-on-surface-variant hover:bg-surface-variant/50 rounded-full transition-all active:scale-95 duration-200">
-<span class="material-symbols-outlined">notifications</span>
-</button>
-<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-secondary-container">
-<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young woman with a friendly expression, set against a softly blurred urban backdrop. The lighting is natural and high-key, emphasizing a clean and modern aesthetic. She is wearing a stylish blazer, suggesting a persona of an organized and sophisticated traveler. The image is crisp with a shallow depth of field, maintaining a premium, high-fidelity look consistent with a high-end travel planning application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_hH8CdgZO0TKvjfQFdCO-tgt_e5wgEoaT--4MulFR3AUxc7Ug16NN4kymS8SAdf-VXpYxD8Bs_RLK_vsNMQaVHwoSU3sURLbcbBACGniNyoUp1FJJzulKI34hiQCZt-cPay0cPNOPQOKCkYa9VaruQxj3yKxaYabnfOv1tqDx_eH8x_RlD3A9PGQHZCZ8kDpe8-IyogSa84EX4pGTKmkjC6IwO6-a-TBo80Avzh_BXG6MQHX9smmYVHDwkwP7MJG99GJ3CyndI8A"/>
-</div>
-</div>
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 w-full bg-surface/95 backdrop-blur-md border-b border-outline-variant/20 shadow-sm flex flex-col">
+    <!-- Top Row -->
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-3">
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary text-3xl">travel</span>
+            <div class="flex items-baseline gap-2">
+                <h1 class="font-display text-headline-md font-bold text-primary hidden sm:block">Traveloop</h1>
+                <span class="text-outline-variant hidden sm:block">|</span>
+                <h2 class="font-display text-title-md font-medium text-on-surface-variant">User Profile &amp; Settings</h2>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="relative hidden lg:block">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+                <input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary w-64 text-label-lg" placeholder="Search trips..." type="text"/>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">notifications</span>
+            <a href="login_signup.html" class="text-on-surface-variant cursor-pointer hover:text-secondary transition-colors flex items-center" title="Sign Out"><span class="material-symbols-outlined">logout</span></a>
+            <a href="user_profile_settings.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-highest shadow-sm block">
+                <img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpeCLalZVh7yZJgXsPIh7d0N5bIJiZQT65pCySTUxiQGPTl3236Xv9e-Q8ghq28TuSiZ1sO_j9W4IxtJaoYSAB7mHBLBgGJhBlx9DOccpv1WFlrK5ExH5xKhtUh9uhf3kDc5q3O9kzkGzrUSN9y0GR9fT4fEHWa3KQTeBN3hghAcC67XGUD5JltH8iRXzcE_vHxzrfSz_HkxGo8CUc_KeoyzSvaACz_wa66xrFkB0pSJDj2oD0x0rhNpx8dr1KiuWBhxD-rWirIQ4"/>
+            </a>
+        </div>
+    </div>
+    <!-- Bottom Row (Navigation) -->
+    <nav class="w-full overflow-x-auto scrollbar-hide border-t border-outline-variant/10 bg-surface-container-lowest/50">
+        <div class="flex items-center gap-6 px-margin-mobile md:px-margin-desktop py-3 min-w-max">
+            <a href="traveloop_dashboard.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">dashboard</span> Dashboard</a>
+            <a href="my_trips.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">map</span> My Trips</a>
+            <a href="city_activity_search.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">explore</span> Explore</a>
+            <a href="trip_budget_breakdown.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">account_balance_wallet</span> Budget</a>
+            <a href="itinerary_builder.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">edit_document</span> Build Itinerary</a>
+            <a href="packing_checklist.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">checklist</span> Packing Checklist</a>
+            <a href="trip_notes_journal.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">menu_book</span> Trip Notes</a>
+            <a href="shared_itinerary.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">share</span> Shared</a>
+            <button class="ml-4 bg-secondary text-on-secondary px-4 py-2 rounded-lg font-bold flex items-center gap-2 shadow-sm hover:brightness-110 transition-all text-sm" onclick="window.location.href='create_new_trip.html'">
+                <span class="material-symbols-outlined text-sm" data-icon="add">add</span> New Trip
+            </button>
+        </div>
+    </nav>
 </header>
 <main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
 <!-- Left Sidebar Profile Info -->
-<aside class="lg:col-span-4 space-y-gutter">
-<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 text-center">
-<div class="relative w-32 h-32 mx-auto mb-6">
-<img alt="Profile" class="w-full h-full object-cover rounded-full border-4 border-surface shadow-md" data-alt="A close-up studio portrait of a woman with vibrant energy and a bright smile. The lighting is studio-quality, soft, and wrap-around, highlighting her features with a clean, high-contrast look. The background is a minimalist, solid off-white, keeping the focus entirely on the subject. The style is modern, professional, and evocative of a high-end lifestyle brand, perfectly aligning with an upscale travel utility's aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcOZLRqTaOhW9JssmGzOznB95JiBsBujZ6nXJRwDOOARJeywiThhGiZ9Hu21qN6XGSBEVsnMUlt0jVKPeZ-7oVyH0v7FuNg4NKTtpRQjXvjq1gmFvUkxeGt00imp32DpmVT52iu8WapYFZbfxV0HtL-UPssLw_y5tzDvE6yDjuJZNy5UsA1riktPrSvLit_0fpHZg_Z0WNf1dP2ZOl5oXW2jMpbFUSjLCL-bCVQYrDbGvPMS84yHOhe3vEakcLOZFyOfNoKQgTJFY"/>
-<button class="absolute bottom-0 right-0 p-2 bg-secondary text-on-secondary rounded-full shadow-lg hover:bg-on-secondary-container transition-all active:scale-95">
-<span class="material-symbols-outlined text-[18px]">edit</span>
-</button>
-</div>
-<h1 class="font-display text-headline-md font-semibold text-on-surface">Elena Rodriguez</h1>
-<p class="text-on-surface-variant font-body-md mt-1">elena.rodriguez@traveloop.com</p>
-<div class="mt-6 flex flex-wrap justify-center gap-2">
-<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-label-sm">Explorer Level 4</span>
-<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-label-sm">Pro Member</span>
-</div>
-</div>
-<nav class="bg-surface-container-low rounded-xl border border-outline-variant/20 overflow-hidden">
-<a class="flex items-center gap-3 px-6 py-4 bg-secondary-container text-on-secondary-container font-semibold border-l-4 border-secondary" href="#account">
-<span class="material-symbols-outlined">person</span>
-<span class="font-label-lg">Account Information</span>
-</a>
-<a class="flex items-center gap-3 px-6 py-4 text-on-surface-variant hover:bg-surface-variant/30 transition-all" href="#preferences">
-<span class="material-symbols-outlined">settings</span>
-<span class="font-label-lg">Preferences</span>
-</a>
-<a class="flex items-center gap-3 px-6 py-4 text-on-surface-variant hover:bg-surface-variant/30 transition-all" href="#security">
-<span class="material-symbols-outlined">security</span>
-<span class="font-label-lg">Security</span>
-</a>
-<a class="flex items-center gap-3 px-6 py-4 text-on-surface-variant hover:bg-surface-variant/30 transition-all" href="#saved">
-<span class="material-symbols-outlined">bookmark</span>
-<span class="font-label-lg">Saved Destinations</span>
-</a>
-</nav>
-</aside>
+
 <!-- Main Content Area -->
 <div class="lg:col-span-8 space-y-section-gap">
 <!-- Account Settings Section -->
