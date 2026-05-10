@@ -354,7 +354,8 @@
 </div>
 
 <script>
-    const STORAGE_KEY = 'traveloop_budget_v1';
+
+    const API_URL = 'http://localhost:5000/api/budget';
     const GOAL_KEY = 'traveloop_budget_goal';
 
     function init() {
@@ -371,38 +372,57 @@
 
     const expenseForm = document.getElementById('add-expense-form');
     if (expenseForm) {
-        expenseForm.addEventListener('submit', function(e) {
+        expenseForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             const expense = {
-                id: Date.now(),
                 title: document.getElementById('exp-title').value,
                 amount: parseFloat(document.getElementById('exp-amount').value),
                 category: document.getElementById('exp-category').value,
                 date: document.getElementById('exp-date').value
             };
             
-            let expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-            expenses.push(expense);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
-            
-            this.reset();
-            document.getElementById('modal-add-expense').classList.add('hidden');
-            renderAll();
-            alert('Expense saved!');
+            try {
+                // Send data to MongoDB Backend
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(expense)
+                });
+                
+                if (response.ok) {
+                    this.reset();
+                    document.getElementById('modal-add-expense').classList.add('hidden');
+                    renderAll();
+                    alert('Expense saved to MongoDB Database! 🚀');
+                }
+            } catch (err) {
+                console.error('Failed to save to DB', err);
+                alert('Error connecting to backend database.');
+            }
         });
     }
 
-    function deleteExpense(id) {
-        if(confirm('Delete this expense?')) {
-            let expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-            expenses = expenses.filter(e => e.id !== id);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
-            renderAll();
+    async function deleteExpense(id) {
+        if(confirm('Delete this expense permanently from database?')) {
+            try {
+                await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+                renderAll();
+            } catch (err) {
+                console.error('Failed to delete', err);
+            }
         }
     }
 
-    function renderAll() {
-        const expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    async function renderAll() {
+        let expenses = [];
+        try {
+            // Fetch data from MongoDB Backend
+            const response = await fetch(API_URL);
+            expenses = await response.json();
+        } catch (err) {
+            console.error('Failed to fetch expenses', err);
+        }
+
         const goal = parseFloat(localStorage.getItem(GOAL_KEY) || '5000');
         
         // Update Goal Displays
@@ -410,7 +430,6 @@
         const tripGoalEl = document.getElementById('trip-goal');
         const inputGoalEl = document.getElementById('input-goal');
         
-        // Big number shows the budget goal as "Estimated Cost"
         if (totalSpentEl) totalSpentEl.innerText = `$${goal.toLocaleString()}`;
         if (tripGoalEl) tripGoalEl.innerText = `$${goal.toLocaleString()}`;
         if (inputGoalEl) inputGoalEl.value = goal;
@@ -462,7 +481,7 @@
                     <td class="py-4 px-2 text-on-surface-variant">${e.date}</td>
                     <td class="py-4 px-2 text-right font-bold">$${e.amount.toLocaleString()}</td>
                     <td class="py-4 px-2 text-right opacity-0 group-hover:opacity-100">
-                        <button onclick="deleteExpense(${e.id})" class="material-symbols-outlined text-error text-sm">delete</button>
+                        <button onclick="deleteExpense('${e._id}')" class="material-symbols-outlined text-error text-sm hover:scale-110 transition-all">delete</button>
                     </td>
                 </tr>
             `).join('');
@@ -484,6 +503,7 @@
     }
 
     init();
+
 </script>
 
 <style>
@@ -555,7 +575,8 @@
 </button>
 
 <script>
-    const STORAGE_KEY = 'traveloop_budget_v1';
+
+    const API_URL = 'http://localhost:5000/api/budget';
     const GOAL_KEY = 'traveloop_budget_goal';
 
     function init() {
@@ -572,38 +593,57 @@
 
     const expenseForm = document.getElementById('add-expense-form');
     if (expenseForm) {
-        expenseForm.addEventListener('submit', function(e) {
+        expenseForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             const expense = {
-                id: Date.now(),
                 title: document.getElementById('exp-title').value,
                 amount: parseFloat(document.getElementById('exp-amount').value),
                 category: document.getElementById('exp-category').value,
                 date: document.getElementById('exp-date').value
             };
             
-            let expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-            expenses.push(expense);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
-            
-            this.reset();
-            document.getElementById('modal-add-expense').classList.add('hidden');
-            renderAll();
-            alert('Expense saved!');
+            try {
+                // Send data to MongoDB Backend
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(expense)
+                });
+                
+                if (response.ok) {
+                    this.reset();
+                    document.getElementById('modal-add-expense').classList.add('hidden');
+                    renderAll();
+                    alert('Expense saved to MongoDB Database! 🚀');
+                }
+            } catch (err) {
+                console.error('Failed to save to DB', err);
+                alert('Error connecting to backend database.');
+            }
         });
     }
 
-    function deleteExpense(id) {
-        if(confirm('Delete this expense?')) {
-            let expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-            expenses = expenses.filter(e => e.id !== id);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
-            renderAll();
+    async function deleteExpense(id) {
+        if(confirm('Delete this expense permanently from database?')) {
+            try {
+                await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+                renderAll();
+            } catch (err) {
+                console.error('Failed to delete', err);
+            }
         }
     }
 
-    function renderAll() {
-        const expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    async function renderAll() {
+        let expenses = [];
+        try {
+            // Fetch data from MongoDB Backend
+            const response = await fetch(API_URL);
+            expenses = await response.json();
+        } catch (err) {
+            console.error('Failed to fetch expenses', err);
+        }
+
         const goal = parseFloat(localStorage.getItem(GOAL_KEY) || '5000');
         
         // Update Goal Displays
@@ -611,7 +651,6 @@
         const tripGoalEl = document.getElementById('trip-goal');
         const inputGoalEl = document.getElementById('input-goal');
         
-        // Big number shows the budget goal as "Estimated Cost"
         if (totalSpentEl) totalSpentEl.innerText = `$${goal.toLocaleString()}`;
         if (tripGoalEl) tripGoalEl.innerText = `$${goal.toLocaleString()}`;
         if (inputGoalEl) inputGoalEl.value = goal;
@@ -663,7 +702,7 @@
                     <td class="py-4 px-2 text-on-surface-variant">${e.date}</td>
                     <td class="py-4 px-2 text-right font-bold">$${e.amount.toLocaleString()}</td>
                     <td class="py-4 px-2 text-right opacity-0 group-hover:opacity-100">
-                        <button onclick="deleteExpense(${e.id})" class="material-symbols-outlined text-error text-sm">delete</button>
+                        <button onclick="deleteExpense('${e._id}')" class="material-symbols-outlined text-error text-sm hover:scale-110 transition-all">delete</button>
                     </td>
                 </tr>
             `).join('');
@@ -685,6 +724,7 @@
     }
 
     init();
+
 </script>
 
 </body></html>
