@@ -49,9 +49,13 @@
             <a href="packing_checklist.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">checklist</span> Packing Checklist</a>
             <a href="trip_notes_journal.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">menu_book</span> Trip Notes</a>
             <a href="shared_itinerary.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">share</span> Shared</a>
+<<<<<<< HEAD
             <button class="ml-4 bg-secondary text-on-secondary px-4 py-2 rounded-lg font-bold flex items-center gap-2 shadow-sm hover:brightness-110 transition-all text-sm" onclick="window.location.href='create_new_trip.html'">
                 <span class="material-symbols-outlined text-sm" data-icon="add">add</span> New Trip
             </button>
+=======
+            
+>>>>>>> f194c7c (updated project)
         </div>
     </nav>
 </header>
@@ -274,4 +278,94 @@
 <a class="text-on-surface-variant text-label-sm hover:text-secondary underline transition-all" href="#">Help Center</a>
 </div>
 </footer>
+
+<!-- Traveloop AI Floating Assistant -->
+<div id="ai-assistant" class="fixed bottom-8 right-8 z-[200] flex flex-col items-end gap-4 pointer-events-none">
+    <!-- Chat Window (Hidden by default) -->
+    <div id="ai-chat-window" class="w-80 md:w-96 bg-surface/80 backdrop-blur-xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20 overflow-hidden flex flex-col transition-all duration-500 scale-90 opacity-0 translate-y-10 pointer-events-auto">
+        <div class="p-4 bg-primary text-on-primary flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+                </div>
+                <div>
+                    <p class="font-bold text-sm">Traveloop Assistant</p>
+                    <p class="text-[10px] opacity-80">Online | AI-Powered</p>
+                </div>
+            </div>
+            <button onclick="toggleAIChat()" class="hover:bg-white/10 rounded-full p-1 transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div id="chat-messages" class="flex-1 p-4 space-y-4 max-h-[300px] overflow-y-auto bg-surface-container-lowest/50">
+            <div class="flex gap-3">
+                <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-white text-[10px] flex-shrink-0">T</div>
+                <div class="bg-surface-container-high p-3 rounded-2xl rounded-tl-none text-xs text-on-surface">
+                    Hi! I'm your Traveloop Assistant. Need help planning your next adventure or finding the best flight deals?
+                </div>
+            </div>
+        </div>
+        <div class="p-4 bg-surface-container-low border-t border-outline-variant/10 flex gap-2">
+            <input id="ai-input" type="text" placeholder="Ask me anything..." class="flex-1 bg-surface-container-lowest border-none rounded-full px-4 py-2 text-xs focus:ring-2 focus:ring-secondary outline-none">
+            <button onclick="sendAIMessage()" class="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[18px]">send</span>
+            </button>
+        </div>
+    </div>
+    <!-- Floating Button -->
+    <button onclick="toggleAIChat()" class="w-16 h-16 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group">
+        <div class="absolute -top-1 -right-1 w-4 h-4 bg-error rounded-full border-2 border-surface animate-pulse"></div>
+        <span class="material-symbols-outlined text-[32px] group-hover:rotate-12 transition-transform">smart_toy</span>
+    </button>
+</div>
+
+<script>
+    function toggleAIChat() {
+        const window = document.getElementById('ai-chat-window');
+        const isHidden = window.classList.contains('opacity-0');
+        if (isHidden) {
+            window.classList.remove('opacity-0', 'scale-90', 'translate-y-10');
+            window.classList.add('opacity-100', 'scale-100', 'translate-y-0');
+        } else {
+            window.classList.add('opacity-0', 'scale-90', 'translate-y-10');
+            window.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
+        }
+    }
+
+    function sendAIMessage() {
+        const input = document.getElementById('ai-input');
+        const container = document.getElementById('chat-messages');
+        const text = input.value.trim();
+        if (!text) return;
+
+        // User message
+        const userMsg = document.createElement('div');
+        userMsg.className = 'flex gap-3 justify-end';
+        userMsg.innerHTML = `
+            <div class="bg-secondary text-white p-3 rounded-2xl rounded-tr-none text-xs shadow-sm max-w-[80%]">${text}</div>
+        `;
+        container.appendChild(userMsg);
+        input.value = '';
+
+        // Bot typing effect
+        setTimeout(() => {
+            const botMsg = document.createElement('div');
+            botMsg.className = 'flex gap-3';
+            botMsg.innerHTML = `
+                <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-white text-[10px] flex-shrink-0">T</div>
+                <div class="bg-surface-container-high p-3 rounded-2xl rounded-tl-none text-xs text-on-surface shadow-sm max-w-[80%]">
+                    Searching for the best itineraries for "${text}"... One moment! ✈️
+                </div>
+            `;
+            container.appendChild(botMsg);
+            container.scrollTop = container.scrollHeight;
+        }, 1000);
+    }
+</script>
+
+<style>
+    #chat-messages::-webkit-scrollbar { width: 4px; }
+    #chat-messages::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
+</style>
+
 </body></html>

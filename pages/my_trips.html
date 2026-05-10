@@ -47,7 +47,11 @@
             <a href="packing_checklist.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">checklist</span> Packing Checklist</a>
             <a href="trip_notes_journal.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">menu_book</span> Trip Notes</a>
             <a href="shared_itinerary.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">share</span> Shared</a>
+<<<<<<< HEAD
             <button class="ml-4 bg-secondary text-on-secondary px-4 py-2 rounded-lg font-bold flex items-center gap-2 shadow-sm hover:brightness-110 transition-all text-sm" onclick="window.location.href='create_new_trip.html'">
+=======
+            <button class="ml-4 bg-secondary text-on-secondary px-4 py-2 rounded-lg font-bold flex items-center gap-2 shadow-sm hover:brightness-110 transition-all text-sm" onclick="document.getElementById('modal-create-trip').classList.remove('hidden')">
+>>>>>>> f194c7c (updated project)
                 <span class="material-symbols-outlined text-sm" data-icon="add">add</span> New Trip
             </button>
         </div>
@@ -73,7 +77,11 @@
 </div>
 </section>
 <!-- Trip List Grid -->
+<<<<<<< HEAD
 <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+=======
+<section id="trip-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+>>>>>>> f194c7c (updated project)
     <!-- Trip Card 1: Paris -->
     <div class="group relative flex flex-col bg-surface-container-lowest rounded-[16px] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-outline-variant/10">
         <div class="relative h-48 w-full overflow-hidden">
@@ -226,6 +234,19 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+
+    <!-- Add New Trip Card -->
+    <div onclick="document.getElementById('modal-create-trip').classList.remove('hidden')" class="group relative flex flex-col items-center justify-center bg-surface-container-low/30 rounded-[16px] border-2 border-dashed border-outline-variant/50 hover:border-secondary hover:bg-secondary/5 transition-all duration-300 cursor-pointer min-h-[400px]">
+        <div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-secondary/20 transition-all">
+            <span class="material-symbols-outlined text-4xl text-outline-variant group-hover:text-secondary">add</span>
+        </div>
+        <p class="font-display text-title-md text-on-surface-variant group-hover:text-secondary font-bold">Add New Trip</p>
+        <p class="text-label-sm text-outline mt-2">Plan your next adventure</p>
+    </div>
+
+>>>>>>> f194c7c (updated project)
         <div class="p-6 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-end gap-4">
             <button class="px-6 py-2 border border-outline-variant/50 rounded-lg font-bold text-on-surface hover:bg-surface-variant transition-colors" onclick="document.getElementById('modal-paris').classList.add('hidden')">Close</button>
             <button class="px-6 py-2 bg-secondary text-on-secondary rounded-lg font-bold hover:brightness-110 transition-colors shadow-md">Edit Itinerary</button>
@@ -341,4 +362,333 @@
     </div>
 </div>
 
+<<<<<<< HEAD
+=======
+
+
+<!-- Create New Trip Modal -->
+<div id="modal-create-trip" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 md:p-8 transition-opacity">
+    <div class="bg-surface rounded-2xl w-full max-w-2xl shadow-2xl relative shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+        <button onclick="document.getElementById('modal-create-trip').classList.add('hidden')" class="absolute top-4 right-4 w-10 h-10 bg-surface-container-high hover:bg-surface-container-highest rounded-full text-on-surface flex items-center justify-center transition-all z-10 shadow-sm">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="p-8">
+            <h3 class="font-display text-headline-md font-bold text-primary mb-2">Plan a New Adventure</h3>
+            <p class="text-on-surface-variant mb-8">Fill in the details below to start your next journey.</p>
+            
+            <form id="create-trip-form" class="space-y-6">
+                <div class="space-y-2">
+                    <label class="font-label-lg text-on-surface">Destination Name</label>
+                    <input type="text" id="trip-destination" required placeholder="e.g., Tokyo, Japan" class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="font-label-lg text-on-surface">Start Date</label>
+                        <input type="date" id="trip-start" required class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="font-label-lg text-on-surface">End Date</label>
+                        <input type="date" id="trip-end" required class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all">
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="font-label-lg text-on-surface">Approx. Budget ($)</label>
+                    <input type="number" id="trip-budget" required placeholder="e.g., 2500" class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all">
+                </div>
+                <div class="space-y-2">
+                    <label class="font-label-lg text-on-surface">Cover Photo</label>
+                    <div class="relative h-32 w-full border-2 border-dashed border-outline-variant/50 rounded-xl flex flex-col items-center justify-center bg-surface-container-lowest hover:bg-secondary/5 transition-all cursor-pointer overflow-hidden group">
+                        <input type="file" id="trip-image" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer z-10">
+                        <img id="image-preview" class="absolute inset-0 w-full h-full object-cover hidden">
+                        <span class="material-symbols-outlined text-3xl text-outline-variant group-hover:text-secondary">add_a_photo</span>
+                        <p class="text-label-sm text-outline group-hover:text-secondary mt-1">Upload an image</p>
+                    </div>
+                </div>
+                <div class="pt-4 flex gap-4">
+                    <button type="button" onclick="document.getElementById('modal-create-trip').classList.add('hidden')" class="flex-1 py-3 border border-outline text-on-surface rounded-xl font-bold hover:bg-surface-container-high transition-all">Cancel</button>
+                    <button type="submit" class="flex-1 py-3 bg-secondary text-on-secondary rounded-xl font-bold hover:brightness-110 transition-all shadow-md">Create Trip</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+    async function compressImage(base64Str, maxWidth = 300, maxHeight = 300) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.src = base64Str;
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+
+                if (width > height) {
+                    if (width > maxWidth) {
+                        height *= maxWidth / width;
+                        width = maxWidth;
+                    }
+                } else {
+                    if (height > maxHeight) {
+                        width *= maxHeight / height;
+                        height = maxHeight;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+                resolve(canvas.toDataURL('image/jpeg', 0.5)); // Compress to 70% quality
+            };
+        });
+    }
+    
+    const tripGrid = document.getElementById('trip-grid');
+    const createForm = document.getElementById('create-trip-form');
+    const imageInput = document.getElementById('trip-image');
+    const imagePreview = document.getElementById('image-preview');
+
+    // Handle image preview
+    imageInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            if (file.size > 2 * 1024 * 1024) {
+                alert('Image is too large. Please choose an image under 2MB.');
+                this.value = '';
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                imagePreview.classList.remove('hidden');
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Save and render logic
+    if (createForm) {
+        createForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const trip = {
+                id: 'trip-' + Date.now(),
+                destination: document.getElementById('trip-destination').value,
+                start: document.getElementById('trip-start').value,
+                end: document.getElementById('trip-end').value,
+                budget: document.getElementById('trip-budget').value,
+                image: imagePreview.src ? await compressImage(imagePreview.src) : 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&q=80&w=800'
+            };
+
+            try {
+                saveTrip(trip);
+                renderTripCard(trip);
+                createForm.reset();
+                imagePreview.classList.add('hidden');
+                document.getElementById('modal-create-trip').classList.add('hidden');
+                alert('Trip saved successfully!');
+            } catch (err) {
+                alert('Error saving trip. The image might be too large for browser storage.');
+                console.error(err);
+            }
+        });
+    }
+
+    function saveTrip(trip) {
+        let trips = JSON.parse(localStorage.getItem('traveloop_trips') || '[]');
+        trips.push(trip);
+        localStorage.setItem('traveloop_trips', JSON.stringify(trips));
+    }
+
+    function renderTripCard(trip) {
+        if (!tripGrid) return;
+        const addCard = tripGrid.querySelector('div[onclick*="modal-create-trip"]');
+        const card = document.createElement('div');
+        card.className = "group relative flex flex-col bg-surface-container-lowest rounded-[16px] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-outline-variant/10";
+        
+        const startDate = new Date(trip.start).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        const endDate = new Date(trip.end).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+        card.innerHTML = `
+            <div class="relative h-48 w-full overflow-hidden">
+                <img alt="${trip.destination}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="${trip.image}"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4">
+                    <span class="bg-secondary-container text-on-secondary-container text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider mb-1 inline-block">Planned</span>
+                    <h3 class="text-white font-display text-title-md">${trip.destination}</h3>
+                </div>
+            </div>
+            <div class="p-5 flex flex-col flex-grow">
+                <div class="flex items-center gap-2 text-secondary font-medium mb-3">
+                    <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                    <span class="text-label-md">${startDate} - ${endDate}</span>
+                </div>
+                <p class="text-on-surface-variant text-body-sm mb-4 line-clamp-2">New adventure to ${trip.destination}. Budget: $${trip.budget}</p>
+                <div class="mt-auto pt-4 border-t border-outline-variant/30 flex justify-between items-center">
+                    <div class="flex gap-1">
+                        <button class="p-1.5 text-on-surface-variant hover:text-secondary hover:bg-secondary/10 rounded-lg transition-all" title="Edit Trip"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                        <button onclick="deleteTrip('${trip.id}', this)" class="p-1.5 text-error hover:bg-error/10 rounded-lg transition-all" title="Delete Trip"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                    </div>
+                    <button class="flex items-center gap-1.5 bg-secondary text-on-secondary font-bold px-4 py-1.5 rounded-lg hover:brightness-110 transition-all text-xs" onclick="openGeneratedModal('${trip.id}')">
+                        View <span class="material-symbols-outlined text-[14px]">visibility</span>
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        tripGrid.insertBefore(card, addCard);
+    }
+
+    function deleteTrip(id, btn) {
+        if(confirm('Delete this trip?')) {
+            let trips = JSON.parse(localStorage.getItem('traveloop_trips') || '[]');
+            trips = trips.filter(t => t.id !== id);
+            localStorage.setItem('traveloop_trips', JSON.stringify(trips));
+            btn.closest('.group').remove();
+        }
+    }
+
+    function openGeneratedModal(id) {
+        let trips = JSON.parse(localStorage.getItem('traveloop_trips') || '[]');
+        const trip = trips.find(t => t.id === id);
+        if (trip) {
+            // Populate and show the modal
+            const modal = document.getElementById('modal-create-trip'); // Or create a specific view modal
+            alert(`Destination: ${trip.destination}\\nDates: ${trip.start} to ${trip.end}\\nBudget: $${trip.budget}`);
+        }
+    }
+
+    // Load existing trips on start
+    document.addEventListener('DOMContentLoaded', () => {
+        let trips = JSON.parse(localStorage.getItem('traveloop_trips') || '[]');
+        trips.forEach(renderTripCard);
+    });
+</script>
+
+
+<!-- Traveloop AI Floating Assistant -->
+<div id="ai-assistant" class="fixed bottom-8 right-8 z-[200] flex flex-col items-end gap-4 pointer-events-none">
+    <!-- Chat Window (Hidden by default) -->
+    <div id="ai-chat-window" class="w-80 md:w-96 bg-surface/80 backdrop-blur-xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20 overflow-hidden flex flex-col transition-all duration-500 scale-90 opacity-0 translate-y-10 pointer-events-auto">
+        <div class="p-4 bg-primary text-on-primary flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+                </div>
+                <div>
+                    <p class="font-bold text-sm">Traveloop Assistant</p>
+                    <p class="text-[10px] opacity-80">Online | AI-Powered</p>
+                </div>
+            </div>
+            <button onclick="toggleAIChat()" class="hover:bg-white/10 rounded-full p-1 transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div id="chat-messages" class="flex-1 p-4 space-y-4 max-h-[300px] overflow-y-auto bg-surface-container-lowest/50">
+            <div class="flex gap-3">
+                <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-white text-[10px] flex-shrink-0">T</div>
+                <div class="bg-surface-container-high p-3 rounded-2xl rounded-tl-none text-xs text-on-surface">
+                    Hi! I'm your Traveloop Assistant. Need help planning your next adventure or finding the best flight deals?
+                </div>
+            </div>
+        </div>
+        <div class="p-4 bg-surface-container-low border-t border-outline-variant/10 flex gap-2">
+            <input id="ai-input" type="text" placeholder="Ask me anything..." class="flex-1 bg-surface-container-lowest border-none rounded-full px-4 py-2 text-xs focus:ring-2 focus:ring-secondary outline-none">
+            <button onclick="sendAIMessage()" class="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[18px]">send</span>
+            </button>
+        </div>
+    </div>
+    <!-- Floating Button -->
+    <button onclick="toggleAIChat()" class="w-16 h-16 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group">
+        <div class="absolute -top-1 -right-1 w-4 h-4 bg-error rounded-full border-2 border-surface animate-pulse"></div>
+        <span class="material-symbols-outlined text-[32px] group-hover:rotate-12 transition-transform">smart_toy</span>
+    </button>
+</div>
+
+<script>
+
+    async function compressImage(base64Str, maxWidth = 300, maxHeight = 300) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.src = base64Str;
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+
+                if (width > height) {
+                    if (width > maxWidth) {
+                        height *= maxWidth / width;
+                        width = maxWidth;
+                    }
+                } else {
+                    if (height > maxHeight) {
+                        width *= maxHeight / height;
+                        height = maxHeight;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+                resolve(canvas.toDataURL('image/jpeg', 0.5)); // Compress to 70% quality
+            };
+        });
+    }
+    
+    function toggleAIChat() {
+        const window = document.getElementById('ai-chat-window');
+        const isHidden = window.classList.contains('opacity-0');
+        if (isHidden) {
+            window.classList.remove('opacity-0', 'scale-90', 'translate-y-10');
+            window.classList.add('opacity-100', 'scale-100', 'translate-y-0');
+        } else {
+            window.classList.add('opacity-0', 'scale-90', 'translate-y-10');
+            window.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
+        }
+    }
+
+    function sendAIMessage() {
+        const input = document.getElementById('ai-input');
+        const container = document.getElementById('chat-messages');
+        const text = input.value.trim();
+        if (!text) return;
+
+        // User message
+        const userMsg = document.createElement('div');
+        userMsg.className = 'flex gap-3 justify-end';
+        userMsg.innerHTML = `
+            <div class="bg-secondary text-white p-3 rounded-2xl rounded-tr-none text-xs shadow-sm max-w-[80%]">${text}</div>
+        `;
+        container.appendChild(userMsg);
+        input.value = '';
+
+        // Bot typing effect
+        setTimeout(() => {
+            const botMsg = document.createElement('div');
+            botMsg.className = 'flex gap-3';
+            botMsg.innerHTML = `
+                <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-white text-[10px] flex-shrink-0">T</div>
+                <div class="bg-surface-container-high p-3 rounded-2xl rounded-tl-none text-xs text-on-surface shadow-sm max-w-[80%]">
+                    Searching for the best itineraries for "${text}"... One moment! ✈️
+                </div>
+            `;
+            container.appendChild(botMsg);
+            container.scrollTop = container.scrollHeight;
+        }, 1000);
+    }
+</script>
+
+<style>
+    #chat-messages::-webkit-scrollbar { width: 4px; }
+    #chat-messages::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
+</style>
+
+>>>>>>> f194c7c (updated project)
 </body></html>

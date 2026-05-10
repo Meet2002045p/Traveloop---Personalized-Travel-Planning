@@ -47,9 +47,13 @@
             <a href="packing_checklist.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">checklist</span> Packing Checklist</a>
             <a href="trip_notes_journal.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">menu_book</span> Trip Notes</a>
             <a href="shared_itinerary.html" class="flex items-center gap-2 text-on-surface-variant hover:text-secondary font-medium transition-colors pb-1 -mb-[14px] border-b-2 border-transparent hover:border-secondary/50"><span class="material-symbols-outlined text-sm">share</span> Shared</a>
+<<<<<<< HEAD
             <button class="ml-4 bg-secondary text-on-secondary px-4 py-2 rounded-lg font-bold flex items-center gap-2 shadow-sm hover:brightness-110 transition-all text-sm" onclick="window.location.href='create_new_trip.html'">
                 <span class="material-symbols-outlined text-sm" data-icon="add">add</span> New Trip
             </button>
+=======
+            
+>>>>>>> f194c7c (updated project)
         </div>
     </nav>
 </header>
@@ -72,7 +76,7 @@
 <button class="flex items-center gap-2 px-6 py-3 rounded-xl border border-outline-variant bg-white text-on-surface font-semibold hover:bg-surface-container transition-all">
 <span class="material-symbols-outlined">download</span> Export PDF
                         </button>
-<button class="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-on-primary font-semibold hover:shadow-xl transition-all" onclick="window.location.href='trip_budget_breakdown.html'">
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-on-primary font-semibold hover:shadow-xl transition-all" onclick="document.getElementById('modal-edit-budget').classList.remove('hidden')">
 <span class="material-symbols-outlined">edit</span> Modify Budget
                         </button>
 </div>
@@ -83,22 +87,33 @@
 <div class="col-span-12 lg:col-span-8 bento-card p-8 flex flex-col justify-between min-h-[320px] relative overflow-hidden">
 <div class="absolute -right-16 -top-16 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl"></div>
 <div class="relative z-10">
-<h3 class="font-label-lg text-on-surface-variant mb-12 uppercase tracking-wider">Total Estimated Cost</h3>
+<h3 class="font-label-lg text-on-surface-variant mb-12 uppercase tracking-wider">Total Budgeted Cost</h3>
 <div class="flex flex-col md:flex-row md:items-baseline gap-4">
-<span class="font-display text-6xl md:text-8xl text-primary font-bold tracking-tighter">$4,850.00</span>
-<span class="bg-tertiary-container/10 text-on-tertiary-container px-4 py-1 rounded-full font-bold text-label-lg flex items-center gap-1">
+<span class="font-display text-6xl md:text-8xl text-primary font-bold tracking-tighter" id="total-spent">$0.00</span>
+<span id="budget-status" class="px-4 py-1 rounded-full font-bold text-label-lg flex items-center gap-1">
 <span class="material-symbols-outlined text-sm">warning</span> 12% over goal
                                 </span>
 </div>
 </div>
+
+<div class="relative z-10 mt-8">
+    <div class="flex justify-between items-center mb-2">
+        <span class="text-label-sm font-bold text-on-surface-variant">Spending Progress</span>
+        <span id="progress-pct" class="text-label-sm font-bold text-primary">0%</span>
+    </div>
+    <div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+        <div id="budget-progress-bar" class="h-full bg-primary transition-all duration-1000 ease-out shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)]" style="width: 0%"></div>
+    </div>
+</div>
+
 <div class="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t border-outline-variant/30">
 <div>
 <p class="text-label-sm text-outline mb-1 uppercase">Daily Average</p>
-<p class="text-headline-md text-primary font-bold">$485.00</p>
+<p class="text-headline-md text-primary font-bold" id="daily-avg">$0.00</p>
 </div>
 <div>
 <p class="text-label-sm text-outline mb-1 uppercase">Trip Goal</p>
-<p class="text-headline-md text-on-surface-variant font-bold">$4,200.00</p>
+<p class="text-headline-md text-on-surface-variant font-bold" id="trip-goal">$5,000.00</p>
 </div>
 <div>
 <p class="text-label-sm text-outline mb-1 uppercase">Collaborators</p>
@@ -233,7 +248,7 @@
 <th class="py-4 px-2 text-right">Amount</th>
 </tr>
 </thead>
-<tbody class="divide-y divide-outline-variant/10">
+<tbody id="transaction-list" class="divide-y divide-outline-variant/10">
 <tr class="hover:bg-surface-container-low transition-colors group">
 <td class="py-4 px-2 font-semibold text-primary">Emirates Flight (LHR -&gt; GOA)</td>
 <td class="py-4 px-2">
@@ -303,4 +318,379 @@
 <span class="material-symbols-outlined text-2xl">add</span>
 </button>
 </div>
+
+<!-- Traveloop AI Floating Assistant -->
+<div id="ai-assistant" class="fixed bottom-8 right-8 z-[200] flex flex-col items-end gap-4 pointer-events-none">
+    <!-- Chat Window (Hidden by default) -->
+    <div id="ai-chat-window" class="w-80 md:w-96 bg-surface/80 backdrop-blur-xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20 overflow-hidden flex flex-col transition-all duration-500 scale-90 opacity-0 translate-y-10 pointer-events-auto">
+        <div class="p-4 bg-primary text-on-primary flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+                </div>
+                <div>
+                    <p class="font-bold text-sm">Traveloop Assistant</p>
+                    <p class="text-[10px] opacity-80">Online | AI-Powered</p>
+                </div>
+            </div>
+            <button onclick="toggleAIChat()" class="hover:bg-white/10 rounded-full p-1 transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div id="chat-messages" class="flex-1 p-4 space-y-4 max-h-[300px] overflow-y-auto bg-surface-container-lowest/50">
+            <div class="flex gap-3">
+                <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-white text-[10px] flex-shrink-0">T</div>
+                <div class="bg-surface-container-high p-3 rounded-2xl rounded-tl-none text-xs text-on-surface">
+                    Hi! I'm your Traveloop Assistant. Need help planning your next adventure or finding the best flight deals?
+                </div>
+            </div>
+        </div>
+        <div class="p-4 bg-surface-container-low border-t border-outline-variant/10 flex gap-2">
+            <input id="ai-input" type="text" placeholder="Ask me anything..." class="flex-1 bg-surface-container-lowest border-none rounded-full px-4 py-2 text-xs focus:ring-2 focus:ring-secondary outline-none">
+            <button onclick="sendAIMessage()" class="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[18px]">send</span>
+            </button>
+        </div>
+    </div>
+    <!-- Floating Button -->
+    <button onclick="toggleAIChat()" class="w-16 h-16 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group">
+        <div class="absolute -top-1 -right-1 w-4 h-4 bg-error rounded-full border-2 border-surface animate-pulse"></div>
+        <span class="material-symbols-outlined text-[32px] group-hover:rotate-12 transition-transform">smart_toy</span>
+    </button>
+</div>
+
+<script>
+    const STORAGE_KEY = 'traveloop_budget_v1';
+    const GOAL_KEY = 'traveloop_budget_goal';
+
+    function init() {
+        renderAll();
+    }
+
+    function updateGoal() {
+        const val = document.getElementById('input-goal').value;
+        localStorage.setItem(GOAL_KEY, val);
+        document.getElementById('modal-edit-budget').classList.add('hidden');
+        renderAll();
+        alert('Budget goal updated!');
+    }
+
+    const expenseForm = document.getElementById('add-expense-form');
+    if (expenseForm) {
+        expenseForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const expense = {
+                id: Date.now(),
+                title: document.getElementById('exp-title').value,
+                amount: parseFloat(document.getElementById('exp-amount').value),
+                category: document.getElementById('exp-category').value,
+                date: document.getElementById('exp-date').value
+            };
+            
+            let expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            expenses.push(expense);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
+            
+            this.reset();
+            document.getElementById('modal-add-expense').classList.add('hidden');
+            renderAll();
+            alert('Expense saved!');
+        });
+    }
+
+    function deleteExpense(id) {
+        if(confirm('Delete this expense?')) {
+            let expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            expenses = expenses.filter(e => e.id !== id);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
+            renderAll();
+        }
+    }
+
+    function renderAll() {
+        const expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        const goal = parseFloat(localStorage.getItem(GOAL_KEY) || '5000');
+        
+        // Update Goal Displays
+        const totalSpentEl = document.getElementById('total-spent');
+        const tripGoalEl = document.getElementById('trip-goal');
+        const inputGoalEl = document.getElementById('input-goal');
+        
+        // Big number shows the budget goal as "Estimated Cost"
+        if (totalSpentEl) totalSpentEl.innerText = `$${goal.toLocaleString()}`;
+        if (tripGoalEl) tripGoalEl.innerText = `$${goal.toLocaleString()}`;
+        if (inputGoalEl) inputGoalEl.value = goal;
+
+        // Calculate actual spending
+        let totalSpent = 0;
+        let cats = { Transport: 0, Accommodation: 0, Activities: 0, Food: 0 };
+        expenses.forEach(e => {
+            totalSpent += e.amount;
+            if (cats[e.category] !== undefined) {
+                cats[e.category] += e.amount;
+            }
+        });
+
+        // Update stats
+        const dailyAvgEl = document.getElementById('daily-avg');
+        if (dailyAvgEl) dailyAvgEl.innerText = `$${(totalSpent / 10).toFixed(2)}`;
+
+        // Progress tracking
+        const progressBar = document.getElementById('budget-progress-bar');
+        const progressPct = document.getElementById('progress-pct');
+        const statusEl = document.getElementById('budget-status');
+        
+        const spentPercentage = (totalSpent / goal) * 100;
+        const displayPct = Math.min(spentPercentage, 100).toFixed(1);
+        
+        if (progressPct) progressPct.innerText = `${displayPct}% spent`;
+        if (progressBar) progressBar.style.width = `${Math.min(spentPercentage, 100)}%`;
+
+        if (statusEl) {
+            if (totalSpent > goal) {
+                statusEl.className = 'px-4 py-1 rounded-full font-bold text-label-lg flex items-center gap-1 bg-error-container text-on-error-container';
+                statusEl.innerHTML = `<span class="material-symbols-outlined text-sm">warning</span> Over Budget`;
+            } else {
+                statusEl.className = 'px-4 py-1 rounded-full font-bold text-label-lg flex items-center gap-1 bg-secondary-container text-on-secondary-container';
+                statusEl.innerHTML = `<span class="material-symbols-outlined text-sm">check_circle</span> On Track`;
+            }
+        }
+
+        // Render Table
+        const list = document.getElementById('transaction-list');
+        if (list) {
+            list.innerHTML = expenses.map(e => `
+                <tr class="hover:bg-surface-container-low transition-colors group border-b border-outline-variant/10">
+                    <td class="py-4 px-2 font-semibold text-primary">${e.title}</td>
+                    <td class="py-4 px-2">
+                        <span class="px-3 py-1 rounded-full ${getCatClass(e.category)} text-[10px] font-bold uppercase">${e.category}</span>
+                    </td>
+                    <td class="py-4 px-2 text-on-surface-variant">${e.date}</td>
+                    <td class="py-4 px-2 text-right font-bold">$${e.amount.toLocaleString()}</td>
+                    <td class="py-4 px-2 text-right opacity-0 group-hover:opacity-100">
+                        <button onclick="deleteExpense(${e.id})" class="material-symbols-outlined text-error text-sm">delete</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Category Breakdown
+        const categorySpans = document.querySelectorAll('.bento-card .w-full.mt-8 .flex span.font-bold');
+        const keys = ['Transport', 'Accommodation', 'Activities', 'Food'];
+        categorySpans.forEach((el, i) => {
+            if (keys[i]) el.innerText = `$${cats[keys[i]].toLocaleString()}`;
+        });
+    }
+
+    function getCatClass(cat) {
+        if(cat === 'Transport') return 'bg-primary-container text-on-primary-fixed';
+        if(cat === 'Accommodation') return 'bg-secondary-container text-on-secondary-container';
+        if(cat === 'Activities') return 'bg-tertiary-fixed text-on-tertiary-fixed-variant';
+        return 'bg-surface-container-highest text-on-primary-container';
+    }
+
+    init();
+</script>
+
+<style>
+    #chat-messages::-webkit-scrollbar { width: 4px; }
+    #chat-messages::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
+</style>
+
+
+<!-- Modify Budget Modal -->
+<div id="modal-edit-budget" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity">
+    <div class="bg-surface rounded-2xl w-full max-w-sm shadow-2xl relative">
+        <div class="p-8">
+            <h3 class="font-display text-headline-md font-bold text-primary mb-4">Set Trip Goal</h3>
+            <div class="space-y-4">
+                <div class="space-y-2">
+                    <label class="text-label-lg font-bold">Total Budget Goal ($)</label>
+                    <input type="number" id="input-goal" value="5000" class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 outline-none">
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="document.getElementById('modal-edit-budget').classList.add('hidden')" class="flex-1 py-3 border border-outline rounded-xl font-bold hover:bg-surface-container">Cancel</button>
+                    <button onclick="updateGoal()" class="flex-1 py-3 bg-primary text-on-primary rounded-xl font-bold shadow-md">Save Goal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Expense Modal -->
+<div id="modal-add-expense" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity">
+    <div class="bg-surface rounded-2xl w-full max-w-md shadow-2xl relative">
+        <button onclick="document.getElementById('modal-add-expense').classList.add('hidden')" class="absolute top-4 right-4 w-10 h-10 bg-surface-container-high rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="p-8">
+            <h3 class="font-display text-headline-md font-bold text-primary mb-4">Add Expense</h3>
+            <form id="add-expense-form" class="space-y-4">
+                <div class="space-y-2">
+                    <label class="text-label-lg font-bold">Description</label>
+                    <input type="text" id="exp-title" required placeholder="e.g., Flight to Rome" class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="text-label-lg font-bold">Amount ($)</label>
+                        <input type="number" id="exp-amount" required class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 outline-none">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-label-lg font-bold">Category</label>
+                        <select id="exp-category" class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 outline-none">
+                            <option>Transport</option>
+                            <option>Accommodation</option>
+                            <option>Activities</option>
+                            <option>Food</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-label-lg font-bold">Date</label>
+                    <input type="date" id="exp-date" required class="w-full h-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30 px-4 outline-none">
+                </div>
+                <button type="submit" class="w-full py-3 bg-secondary text-on-secondary rounded-xl font-bold shadow-md hover:brightness-110 transition-all">Save Expense</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Floating Add Expense Button (Desktop) -->
+<button onclick="document.getElementById('modal-add-expense').classList.remove('hidden')" class="fixed bottom-28 right-8 w-16 h-16 bg-secondary text-on-secondary rounded-full shadow-2xl hidden lg:flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+    <span class="material-symbols-outlined text-3xl">add_shopping_cart</span>
+</button>
+
+<script>
+    const STORAGE_KEY = 'traveloop_budget_v1';
+    const GOAL_KEY = 'traveloop_budget_goal';
+
+    function init() {
+        renderAll();
+    }
+
+    function updateGoal() {
+        const val = document.getElementById('input-goal').value;
+        localStorage.setItem(GOAL_KEY, val);
+        document.getElementById('modal-edit-budget').classList.add('hidden');
+        renderAll();
+        alert('Budget goal updated!');
+    }
+
+    const expenseForm = document.getElementById('add-expense-form');
+    if (expenseForm) {
+        expenseForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const expense = {
+                id: Date.now(),
+                title: document.getElementById('exp-title').value,
+                amount: parseFloat(document.getElementById('exp-amount').value),
+                category: document.getElementById('exp-category').value,
+                date: document.getElementById('exp-date').value
+            };
+            
+            let expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            expenses.push(expense);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
+            
+            this.reset();
+            document.getElementById('modal-add-expense').classList.add('hidden');
+            renderAll();
+            alert('Expense saved!');
+        });
+    }
+
+    function deleteExpense(id) {
+        if(confirm('Delete this expense?')) {
+            let expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            expenses = expenses.filter(e => e.id !== id);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
+            renderAll();
+        }
+    }
+
+    function renderAll() {
+        const expenses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        const goal = parseFloat(localStorage.getItem(GOAL_KEY) || '5000');
+        
+        // Update Goal Displays
+        const totalSpentEl = document.getElementById('total-spent');
+        const tripGoalEl = document.getElementById('trip-goal');
+        const inputGoalEl = document.getElementById('input-goal');
+        
+        // Big number shows the budget goal as "Estimated Cost"
+        if (totalSpentEl) totalSpentEl.innerText = `$${goal.toLocaleString()}`;
+        if (tripGoalEl) tripGoalEl.innerText = `$${goal.toLocaleString()}`;
+        if (inputGoalEl) inputGoalEl.value = goal;
+
+        // Calculate actual spending
+        let totalSpent = 0;
+        let cats = { Transport: 0, Accommodation: 0, Activities: 0, Food: 0 };
+        expenses.forEach(e => {
+            totalSpent += e.amount;
+            if (cats[e.category] !== undefined) {
+                cats[e.category] += e.amount;
+            }
+        });
+
+        // Update stats
+        const dailyAvgEl = document.getElementById('daily-avg');
+        if (dailyAvgEl) dailyAvgEl.innerText = `$${(totalSpent / 10).toFixed(2)}`;
+
+        // Progress tracking
+        const progressBar = document.getElementById('budget-progress-bar');
+        const progressPct = document.getElementById('progress-pct');
+        const statusEl = document.getElementById('budget-status');
+        
+        const spentPercentage = (totalSpent / goal) * 100;
+        const displayPct = Math.min(spentPercentage, 100).toFixed(1);
+        
+        if (progressPct) progressPct.innerText = `${displayPct}% spent`;
+        if (progressBar) progressBar.style.width = `${Math.min(spentPercentage, 100)}%`;
+
+        if (statusEl) {
+            if (totalSpent > goal) {
+                statusEl.className = 'px-4 py-1 rounded-full font-bold text-label-lg flex items-center gap-1 bg-error-container text-on-error-container';
+                statusEl.innerHTML = `<span class="material-symbols-outlined text-sm">warning</span> Over Budget`;
+            } else {
+                statusEl.className = 'px-4 py-1 rounded-full font-bold text-label-lg flex items-center gap-1 bg-secondary-container text-on-secondary-container';
+                statusEl.innerHTML = `<span class="material-symbols-outlined text-sm">check_circle</span> On Track`;
+            }
+        }
+
+        // Render Table
+        const list = document.getElementById('transaction-list');
+        if (list) {
+            list.innerHTML = expenses.map(e => `
+                <tr class="hover:bg-surface-container-low transition-colors group border-b border-outline-variant/10">
+                    <td class="py-4 px-2 font-semibold text-primary">${e.title}</td>
+                    <td class="py-4 px-2">
+                        <span class="px-3 py-1 rounded-full ${getCatClass(e.category)} text-[10px] font-bold uppercase">${e.category}</span>
+                    </td>
+                    <td class="py-4 px-2 text-on-surface-variant">${e.date}</td>
+                    <td class="py-4 px-2 text-right font-bold">$${e.amount.toLocaleString()}</td>
+                    <td class="py-4 px-2 text-right opacity-0 group-hover:opacity-100">
+                        <button onclick="deleteExpense(${e.id})" class="material-symbols-outlined text-error text-sm">delete</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Category Breakdown
+        const categorySpans = document.querySelectorAll('.bento-card .w-full.mt-8 .flex span.font-bold');
+        const keys = ['Transport', 'Accommodation', 'Activities', 'Food'];
+        categorySpans.forEach((el, i) => {
+            if (keys[i]) el.innerText = `$${cats[keys[i]].toLocaleString()}`;
+        });
+    }
+
+    function getCatClass(cat) {
+        if(cat === 'Transport') return 'bg-primary-container text-on-primary-fixed';
+        if(cat === 'Accommodation') return 'bg-secondary-container text-on-secondary-container';
+        if(cat === 'Activities') return 'bg-tertiary-fixed text-on-tertiary-fixed-variant';
+        return 'bg-surface-container-highest text-on-primary-container';
+    }
+
+    init();
+</script>
+
 </body></html>
