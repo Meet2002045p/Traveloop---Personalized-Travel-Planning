@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Your Trip | Traveloop</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#6bd8cb",
+                      "error-container": "#ffdad6",
+                      "background": "#f8f9ff",
+                      "on-tertiary": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "surface-container-high": "#dce9ff",
+                      "inverse-surface": "#213145",
+                      "outline-variant": "#c6c6cd",
+                      "on-error": "#ffffff",
+                      "primary-container": "#131b2e",
+                      "secondary-fixed": "#89f5e7",
+                      "surface": "#f8f9ff",
+                      "primary": "#000000",
+                      "inverse-primary": "#bec6e0",
+                      "surface-dim": "#cbdbf5",
+                      "on-tertiary-fixed": "#341100",
+                      "on-surface-variant": "#45464d",
+                      "inverse-on-surface": "#eaf1ff",
+                      "tertiary-fixed-dim": "#ffb690",
+                      "tertiary-container": "#341100",
+                      "surface-container-lowest": "#ffffff",
+                      "outline": "#76777d",
+                      "on-secondary-fixed": "#00201d",
+                      "on-primary-container": "#7c839b",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#131b2e",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-container": "#006f66",
+                      "surface-container": "#e5eeff",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed": "#ffdbca",
+                      "surface-variant": "#d3e4fe",
+                      "surface-container-low": "#eff4ff",
+                      "on-tertiary-fixed-variant": "#783200",
+                      "primary-fixed-dim": "#bec6e0",
+                      "tertiary": "#000000",
+                      "secondary": "#006a61",
+                      "primary-fixed": "#dae2fd",
+                      "on-tertiary-container": "#d95f00",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#565e74",
+                      "on-surface": "#0b1c30",
+                      "secondary-container": "#86f2e4",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "on-background": "#0b1c30",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-secondary-fixed-variant": "#005049"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "margin-mobile": "20px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px",
+                      "section-gap": "80px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "label-lg": ["Inter"],
+                      "headline-lg-mobile": ["Montserrat"],
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "display": ["Montserrat"],
+                      "body-md": ["Inter"],
+                      "headline-md": ["Montserrat"],
+                      "headline-lg": ["Montserrat"]
+              },
+              "fontSize": {
+                      "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .skyline-gradient {
+            background: linear-gradient(180deg, rgba(107, 216, 203, 0.05) 0%, rgba(248, 249, 255, 1) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface selection:bg-secondary-container">
+<!-- TopAppBar Component -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-variant rounded-full active:scale-95 duration-200" data-icon="close">close</button>
+<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary p-2" data-icon="notifications">notifications</span>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-high">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxM_xfJCZjlP0oytrCs4-MPU4C98rnPH-zy_xH9JxNU510LY5tV0rYggV2x-6q9Jh5JxE3A5uGbaXDnVWyUeGrbsDMvnZ9QX1dQLK50dua33sqD1Wk_WzHXX_UevzAJEWb578-dwdbaJZeD78iSu7Aj9zK_jNwEZLKhHHlgbn3Gu8Hm8otM5TGUU5W-pImPwxcj0vtKzdR-MpOi0oMpehhebS1NyGcx8WEZBSmo6bRPa041LlOX6TC2Au52cqp2Tmmd2HxyW-lP7A"/>
+</div>
+</div>
+</header>
+<main class="min-h-[calc(100vh-160px)] flex items-center justify-center skyline-gradient py-12 px-margin-mobile">
+<div class="max-w-3xl w-full">
+<!-- Form Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_15px_30px_-10px_rgba(0,106,97,0.08)] overflow-hidden">
+<!-- Cover Photo Upload Section -->
+<div class="relative h-64 bg-surface-container-high group cursor-pointer border-b border-outline-variant/10">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="A wide panoramic shot of a serene mountain lake at dawn, with mist rising from the water and deep teal mountain silhouettes in the distance. The lighting is soft and ethereal, using a palette of cool blues and gentle sunrise oranges to create a sense of vast exploration and tranquility. The visual style is high-fidelity travel photography with an airy, modern atmospheric depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn7_iGtkdOID4Dosy0AlrXEa0Xk7QeGzMjHYekYr1fkS4C0Nyc1il8ST2DFlamvJ1-iHTsvPxscC8qRyLbHq8QRnSkdo9ylc-Rje8UI11peGP8-9938fNEhjVdpKrrZydLJtK3U8aZ874sBbyM7YOoIwEgZfXS0WkAJkA8ZTT0vRXO9z03DQLuRAiOYJmPNZuAMDpcTVN45cpMNWR2y7gYKNC1JwnineZFUwpAXB3L4a-Hknnd3gyf9zby_ACGdSSWnE3pzFVmh1I"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
+<div class="bg-surface/90 backdrop-blur-sm p-4 rounded-full shadow-lg active:scale-95 duration-200">
+<span class="material-symbols-outlined text-secondary text-4xl" data-icon="add_a_photo">add_a_photo</span>
+</div>
+<p class="mt-4 text-white font-label-lg drop-shadow-md">Change Cover Photo</p>
+</div>
+</div>
+<!-- Form Content -->
+<div class="p-8 md:p-12 space-y-8">
+<div class="space-y-2">
+<h1 class="font-display text-headline-lg text-primary">Start a New Journey</h1>
+<p class="text-on-surface-variant font-body-md">Capture the essence of your next big adventure.</p>
+</div>
+<form class="space-y-6">
+<!-- Trip Name -->
+<div class="space-y-2">
+<label class="font-label-lg text-on-surface-variant block px-1" for="trip-name">Trip Name</label>
+<input class="w-full h-14 bg-surface rounded-lg border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary text-body-lg px-4 transition-all" id="trip-name" placeholder="e.g., Summer in Santorini" type="text"/>
+</div>
+<!-- Date Picker Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="font-label-lg text-on-surface-variant block px-1" for="start-date">Start Date</label>
+<div class="relative">
+<input class="w-full h-14 bg-surface rounded-lg border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary text-body-md px-4 pr-12 transition-all" id="start-date" type="date"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-lg text-on-surface-variant block px-1" for="end-date">End Date</label>
+<div class="relative">
+<input class="w-full h-14 bg-surface rounded-lg border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary text-body-md px-4 pr-12 transition-all" id="end-date" type="date"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="event">event</span>
+</div>
+</div>
+</div>
+<!-- Description -->
+<div class="space-y-2">
+<label class="font-label-lg text-on-surface-variant block px-1" for="description">Description (Optional)</label>
+<textarea class="w-full bg-surface rounded-lg border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary text-body-md p-4 transition-all resize-none" id="description" placeholder="What are the goals for this trip?" rows="4"></textarea>
+</div>
+<!-- Collaborative Section (Visual Flavor) -->
+<div class="flex items-center justify-between p-4 bg-secondary-container/20 rounded-lg border border-secondary-container/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="group_add">group_add</span>
+<div>
+<p class="font-label-lg text-on-secondary-container">Invite Fellow Travelers</p>
+<p class="text-label-sm text-on-secondary-fixed-variant">Plan this itinerary together</p>
+</div>
+</div>
+<button class="bg-secondary text-on-secondary px-4 py-2 rounded-lg font-label-lg active:scale-95 transition-transform shadow-sm" type="button">Invite</button>
+</div>
+<!-- Action Buttons -->
+<div class="pt-4 flex flex-col md:flex-row gap-4">
+<button class="flex-1 h-14 bg-gradient-to-r from-secondary to-secondary-fixed-dim text-on-secondary font-label-lg rounded-lg shadow-[0_8px_20px_-6px_rgba(0,106,97,0.4)] hover:brightness-110 active:scale-[0.98] transition-all duration-200" type="submit">
+                                Save &amp; Continue
+                            </button>
+<button class="h-14 px-8 border-2 border-secondary text-secondary font-label-lg rounded-lg hover:bg-secondary/5 active:scale-[0.98] transition-all duration-200" type="button">
+                                Save as Draft
+                            </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Hint text below card -->
+<p class="mt-8 text-center text-on-surface-variant font-label-sm">
+                You can change these details at any time from your trip dashboard.
+            </p>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-8 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-highest border-t border-outline-variant/50">
+<div class="flex items-center gap-2">
+<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
+<span class="text-on-surface-variant font-label-sm hidden md:inline ml-2">© 2024 Traveloop. Explore with precision.</span>
+</div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant font-label-sm hover:text-secondary underline transition-all" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-label-sm hover:text-secondary underline transition-all" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-label-sm hover:text-secondary underline transition-all" href="#">Help Center</a>
+</div>
+<span class="text-on-surface-variant font-label-sm md:hidden">© 2024 Traveloop. Explore with precision.</span>
+</footer>
+</body></html>

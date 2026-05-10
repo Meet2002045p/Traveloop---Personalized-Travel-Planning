@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Traveloop | Itinerary Builder</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c6c6cd;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #76777d;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#d3e4fe",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#341100",
+                        "surface": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#d95f00",
+                        "primary-fixed": "#dae2fd",
+                        "surface-tint": "#565e74",
+                        "on-tertiary-fixed": "#341100",
+                        "surface-dim": "#cbdbf5",
+                        "tertiary": "#000000",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "secondary": "#006a61",
+                        "outline": "#76777d",
+                        "outline-variant": "#c6c6cd",
+                        "primary-container": "#131b2e",
+                        "surface-variant": "#d3e4fe",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#89f5e7",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdbca",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "secondary-container": "#86f2e4",
+                        "on-background": "#0b1c30",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary-container": "#006f66",
+                        "surface-container-low": "#eff4ff",
+                        "on-surface": "#0b1c30",
+                        "on-secondary-fixed-variant": "#005049",
+                        "surface-container-high": "#dce9ff",
+                        "primary": "#000000",
+                        "background": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#45464d",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "on-secondary-fixed": "#00201d",
+                        "on-primary-container": "#7c839b",
+                        "on-primary-fixed": "#131b2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "section-gap": "80px"
+                    },
+                    "fontFamily": {
+                        "display": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen overflow-x-hidden">
+<!-- Top Navigation -->
+<nav class="sticky top-0 z-50 flex justify-between items-center px-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md shadow-sm border-b border-outline-variant/20">
+<div class="flex items-center gap-8">
+<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-display text-label-lg font-bold text-secondary transition-colors" href="traveloop_dashboard.html">Dashboard</a>
+<a class="font-display text-label-lg text-on-surface-variant hover:text-secondary transition-colors" href="my_trips.html">My Trips</a>
+<a class="font-display text-label-lg text-on-surface-variant hover:text-secondary transition-colors" href="city_activity_search.html">Explore</a>
+<a class="font-display text-label-lg text-on-surface-variant hover:text-secondary transition-colors" href="trip_budget_breakdown.html">Budget</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">favorite</button>
+<div class="h-10 w-10 rounded-full bg-surface-container-highest border border-outline-variant/30 overflow-hidden">
+<img alt="User profile" class="h-full w-full object-cover" data-alt="A professional headshot of a smiling young adult with warm, natural lighting. The person has a friendly expression, set against a soft-focus, minimalist background that complements the modern, clean aesthetic of the travel planning interface. The overall mood is approachable and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOu-wHz-4orrSLamHS0mduJYL3eAAhfcdlg4j4ShFcInhjyv_Qii9445LXJvN-x4MXBRBgZS6zO0Dhv5l289NEex1H9y5CZOwcLV8gv7l4IOUqcW_yvK71_kUwqSeTkDp_uNtLFMOzeMg7ZNJQqSKRpgn9I8tl6X-Edt3O39QrWXoKtQltHrhh0wbQiUkt7GQD2aKFiaEWGcoSdTGnhRyswEkWMIDCH7pzgy-CUO0CkpfESK4INy8ozN1BFxNj84HXN85Jg5f7GVA"/>
+</div>
+</div>
+</nav>
+<!-- Sidebar (Left) -->
+<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col p-6 pt-24 bg-surface-container-low border-r border-outline-variant/30 z-40 hidden md:flex">
+<div class="mb-8 flex flex-col gap-2">
+<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
+<span class="text-label-sm text-on-surface-variant opacity-70">Trip Planner</span>
+</div>
+<button class="w-full bg-secondary text-on-secondary py-3 px-4 rounded-lg font-display text-label-lg font-semibold flex items-center justify-center gap-2 mb-8 hover:opacity-90 active:scale-[0.98] transition-all shadow-sm" onclick="window.location.href='create_new_trip.html'">
+<span class="material-symbols-outlined">add</span>
+            New Trip
+        </button>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 font-semibold shadow-sm transition-all" href="traveloop_dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-label-lg">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all" href="my_trips.html">
+<span class="material-symbols-outlined">map</span>
+<span class="font-body-md text-label-lg">My Trips</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all" href="city_activity_search.html">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-body-md text-label-lg">Explore</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all" href="trip_budget_breakdown.html">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-body-md text-label-lg">Budget</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 flex flex-col lg:flex-row min-h-[calc(100vh-73px)]">
+<!-- Center Itinerary View -->
+<section class="flex-1 p-gutter lg:p-10 bg-surface">
+<header class="mb-10">
+<div class="flex items-center gap-2 text-label-sm text-secondary font-semibold uppercase tracking-wider mb-2">
+<span class="material-symbols-outlined text-[18px]">event_repeat</span>
+                    European Escape 2024
+                </div>
+<div class="flex justify-between items-end">
+<h1 class="font-display text-display text-on-surface">Paris Itinerary</h1>
+<div class="flex -space-x-3">
+<img alt="Collaborator" class="h-10 w-10 rounded-full border-2 border-white" data-alt="A portrait of a creative individual with a soft natural background, highlighting a clean and modern professional look suitable for a collaborative user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvSBzKoQnhfvj6dzDaS1abLFO6FBKf9aEognmpcN2FJVRfHlIIYgEVQTcwPnEJ4uXwBXR2-byZb5qTfBd6jKrexa1GNsyqPrUFYQQMDuTn7-Uzy6jKrYklDVNnF4DHPgzXa1XZ35G-aDDXrMYCNoeoAljCtkFBytmiMBpRplfx3cTFlqUUWXpk8SNFB1Cr_0b6HghWig4pUl4HCd1yPueP8IjNhTDG_UKMiQmCe4DWO-NmUTEo9W7mSWZggCVOp76A3ZSY8ECE7rA"/>
+<img alt="Collaborator" class="h-10 w-10 rounded-full border-2 border-white" data-alt="Portrait of a diverse professional woman in a bright, modern setting with soft lighting, reflecting a warm and collaborative spirit within a high-end digital workspace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9xTBjyeCVHcVh1WXakcV12LuzEGg00gdzoNqE7FuhxVEt62lAH650LQdtxyDXcXCgiYDfYkgtWuCH0OuYa8lJD7yt8ZsteKffJzVIv0a3VghaM2wiIs8tF29xr7fWSo9crYdJtmSOETW4u2HIEJDZcJE9ITJc1n9j2OWLwMVF1hhO70iJOj0T44ly7vpn9TuQrOzwYYEXsRvGPIE1aoqqwKehgls_8917MqZkFJF-mxdQdzqFL33ft0tp2wZzyJlT_Yp7CFhrOcU"/>
+<div class="h-10 w-10 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center text-label-sm font-bold text-primary">+3</div>
+</div>
+</div>
+</header>
+<!-- Day-Wise Layout (Center) -->
+<div class="grid grid-cols-1 gap-8 relative">
+<!-- Timeline Vertical Line -->
+<div class="absolute left-[24px] top-4 bottom-4 w-px bg-outline-variant/40 border-l border-dashed border-secondary/30 hidden sm:block"></div>
+<!-- Timeline Item: Morning -->
+<div class="relative pl-0 sm:pl-16 group">
+<div class="absolute left-4 top-1 w-4 h-4 rounded-full bg-secondary border-4 border-surface shadow-[0_0_0_4px_rgba(0,106,97,0.1)] hidden sm:block z-10"></div>
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 shadow-sm hover:shadow-md transition-all duration-300">
+<div class="flex flex-col md:flex-row gap-6">
+<div class="w-full md:w-32 h-32 rounded-lg overflow-hidden shrink-0">
+<img alt="Eiffel Tower" class="w-full h-full object-cover" data-alt="A breathtaking view of the Eiffel Tower at sunrise, captured with soft pastel sky colors and a light morning mist. The image exudes a serene and romantic atmosphere, with high-fidelity detail that captures the intricate ironwork against the gentle morning light. The composition is spacious and balanced, perfect for a luxury travel application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs3auixls8oZGGjBbFZbP-pShwK4KiIN40-XiqIFWo6DjffZNDm6EGAb8pzxkUEY1bfffA_lV1EU2s7JPAypsqnrAvG7poryz4nhyWyi-yUyA-A1XtV6DW52yJaufufpfq0KnAXbzjMj_hWBkOD3CGP5MEIarepM0vUg4xf9J6qE9QcDTYxK2aK7tWx5lc3UCjuDaGthrGSLwccBOSyLyiFt3MoRVLnfwcp3K6yp59uy6h5hm7hTsHWs4Ll-KjLZ8PRjN405WBEOQ"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="text-label-sm text-secondary font-bold uppercase mb-1 block">09:00 AM — Sightseeing</span>
+<h3 class="font-display text-headline-md text-on-surface">Eiffel Tower Sunrise Visit</h3>
+</div>
+<button class="material-symbols-outlined text-outline-variant hover:text-primary transition-colors">more_vert</button>
+</div>
+<p class="text-on-surface-variant text-body-md mb-4 leading-relaxed">Beat the crowds and enjoy the panoramic views of Paris. Don't forget to grab a croissant at the nearby boulangerie first.</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-highest text-on-primary-container rounded-full text-label-sm">High Priority</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-label-sm">Confirmed</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Item: Lunch -->
+<div class="relative pl-0 sm:pl-16 group">
+<div class="absolute left-4 top-1 w-4 h-4 rounded-full bg-secondary border-4 border-surface shadow-[0_0_0_4px_rgba(0,106,97,0.1)] hidden sm:block z-10"></div>
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 shadow-sm hover:shadow-md transition-all duration-300">
+<div class="flex flex-col md:flex-row gap-6">
+<div class="w-full md:w-32 h-32 rounded-lg overflow-hidden shrink-0">
+<img alt="Parisian Cafe" class="w-full h-full object-cover" data-alt="An intimate view of a charming Parisian sidewalk cafe during lunchtime. The scene is bathed in dappled sunlight filtering through green leaves, illuminating marble tables and wicker chairs. The atmosphere is cozy and sophisticated, with vibrant colors and rich textures that evoke a sense of leisure and culinary discovery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADgVtvDR_bdU4dO2k4VaqkSS_vDpB482-zThR6s-Ri_9rv5hzK8vLEPNwDPqyJU3U-Dnm1HjH4iIs23FApBl1QOrxREGxDw1yZQ55NjE3FMPh6Wyyq2ql7q30TGci_xG47RMEG7pecCgUeKAQ2h7j2PAyPlIDZEMnkzTRgsPEiwXk6YAqDNwcmLbwo9GHWLdKqykKblo1WUiXKymRwCn-xikGAHd_BuuC5d-hAJDtSxDqSd2uAvuB3t1JPPLU-ednQnTX3mbUfkNI"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="text-label-sm text-secondary font-bold uppercase mb-1 block">12:30 PM — Culinary</span>
+<h3 class="font-display text-headline-md text-on-surface">Lunch at Le Marais</h3>
+</div>
+<button class="material-symbols-outlined text-outline-variant hover:text-primary transition-colors">more_vert</button>
+</div>
+<p class="text-on-surface-variant text-body-md mb-4 leading-relaxed">A quaint bistro recommended by locals. Famous for their confit de canard and extensive wine list.</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-highest text-on-primary-container rounded-full text-label-sm">Reservation Needed</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State / Add Activity Area -->
+<div class="relative pl-0 sm:pl-16 group">
+<div class="absolute left-[20px] top-1 w-2 h-2 rounded-full bg-outline-variant hidden sm:block"></div>
+<div class="border-2 border-dashed border-outline-variant/30 rounded-xl p-8 flex flex-col items-center justify-center gap-4 text-center group-hover:border-secondary/50 transition-all bg-surface-container-lowest/50">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">post_add</span>
+</div>
+<div>
+<p class="font-display text-label-lg text-on-surface">Add an afternoon activity</p>
+<p class="text-label-sm text-on-surface-variant">Drag from explore or click to create new</p>
+</div>
+<button class="px-6 py-2 rounded-full border border-secondary text-secondary font-display text-label-sm hover:bg-secondary hover:text-on-secondary transition-all">
+                            Add Now
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Sidebar: Search & Map -->
+<aside class="w-full lg:w-96 flex flex-col bg-surface-container border-l border-outline-variant/20 p-6 overflow-y-auto">
+<!-- Search Section -->
+<div class="mb-10">
+<h4 class="font-display text-label-lg text-primary uppercase tracking-widest mb-6">Explore Nearby</h4>
+<div class="relative mb-6">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-12 pl-12 pr-4 bg-surface rounded-xl border border-outline-variant/50 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all text-body-md" placeholder="Museums, parks, cafes..." type="text"/>
+</div>
+<!-- Suggestions Bento -->
+<div class="grid grid-cols-1 gap-4">
+<div class="group cursor-pointer">
+<div class="relative h-24 rounded-xl overflow-hidden mb-2">
+<img alt="Louvre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A cinematic, wide-angle shot of the Louvre Museum at night, with the iconic glass pyramids illuminated from within. The lighting is dramatic and warm, contrasting with the cool blue of the twilight sky. The image emphasizes the architectural grandeur and cultural richness of Paris in a high-fidelity, modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC45KvMbuxlBxCJv1xGdrqBVv_1LHpofRpopwmGsLYpHJMHcfxxqGKn9Hd-TMO9SXmeSu_I-57HBOkeGXmpbod693srLgLBAeMh2RGsu1i9WFpf2l73mazh2XHNRV24p6GWVXrufCI9aS4ESNNqJPOESoH0LmbCWQRcrUdX0mOCcGlgJQ6o3gl4qek-DzYO9p9TZu45brFEDW9VdPa3lWZfeXuwdfW_Masq_J_qMiaZlxhOAe5L6k9cS-ieLtLqmJGC0Obv51AZnZ8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-3 text-white">
+<p class="text-label-sm font-bold">The Louvre Museum</p>
+<p class="text-[10px] opacity-80">4.8 ★ (120k reviews)</p>
+</div>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative h-24 rounded-xl overflow-hidden mb-2">
+<img alt="Montmartre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A vibrant street scene in Montmartre, Paris, featuring the Sacré-Cœur Basilica in the background. The morning light is crisp and bright, highlighting the white stone of the church and the colorful storefronts of the winding streets. The atmosphere is lively and inviting, capturing the quintessential charm of a Parisian neighborhood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTwNYqfPPOn77Ou4D0x8V1X3dbPT4wVS2q0iGXUfmZs4VEtmCvQJd7NHFCcDLnj2Z0mQGuPuRVz8hIm1EoIFWC8z6xokuxVN2cF2ReCF8FOvK94P5ZD3dmOJYZlrNTFC2Hd_ZEZeNWSiWQiNDpG44aG-GsmiXOInGqTKVSbonaUOoAnvVTGHxFL1XtTkF44JJNYpsCkWuFrHmSVeP12Tiyw_u66M02cA-JAcojO1wNrYEnEYh5nHrA-OCjmPgBCgFYPavo6Vv7KP4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-3 text-white">
+<p class="text-label-sm font-bold">Montmartre Walk</p>
+<p class="text-[10px] opacity-80">4.5 ★ (45k reviews)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Map Preview -->
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-display text-label-lg text-primary uppercase tracking-widest">Map View</h4>
+<button class="text-secondary text-label-sm font-bold">Expand</button>
+</div>
+<div class="relative h-64 rounded-2xl overflow-hidden border border-outline-variant/30 shadow-lg">
+<img alt="Map of Paris" class="w-full h-full object-cover" data-alt="A stylized, minimalist map illustration of central Paris with highlighted routes and icons for major landmarks like the Eiffel Tower and Notre Dame. The color palette is modern and airy, utilizing Wanderlust Blue and Horizon Teal accents to signify an organized itinerary. The overall look is clean, functional, and aesthetically pleasing." data-location="Paris" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm8WskMQQPLggzO6VAZg_P8wvDq5J4DKdYpqKus8cMFZxIlxbWgvolJWIRcmb4bsYsWiYXbrS0C1bFiGwMiRVS0t9Gx5ZJXgzFfZ9qsO1U0LGjo4oREJfTzDVGy0Cc45kwgHQ6xqRNoMB7F4YQvaVbCs78TFKkvBQdLMfoPkH-TCRBP42lACMO2nLZALvSMeGrziuqARIryKdiU-jO6AEQ_uKRNgvuXNd3pJQdqUfeEcv-6jVX5p2cWrcUAUMPLAomctY28tUIWJQ"/>
+<div class="absolute inset-0 bg-secondary/5 pointer-events-none"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="w-8 h-8 bg-secondary rounded-full border-4 border-white shadow-xl flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+</div>
+<div class="mt-4 p-4 bg-surface-container-low rounded-xl border border-outline-variant/20">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm text-on-surface-variant">Estimated Travel Time</span>
+<span class="text-label-sm font-bold text-primary">24 mins</span>
+</div>
+<div class="w-full h-1 bg-outline-variant/20 rounded-full overflow-hidden">
+<div class="w-3/4 h-full bg-secondary rounded-full"></div>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-highest border-t border-outline-variant/50">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
+<p class="font-body-md text-label-sm text-on-surface-variant">© 2024 Traveloop. Explore with precision.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-body-md text-label-sm text-on-surface-variant hover:text-secondary underline transition-all" href="#">Privacy Policy</a>
+<a class="font-body-md text-label-sm text-on-surface-variant hover:text-secondary underline transition-all" href="#">Terms of Service</a>
+<a class="font-body-md text-label-sm text-on-surface-variant hover:text-secondary underline transition-all" href="#">Help Center</a>
+</div>
+</footer>
+<!-- Mobile FAB -->
+<button class="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-2xl flex items-center justify-center z-50">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+</body></html>

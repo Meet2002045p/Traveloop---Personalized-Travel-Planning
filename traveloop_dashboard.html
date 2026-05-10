@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Traveloop Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#d3e4fe",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#341100",
+                        "surface": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#d95f00",
+                        "primary-fixed": "#dae2fd",
+                        "surface-tint": "#565e74",
+                        "on-tertiary-fixed": "#341100",
+                        "surface-dim": "#cbdbf5",
+                        "tertiary": "#000000",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "secondary": "#006a61",
+                        "outline": "#76777d",
+                        "outline-variant": "#c6c6cd",
+                        "primary-container": "#131b2e",
+                        "surface-variant": "#d3e4fe",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#89f5e7",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdbca",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "secondary-container": "#86f2e4",
+                        "on-background": "#0b1c30",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary-container": "#006f66",
+                        "surface-container-low": "#eff4ff",
+                        "on-surface": "#0b1c30",
+                        "on-secondary-fixed-variant": "#005049",
+                        "surface-container-high": "#dce9ff",
+                        "primary": "#000000",
+                        "background": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#45464d",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "on-secondary-fixed": "#00201d",
+                        "on-primary-container": "#7c839b",
+                        "on-primary-fixed": "#131b2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "section-gap": "80px"
+                    },
+                    "fontFamily": {
+                        "display": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(198, 198, 205, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="hidden md:flex fixed left-0 top-0 h-screen w-64 bg-surface-container-low flex-col p-6 pt-24 border-r border-outline-variant/30 z-40">
+<div class="flex items-center gap-3 mb-10">
+<span class="material-symbols-outlined text-primary text-3xl">travel</span>
+<div>
+<h1 class="font-display text-headline-md font-bold text-primary">Traveloop</h1>
+<p class="text-label-sm text-on-surface-variant">Trip Planner</p>
+</div>
+</div>
+<nav class="flex-grow space-y-2">
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 font-semibold shadow-sm transition-transform active:scale-[0.98]" href="traveloop_dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-label-lg">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300" href="my_trips.html">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-body-md text-label-lg">My Trips</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300" href="city_activity_search.html">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-body-md text-label-lg">Explore</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300" href="trip_budget_breakdown.html">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-body-md text-label-lg">Budget</span>
+</a>
+</nav>
+<button class="mt-auto w-full bg-secondary text-on-secondary py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg hover:brightness-110 active:scale-95 transition-all" onclick="window.location.href='create_new_trip.html'">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+            New Trip
+        </button>
+</aside>
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-margin-mobile md:pl-72 md:pr-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary text-3xl">menu</span>
+</div>
+<h2 class="font-display text-headline-md font-bold text-primary">Dashboard</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary w-64 text-label-lg" placeholder="Search trips..." type="text"/>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors" data-icon="favorite">favorite</span>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-highest shadow-sm">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpeCLalZVh7yZJgXsPIh7d0N5bIJiZQT65pCySTUxiQGPTl3236Xv9e-Q8ghq28TuSiZ1sO_j9W4IxtJaoYSAB7mHBLBgGJhBlx9DOccpv1WFlrK5ExH5xKhtUh9uhf3kDc5q3O9kzkGzrUSN9y0GR9fT4fEHWa3KQTeBN3hghAcC67XGUD5JltH8iRXzcE_vHxzrfSz_HkxGo8CUc_KeoyzSvaACz_wa66xrFkB0pSJDj2oD0x0rhNpx8dr1KiuWBhxD-rWirIQ4"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="md:pl-64 min-h-screen pb-20">
+<div class="px-margin-mobile md:px-margin-desktop py-8 max-w-7xl mx-auto space-y-10">
+<!-- Hero / Welcome -->
+<section class="relative rounded-3xl overflow-hidden min-h-[320px] flex flex-col justify-center p-8 md:p-12 text-on-primary">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A cinematic, wide-angle shot of a serene alpine lake surrounded by majestic snow-capped mountains at sunrise. The lighting is ethereal with soft morning mist rising from the turquoise water. The overall aesthetic is clean, modern, and atmospheric, reflecting a high-end wanderlust theme with cool blues and warm golden highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAltuWz0s1WRZ6rEndb8nzYg1_TrU3evf15Ys84SL4fHJ5XJVSFHXrEgPCCLitkv1AhcgJzE9qKsrhvTYBp-OrgQOmJnKblKcAp4WraZXj8usFpEDr7oiOaMAkWcvLMrLaYfS3V1rPjXLTTtZdkmXkHl2dm9YW6hnaaMc8_2z3EOTE9ramfm_kZYTnl7JshKZ0lTL6IizAL18x471tHYhWLnUG4F15bfNeqoCElsHIwGUVx72nNd7icY_29eQ6fA9E6xE19xbUbIVc"/>
+<div class="absolute inset-0 bg-gradient-to-r from-on-background/80 via-on-background/40 to-transparent"></div>
+</div>
+<div class="relative z-10 space-y-4 max-w-lg">
+<h1 class="font-display text-display leading-tight">Ready for your next adventure?</h1>
+<p class="font-body-lg text-surface-variant/90">Your journey starts here. Collaborative planning, precise budgeting, and unforgettable memories await.</p>
+<button class="mt-6 px-8 py-4 bg-secondary-container text-on-secondary-container rounded-full font-bold text-label-lg flex items-center gap-3 hover:shadow-xl hover:scale-105 active:scale-95 transition-all" onclick="window.location.href='create_new_trip.html'">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+                        Plan New Trip
+                    </button>
+</div>
+</section>
+<!-- Widgets Row -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Budget Widget -->
+<div class="glass-card p-6 rounded-2xl flex flex-col gap-4 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="bg-secondary/10 p-3 rounded-xl">
+<span class="material-symbols-outlined text-secondary" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<span class="text-label-sm font-semibold text-secondary bg-secondary-container/30 px-3 py-1 rounded-full">On Track</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider font-bold">Current Trip Budget</p>
+<h3 class="text-headline-lg font-display text-on-surface">$2,450.00 <span class="text-label-lg font-normal text-outline">/ $3,500</span></h3>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-2/3"></div>
+</div>
+</div>
+<!-- Upcoming Stops -->
+<div class="glass-card p-6 rounded-2xl md:col-span-2 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="bg-primary/5 p-3 rounded-xl">
+<span class="material-symbols-outlined text-primary" data-icon="route">route</span>
+</div>
+<h3 class="text-headline-md font-display">Upcoming Stops</h3>
+</div>
+<button class="text-secondary text-label-lg font-bold hover:underline" onclick="window.location.href='itinerary_view.html'">View Itinerary</button>
+</div>
+<div class="flex items-center gap-6 overflow-x-auto pb-2 scrollbar-hide">
+<div class="flex-shrink-0 flex flex-col items-center gap-2">
+<div class="w-16 h-16 rounded-full border-4 border-secondary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of the Eiffel Tower structure against a clear blue Parisian sky, focusing on the intricate ironwork and architectural precision. Modern, high-key photography style with soft ambient light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABcY0-lb46NZbaezUdOtPcWn6-wWXNjKr0sa60GkXlsIA60v44quoCPoeMLDzZ0GjuBdWwHe96kwFVMcViZrVkni_caBjhuxuftS9rR9jQwVWrm_Qa_Lx37pnIL_EdGwrAp8AyvnWKQPI7eVdwcmd0Ydp5OuG6piSAghqnAm8vaq4abRUlVLt7nKAnzB-GgHeyEmU4S98kUXJM11dnCwreeoxX6wx-JSxwEExyvyaql_918O2Gt4DZeNgxLwZlnEuC8KCJaY0X-zY"/>
+</div>
+<span class="text-label-sm font-bold">Paris</span>
+</div>
+<div class="flex-shrink-0 w-8 h-px bg-outline-variant/50"></div>
+<div class="flex-shrink-0 flex flex-col items-center gap-2">
+<div class="w-16 h-16 rounded-full border-4 border-surface-container overflow-hidden grayscale">
+<img class="w-full h-full object-cover" data-alt="The Big Ben clock tower in London during the golden hour, with warm sunlight hitting the stone facade against a deep blue sky. Minimalist and professional travel imagery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_GgiqzloDQE2UibGUdjzAYBjyK4Xeurdtmj_VfNl4InRhvFqTcuDND72pbEtJZQONSg2ps6tMMu_D1Jjq8sFut-VC_V3AvMFzEZpK8YYlymWXKIJXVrpD7sB64K5JBzJFAy8175Xc_axGl2bWkzIVneGKhmsAk-AMuSgb1Ih_GW3BKXNoZ_OdN9YReuQwF-n93TNohSV6lyHdxAbWVqaUe6p2PSLRojXiQrCy7DAuxiUwh1B7RTaFwxRjhJODFVbv6aOZwYFc2ms"/>
+</div>
+<span class="text-label-sm text-outline">London</span>
+</div>
+<div class="flex-shrink-0 w-8 h-px bg-outline-variant/50"></div>
+<div class="flex-shrink-0 flex flex-col items-center gap-2">
+<div class="w-16 h-16 rounded-full border-4 border-surface-container overflow-hidden grayscale">
+<img class="w-full h-full object-cover" data-alt="Colorful houses of Cinque Terre, Italy, clinging to the cliffs above the Mediterranean sea. The lighting is bright and airy, emphasizing the vibrant coastal atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRxou-N4UhmqiCdBmdce0dbXIgga0fYYYHTnct2MOfZ2cqdhAmZKC1Qn4slNmzzpR0Lg9S36iQQkIydCmWyIl7ol8HDOR_GbrYDZCEV-iogjEbeStCkh3Sd0XASPv6ee6wpC9uiliLR_UOzOXK5leKENqR7Q8PFZh5Qj3I1QoZlQcDk-P2T0e1-Zi97k7Kk7i-C2z5g-lLgmfYLpe9fj61k3Z8rNwh_PuVd1TGIAerK4mSpDt00fp8jsUN3uHkv67cHOb-3gP00Yw"/>
+</div>
+<span class="text-label-sm text-outline">Vernazza</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Trips -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="font-display text-headline-lg">Recent Trips</h3>
+<button class="text-on-surface-variant flex items-center gap-1 text-label-lg hover:text-secondary transition-colors" onclick="window.location.href='my_trips.html'">
+                        All Trips <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Trip Card 1 -->
+<div class="group relative bg-surface-container-lowest rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Modern Tokyo street scene at dusk with glowing neon signs reflecting on wet pavement. The image is crisp, utilizing a deep blue and violet color palette with high-contrast lighting to evoke an organized but exciting city vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7wIT_cGhP14_yP9Gh7AimY8eSr6LE70zbL0-4a2khVyJa9ShfCQB1NVXp1daCzub8bvrmX5FAUSit-DotKG2VbkaecexTwTwdJw1eXylpB2KPFHp1GjW9IGLlWazXbcDkNt_vN6ghLjhPju9M6luEbUJZHSoMPeXY6WWcnxstXbusM-KKl2apbrKPaLjvWZebDBSk-gV6_IVdTv219NZxE8mI8AsW1BT9Ob_uclBiCTo7FRg_BN9mJ3dULQAwX0qjkL1p-eqYvb0"/>
+</div>
+<div class="p-6 space-y-2">
+<div class="flex justify-between items-center">
+<h4 class="font-display text-headline-md">Tokyo Tech Hunt</h4>
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest overflow-hidden">
+<img alt="Collaborator 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABnQgT_a4fnm1LaXQYNS59jZHclCpa10FKqG13t0zaif_jTNbbsEVTRnnULtQIZmMB2OplmPZtVSF28eqTq4bBq9MauEtrbutCu_iZ2iXmN0AUFeVp9zduT9t1-1Y62yfiwt_8WHFC5RxopNYD0EinZNkiuakg6TiJwLxaaBfPgnn6W_24Aea4lTBalVTerA3K6qDGP7ppMqQhI5_zI9wub7BFGCfnSNEtsrzia-eRq40-Epe37LgJUiUvn9T7yuEL39qRjtEcjss"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest overflow-hidden">
+<img alt="Collaborator 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4whveYA7tmXNh3BS-w75prHTdUKhy3-nBCP2e_uK0WnRg9T4L65HAGBFA1yL1PM6PDnQmMAXnG4Kz_DCiqih3hyMEYxS7RiAqNpFxItGlIDjGfYXydnVmo8_m6KCE1zp9jgAaG-SM1WBQOE_hJ_yLIGn8M6V67FxF5SgE9L_IW3nmj_ZWQpos1RXdrEcO_B5OHQA4PCmo6v3vymcpRtrKcrwkGWhUhjhvsG9t7MK3rHXku_wqo6dM9cYP0cJX9avLUeNddRIVQ1s"/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-label-sm font-medium">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                                Oct 12 - Oct 20, 2024
+                            </div>
+<div class="pt-4 flex items-center justify-between border-t border-outline-variant/30 mt-4">
+<span class="text-secondary font-bold text-label-lg">4 Stops</span>
+<span class="bg-surface-container px-3 py-1 rounded-full text-on-surface-variant text-label-sm font-bold">Planned</span>
+</div>
+</div>
+</div>
+<!-- Trip Card 2 -->
+<div class="group relative bg-surface-container-lowest rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A peaceful canal in Venice, Italy, with a lone gondola under an ancient stone bridge. The lighting is soft and golden, typical of a late afternoon. The water is calm and dark, creating a serene and romantic atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaDGt3gS5Z0iZJqlvTxWxmZ2-Nki8H55ctH0pIRJ6BD3W_919cjSv9Z4UOPG09bj_qf-zxOXA0WokfdbNlc_VqijuFe_7gXkdScIhm2YXBFHnGoV2nXfK5VplXcP28Ticm5FzQDCCnVQji4G7541Nr6GpBK4wxxlueUrqx_MMLCz5pot7GCLHo79cLkFypD-zDHsO_Qj7LrwFaLlL5vunjJfFEKODerOKfCf6y9wjKnHUkIMFb3qJ9Y_jqQPt5tJvzp17zO7-6urQ"/>
+</div>
+<div class="p-6 space-y-2">
+<div class="flex justify-between items-center">
+<h4 class="font-display text-headline-md">Venetian Echoes</h4>
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest overflow-hidden">
+<img alt="Collaborator 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1MvWJYspKSnGSeU1J9eSXSuifHM_kBPWbGg1026XNI6t-O9_4XK_YLw7OvAIrz5XESj5D8j6nhIg7ktrMAAbLqM-eCX19ImffSN55adBYGDptyleulW1jU8s1eh_8J3JemC2E7ULca8VKoLDHtTXi3ApiYGRU9TrfYWF2LStK7GMu9-FjG0iPSk3Qpi4S5uOtTRVGZVFHjKrHtRwmfQmp_24mmds53VMJ-AiqpB_HgmcULv5ZoyLNadW28e6yf3PkjVz5AEbVCxU"/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-label-sm font-medium">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                                Sep 04 - Sep 11, 2024
+                            </div>
+<div class="pt-4 flex items-center justify-between border-t border-outline-variant/30 mt-4">
+<span class="text-secondary font-bold text-label-lg">7 Stops</span>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-bold">Completed</span>
+</div>
+</div>
+</div>
+<!-- Empty State / Add Trip -->
+<div class="group border-2 border-dashed border-outline-variant rounded-3xl flex flex-col items-center justify-center p-8 text-center gap-4 hover:bg-surface-container-low transition-all cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</div>
+<div>
+<p class="font-display text-headline-md text-on-surface">Plan something new</p>
+<p class="text-label-sm text-on-surface-variant">Your bucket list is waiting</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommended for You -->
+<section class="space-y-6">
+<div class="flex flex-col gap-2">
+<h3 class="font-display text-headline-lg">Recommended for You</h3>
+<p class="text-on-surface-variant">Based on your recent interests and community favorites.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<!-- Recommendation 1 (Large) -->
+<div class="md:col-span-2 relative rounded-3xl overflow-hidden aspect-[16/9] group shadow-lg">
+<img class="w-full h-full object-cover" data-alt="A lush, tropical villa in Bali surrounded by deep green palm trees and a vibrant blue infinity pool. High-key lighting makes the greens pop, while the atmospheric depth suggests a peaceful, luxurious retreat. Modern travel aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPjkw1XqpKe8k8mAJ299mTFFf4mPWQ0UwKsMARUGOgbmgJsANs32WvMPd2oVCRT5yzGXioO9IiNuNIZ4DjgbwaqMfWH5WE4BvEQYzxSnRY0ZKQ5-xKF-tQFQk1AosLsFIiYdQhOrkg_iahKP6nKwSWM-VkvVN9sR7WLXfKEw_iw4SgQ-BXyOKb1aBeFGWWe3nQNsROdlvBzIkG9Kw28zqVECzTtIx7b9ZBVXq5VgimJeK-S1PYLixydqDbaExpJUNKB8s7kjIRztg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+<div>
+<span class="bg-secondary text-on-secondary text-[10px] uppercase font-bold px-2 py-1 rounded mb-2 inline-block">Top Trending</span>
+<h4 class="text-white font-display text-headline-lg">Bali Serenity</h4>
+<p class="text-white/80 text-label-sm">Perfect for mindfulness &amp; relaxation</p>
+</div>
+<span class="material-symbols-outlined text-white text-3xl group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
+</div>
+</div>
+<!-- Recommendation 2 -->
+<div class="relative rounded-3xl overflow-hidden aspect-square group shadow-lg">
+<img class="w-full h-full object-cover" data-alt="The Taj Mahal in Agra, India, reflected in the perfectly still water of the front pool. Soft morning lighting creates a dreamy, symmetrical composition with a clean sky. Aesthetic focus on heritage and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIxCFXUFPS-PiWV9BvMST3fxw9yPKMXWE36xdkcCOutGsBW0RcpchtIX_lfIoQTs8SDbcYN5qpG6QGWugsdWtDcZNyCmIvraJWNpv6ZPw6dyh8LgOW7xwqdIMvQ8-s67IaheC63XGVx9x9tztjofTTeXXyoaqFNWFKf-dkJjxB9sc20L_GNxiKHHvbowdUSfqOO0ZD6AKxKZYGgsk9WKZTBW3E7enEf2nZtkc_gTiv4SgvRCFGqh1gbDrOWwJL_1SIhuL6njjRH7k"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<h4 class="text-white font-display text-headline-md">Agra Heritage</h4>
+<p class="text-white/80 text-label-sm">History &amp; Architecture</p>
+</div>
+</div>
+<!-- Recommendation 3 -->
+<div class="relative rounded-3xl overflow-hidden aspect-square group shadow-lg">
+<img class="w-full h-full object-cover" data-alt="The Sydney Opera House at twilight, illuminated against a deep navy sky. The lights from the harbor reflect on the water, creating a vibrant yet sophisticated city atmosphere. High-fidelity architectural photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK_nqaEyQAR9U3zkTm2x_FTmxK2JJV-7xeh7bXutks_ikau6SN_7cye9ZmcmxnKJ4rVcoxhAxi5L1htPPG4017yInudca5Gi_G3XWXgGXQhsKOHgV_ZFY9SgorbkBt2mjPuZ3uWeGZhSWZ_w2mTqUYtvwEry0uOzCfwBKQS0vAA4wUlRsCp8238LBo44gyF484xlAOEIITyxJaTKhrea7Tfnh1Gyi2a_gjlyMfXAXeaScB1Cy04roXL5xYbBl4IwZe5J6L-hp-WPY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<h4 class="text-white font-display text-headline-md">Sydney Harbor</h4>
+<p class="text-white/80 text-label-sm">Modern City Vibe</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-md border-t border-outline-variant/20 flex justify-around items-center py-3 z-50">
+<button class="flex flex-col items-center gap-1 text-secondary font-bold" onclick="window.location.href='traveloop_dashboard.html'">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px]">Dashboard</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="text-[10px]">Trips</span>
+</button>
+<button class="bg-secondary text-on-secondary p-3 rounded-full -mt-10 shadow-lg border-4 border-surface active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant" onclick="window.location.href='city_activity_search.html'">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="text-[10px]">Explore</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant" onclick="window.location.href='trip_budget_breakdown.html'">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="text-[10px]">Budget</span>
+</button>
+</nav>
+<!-- Footer (Web Only) -->
+<footer class="hidden md:flex w-full py-8 px-margin-desktop bg-surface-container-highest flex-col md:flex-row justify-between items-center gap-4 border-t border-outline-variant/50 ml-64 max-w-[calc(100%-16rem)]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">travel</span>
+<p class="font-body-md text-label-sm text-on-surface-variant">© 2024 Traveloop. Explore with precision.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant text-label-sm hover:text-secondary underline transition-all" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant text-label-sm hover:text-secondary underline transition-all" href="#">Terms of Service</a>
+<a class="text-on-surface-variant text-label-sm hover:text-secondary underline transition-all" href="#">Help Center</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,152 @@
+--- Page 1 ---
+Traveloop – Personalized Travel Planning 
+Made Easy
+The overarching vision for Traveloop is to becom e a personalized, intelligent, and 
+colla borative platform that transforms the way individuals plan and exper ience travel. 
+The platform aims to empower users to dream, design, and organize trips with ease by 
+offering an end-to-end travel planning tool that combines flexibilit y and interactivity. 
+It envisions a world where users can explor e global destinations, visualize their 
+journeys through structured itineraries, make cost-effectiv e decis ions, and share their 
+travel plans within a com munity—making travel planning as excitin g as the trip itself. 
+The mission for the hackathon team is to build a user-cen tric, responsive applic ation 
+that simplif ies the com plexity of plan ning multi-cit y travel. The platform should provide 
+travelers with intuitive tools to: 
+ Add and manage travel stops and durations 
+ Explor e cities  and activities of interest 
+ Estimate trip budgets automatically 
+ Visualize timelines and plans 
+ Share trip plans with others Overall Vision
+Mission
+
+--- Page 2 ---
+ 
+ 
+Design and develop a complet e travel plan ning applic ation where users can: 
+ Create customized multi-cit y itineraries 
+ Assign travel dates, activities, and budgets 
+ Discover activ ities and destinations through search 
+ Receiv e cost breakdowns and visual calendars 
+ Share their plans publicly or with friends 
+The applic ation must demon strate proper use of relational databases to store and 
+retrieve complex travel data such as user-specif ic itineraries, stops, activities, and 
+estimated expen ses. The system should also suppor t dynamic user interfaces that 
+adapt to each user's trip flow. 
+Features: 
+The applic ation for Traveloop will include the following com prehensive set of 
+features, ensuring a rich and user-friendly exper ience across desktop or 
+mobile platforms: 
+ Description : Entry poin t of the app allowing users to create or acces s 
+their accou nt. 
+ Purpose: Authenticate users to manage personal travel plan s. 
+ Key Function ality/Com ponents: 
+Ema il & password fields , Login button, Signup link, "Forgot Password", 
+basic validation. This involves constructing a solution that is both function al and insightful, powered by 
+a well-des igned relational database and a smoot h frontend exper ience. Teams must 
+focus on enabling users to organize personalized trips efficien tly, stay within budget, 
+and enjoy full visibility of their journey. 
+ 
+ Problem Statement
+1. Login / Signup Screen
+
+--- Page 3 ---
+ 
+ Description : Central hub showing upcom ing trips, popular cities , and 
+quick action s. 
+ Purpose: Allows users to navigate to their trips and explor e inspiration. 
+ Key Function ality/Com ponents: 
+Welco me mes sage, list of recen t trips, “Plan New Tripˮ button, 
+recom men ded destinations, budget highlights. 
+ 
+ Description : Form to initiate a new trip by providing a name, travel dates, 
+and a description . 
+ Purpose: Begins the proces s of creating a personalized travel plan. 
+ Key Function ality/Com ponents: 
+Trip name, start & end dates, trip description , cover photo upload (option al), 
+save button. 
+ Description : List view of all trips created by the user with basic summary 
+data.  Purpose: Easily acces s and manage existing or upcoming trips. 
+ Key Function ality/Com ponents: 
+Trip cards showing name, date range, destination count, edit/ view/delet e action s. 4. My Trips (Trip List) Screen3. Create Trip Screen2. Dashboard / Home Screen
+
+--- Page 4 ---
+ 
+ Description : Interface to add cities , dates, and activities for each 
+stop.  Purpose: Construct the full day-wise trip plan in an interactive 
+format. 
+ Key Function ality/Com ponents: 
+“Add Stopˮ button, select city and travel dates, assign activities to each 
+stop, reorder cities . 
+ 
+ Description : Visual representation of the com pleted trip itinerary.  Purpose: 
+Review the full plan in a structured format (timeline or grouped by cities ). 
+ Key Function ality/Com ponents: 
+Day-wise layout, city headers, activity blocks  with time and cost, view mode 
+toggle (calendar/list). 
+ Description : Search interface to find and add cities  to a trip, with info like 
+country, cost index, and popularity. 
+ Purpose: Discover and include relevant cities  in the itinerary. 
+ Key Function ality/Com ponents: 5. Itinerary Builder Screen
+6. Itinerary View Screen 
+7. City Search 
+
+--- Page 5 ---
+Search bar, list of cities  with meta info, “Add to Tripˮ button, filter 
+by country/region. 
+ Description : Browse and select things to do in each stop, categorized by 
+interest or cost. 
+ Purpose: Enrich trips with exper iences like sightseein g, food tours, or 
+adventure activities. 
+ Key Function ality/Com ponents: 
+Activity filters (type, cost, duration ), add/remove buttons, quick view 
+of description  and images. 
+ 
+ 
+ Description : Summarized financial view showing estima ted total cost 
+and breakdowns. 
+ Purpose: Helps travelers stay informed and within budget. 
+ Key Function ality/Com ponents: Cost breakdown by transport, stay, activities, 
+meals; pie/bar charts, average cost per day, alerts for over budget days. 
+ Description : A per-trip checklis t where users can add, check off, and 
+manage items  they need to pack for their journey. 8. Activity Search
+9. Trip Budget & Cost Breakdown Screen 
+10. Packing Checklist Screen
+
+--- Page 6 ---
+ Purpose: Helps travelers stay organized and ensure nothing essential 
+is forgotten before or during the trip. 
+ Key Function ality/Com ponents: 
+Add/remo ve checklis t items, mark items as packed, categorize by type 
+(clothing, docu ments, electr onics), reset checklis t for re-use. 
+ Description : Public page displaying a sharable version of an 
+itinerary.  Purpose: Allows others to view, get inspired, or copy the 
+trip. 
+ Key Function ality/Com ponents: 
+Public URL, itinerary summa ry, “Copy Tripˮ button, social media sharing, 
+read-on ly view. 
+ Description : User settings page to updat e profile information and preferences. 
+ Purpose: Enables users to control their data, preferences, and privacy. 
+ Key Function ality/Com ponents: 
+Editable fields  (name, photo, ema il), language preference, delet e acco unt, 
+saved destinations list. 
+ Description : A simple text note-taking screen where users can write 
+and save notes or reminders tied to a specif ic trip or day. 11. Shared/Public Itinerary View Screen
+12. User Proﬁle / Settings Screen
+13. Trip Notes / Journal Screen
+
+--- Page 7 ---
+ Purpose: Lets travelers jot down important details such as hotel 
+check-in info, local contacts, or day-specif ic reminders without leaving 
+the app. 
+ Key Function ality/Com ponents: 
+Add/edit/ delet e notes per trip or per stop, times tamp display, notes list view 
+sorted by date.  
+ Description : Admin-only interface to track user trends, trip data, and 
+platform usage. 
+ Purpose: Helps in monitoring app adoption , popu lar cities , and user 
+behavior. 
+ Key Function ality/Com ponents: 
+Tables and charts of trips created, top cities /activities, user engagemen t 
+stats, user management tools. 
+Mocku p: https://link.excalidr aw.com/l/65VNwvy7c4X/22o30 WE3bE4 
+ 
+ 14. Admin / Analytics Dashboard (Optional)

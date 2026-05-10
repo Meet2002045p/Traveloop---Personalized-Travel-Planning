@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Traveloop - Trip Notes &amp; Journal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-surface": "#213145",
+                        "outline-variant": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "secondary-fixed": "#89f5e7",
+                        "surface": "#f8f9ff",
+                        "primary": "#000000",
+                        "inverse-primary": "#bec6e0",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary-fixed": "#341100",
+                        "on-surface-variant": "#45464d",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "tertiary-container": "#341100",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#76777d",
+                        "on-secondary-fixed": "#00201d",
+                        "on-primary-container": "#7c839b",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#131b2e",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#006f66",
+                        "surface-container": "#e5eeff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdbca",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary": "#000000",
+                        "secondary": "#006a61",
+                        "primary-fixed": "#dae2fd",
+                        "on-tertiary-container": "#d95f00",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#565e74",
+                        "on-surface": "#0b1c30",
+                        "secondary-container": "#86f2e4",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-background": "#0b1c30",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#005049"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "section-gap": "80px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .journal-backdrop {
+            background: linear-gradient(180deg, rgba(248, 249, 255, 1) 0%, rgba(235, 238, 255, 0.5) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-secondary-container">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col p-6 pt-24 bg-surface-container-low border-r border-outline-variant/30 shadow-sm z-40 hidden md:flex">
+<div class="mb-8">
+<h1 class="font-display text-headline-md font-bold text-primary">Traveloop</h1>
+<p class="text-on-surface-variant font-label-sm">Trip Planner</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300" href="traveloop_dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-lg">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 font-semibold shadow-sm transition-transform active:scale-[0.98]" href="my_trips.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="font-label-lg">My Trips</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300" href="city_activity_search.html">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-lg">Explore</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300" href="trip_budget_breakdown.html">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-lg">Budget</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="w-full py-3 bg-primary text-on-primary rounded-xl font-semibold shadow-md flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all" onclick="window.location.href='create_new_trip.html'">
+<span class="material-symbols-outlined">add</span>
+                New Trip
+            </button>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined md:hidden">menu</span>
+<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center bg-surface-container h-10 px-4 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-48" placeholder="Search entries..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">favorite</span>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-secondary-container">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional studio portrait of a modern traveler with a warm, welcoming expression. The lighting is soft and cinematic, highlighting natural skin tones against a clean, minimalist studio background. The overall aesthetic is high-end, sophisticated, and aligns with a premium travel brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4dHVsit__8_u4M8dAK-o7bInn8qICLTY0PfdW_djsPUVYo4j1DNxx7LVAYPl5EVYkkxD-KST2T-BJRcn0bUIXmTcWPYaMhA2UpATumadK6fDdqq4VR3Xnd29dvNPP5ES2jwV6S49q2rwGMlZ2wcu-f2ds3wJ7yS9A6vFX7cARhI-NtNU8hmjwh9vkCcnZCOD9QZ3uZartciV0mDwPCFfa_bL_8MTNtPqvGaTZ1nhUSE_lwMnue4NBI4vnO8WpOzzASWR620I23LI"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex flex-col md:flex-row h-[calc(100vh-73px)] md:ml-64">
+<!-- Sidebar: Note List -->
+<section class="w-full md:w-80 border-r border-outline-variant/20 bg-surface flex flex-col h-full overflow-hidden">
+<div class="p-6 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low">
+<h2 class="font-headline-md text-primary">Journal</h2>
+<button class="p-2 rounded-full hover:bg-surface-variant/50 transition-colors">
+<span class="material-symbols-outlined text-secondary">edit_square</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-3">
+<!-- Date Header -->
+<div class="text-label-sm text-outline uppercase tracking-widest pt-4 pb-2 px-2">July 2024</div>
+<!-- Journal Item Active -->
+<div class="p-4 rounded-xl bg-secondary-container/30 border-l-4 border-secondary shadow-sm cursor-pointer transition-all">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-lg text-secondary">Amalfi Coast</span>
+<span class="text-[10px] text-on-surface-variant font-medium">10:45 AM</span>
+</div>
+<h3 class="font-semibold text-on-surface mb-1 truncate">Sunset at Positano</h3>
+<p class="text-label-sm text-on-surface-variant line-clamp-2">The lemon groves smelled divine today. We found a hidden staircase leading down to...</p>
+</div>
+<!-- Journal Item -->
+<div class="p-4 rounded-xl hover:bg-surface-container transition-all cursor-pointer border border-transparent">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-lg text-on-surface-variant">Ravello</span>
+<span class="text-[10px] text-on-surface-variant font-medium">Yesterday</span>
+</div>
+<h3 class="font-semibold text-on-surface mb-1 truncate">Villa Cimbrone Gardens</h3>
+<p class="text-label-sm text-on-surface-variant line-clamp-2">Infinite views from the terrace. The marble statues look incredible against the blue sea.</p>
+</div>
+<div class="text-label-sm text-outline uppercase tracking-widest pt-4 pb-2 px-2">June 2024</div>
+<div class="p-4 rounded-xl hover:bg-surface-container transition-all cursor-pointer border border-transparent">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-lg text-on-surface-variant">Rome</span>
+<span class="text-[10px] text-on-surface-variant font-medium">Jun 28</span>
+</div>
+<h3 class="font-semibold text-on-surface mb-1 truncate">Trastevere Dinner</h3>
+<p class="text-label-sm text-on-surface-variant line-clamp-2">Best pasta carbonara I've ever had. Must remember the name of that small alleyway...</p>
+</div>
+</div>
+</section>
+<!-- Main Content: Writing Area -->
+<section class="flex-1 flex flex-col bg-surface-container-lowest relative overflow-hidden">
+<!-- Writing Toolbar -->
+<div class="px-8 py-3 bg-surface/40 backdrop-blur-sm border-b border-outline-variant/10 flex items-center justify-between sticky top-0">
+<div class="flex items-center gap-1">
+<button class="p-2 rounded hover:bg-surface-variant/30 text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_bold</span>
+</button>
+<button class="p-2 rounded hover:bg-surface-variant/30 text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_italic</span>
+</button>
+<button class="p-2 rounded hover:bg-surface-variant/30 text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_list_bulleted</span>
+</button>
+<div class="w-px h-6 bg-outline-variant/30 mx-2"></div>
+<button class="p-2 rounded hover:bg-surface-variant/30 text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<button class="p-2 rounded hover:bg-surface-variant/30 text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+</button>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-label-sm text-outline">Autosaved at 11:02 AM</span>
+<button class="flex items-center gap-2 bg-secondary text-on-secondary px-4 py-2 rounded-full font-label-lg shadow-sm hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                        Share
+                    </button>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto journal-backdrop">
+<div class="max-w-3xl mx-auto py-12 px-8">
+<!-- Metadata -->
+<div class="flex items-center gap-4 mb-8">
+<div class="flex -space-x-2">
+<img alt="Collaborator" class="w-8 h-8 rounded-full border-2 border-surface shadow-sm object-cover" data-alt="Close up portrait of a young woman with a joyful smile, wearing a stylish straw hat in a sun-drenched Mediterranean setting. Soft, warm golden hour lighting creates a dreamy and adventurous atmosphere. The visual style is vibrant yet clean, emphasizing a modern airy aesthetic with soft depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKYXOOqfo6I5kb8sxGA5F7xoY3Atg0_OBBCmvO3yyID3Hul9mkN84a3q7NORh4p1zIVJx8lBten_rS9ZiE91_D7abfzE98GCmLkxljip2WDnGnbUOiewHlFYoSTKa24SqbP5E29wVyTfNr9EvpubTjwoeptgj5eFIc2fa4N6q3HDaVGcWVeF8GpDe2bkz4zIZK6Jm034UQnH2F7VaUGdoA-R35SqmQ3zpmBiNDut0fZXZpOhRNwxloMpKi0CXMv3Mx6WKt5a-6ZZI"/>
+<img alt="Collaborator" class="w-8 h-8 rounded-full border-2 border-surface shadow-sm object-cover" data-alt="A portrait of a male traveler in his 30s, looking thoughtfully into the distance with a scenic mountain range in the background. The lighting is crisp and natural, suggesting an early morning hike. The composition uses a sophisticated blue and teal color palette to match the Traveloop brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNPX640iwlCy1XgNbbGARoyDDUE-1ikisZyqrrM1b4hiKKGBBKnT-WavINOuKJ3eiZpxI2za8syrxLw-phndW5X5gLspbxOUhCY-_Put1SNDEzFUm-BvNhqxRhqHD-qFuLlhn_Cy0EKCkAdHFaxqB5EoNgww97JwSPgVdm3BQSuetpp0uUP6cO0EE1-NxXFvoXMkwCd9bNYOwSlyVx5fLnZbR3-TtoX46hTRHDx0yxmWRbqc7tEbql7mhbHcJa-VfU6gP9SLZrQfI"/>
+</div>
+<div class="h-4 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="text-label-sm">July 12, 2024</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-label-sm">Positano, Italy</span>
+</div>
+</div>
+<!-- Title -->
+<input class="w-full bg-transparent border-none p-0 mb-6 font-display text-display text-primary placeholder:text-outline-variant focus:ring-0" type="text" value="Sunset at Positano"/>
+<!-- Body -->
+<div class="prose prose-lg max-w-none text-body-lg text-on-surface-variant leading-relaxed">
+<p class="mb-6">The lemon groves smelled divine today. We found a hidden staircase leading down from the main piazza that bypassed all the tourist crowds. Every step revealed a new angle of the pastel houses clinging to the cliffside like architectural barnacles.</p>
+<div class="grid grid-cols-2 gap-4 my-8">
+<div class="aspect-video rounded-2xl overflow-hidden shadow-lg">
+<img alt="Travel Photo" class="w-full h-full object-cover" data-alt="A breathtaking wide-angle shot of Positano, Italy, during the golden hour. The colorful buildings cascade down the steep cliffs to the shimmering turquoise sea. The sky is a soft mix of orange and lavender, creating a serene and romantic atmosphere. High-fidelity photography with sharp details and atmospheric depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtqBFZ1DgkGEfUMRuvHo2Dz5oEcmxkWHaPrw3ik9FgAubX-EbqQ9TW4W9LZjakgXN5GbWdvQXSzdhq-PoNha8HDes7SCIS05ZpEvtTSlBWV-d5J56rGe28wB8EfiT_YtRViv4XmxpMannCgxijDk9UwcfWGppI8-urwuDH7PB7G4FRbjGoEYYxm3kDJ9mPIpZ8gshutPDL4ae0XwwDxM7_D2-BMO4cR6GEHflt6pflwTFDE3oq__TxiCaS3VKNodEL-VEYCiHP8B4"/>
+</div>
+<div class="aspect-video rounded-2xl overflow-hidden shadow-lg">
+<img alt="Travel Photo" class="w-full h-full object-cover" data-alt="An artistic close-up of a rustic Italian cafe table featuring a fresh lemon spritz and a journal. The sunlight filters through vine leaves, creating dappled shadows. The aesthetic is clean and modern, focusing on the textures of the wood and the vibrant yellow of the citrus. Soft background blur enhances the peaceful mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4vzomro8bhd9uTQP8tN8b0lkNEtkLbet8ORrE3rLcQPx-qbiiNbHBMtqSfNKa4BwSrQi59W3abwbg3MC_PPE-JCkZnJYK-5YgZxFbXe8FJ0LXJgcNcT39lJTWUh7VVHfXClPhIvHYNEe3IsvIgoVxnHOfB13MwE9hdMX4zl3Shxj9JhuYfCBVIFoM_3ZNZ4MwYgy3FwQfX1FjdYUbME77cmxPuNs80aF1SPX7ZTi5P_wHA7hOTlS4gkf1TmMBg8XCJqWdWAlxF84"/>
+</div>
+</div>
+<p class="mb-6">We stopped for a quick espresso at a place called 'Bar Internazionale'. The owner told us about his grandfather who used to fish these waters long before the hotels were built. It's moments like these that make the trip feel real—not just a sequence of sights, but a collection of stories.</p>
+<div class="relative pl-6 border-l-4 border-secondary-fixed-dim italic my-8 text-on-surface">
+                            "Travel is the only thing you buy that makes you richer."
+                        </div>
+<textarea class="w-full bg-transparent border-none p-0 resize-none text-body-lg text-on-surface-variant placeholder:text-outline-variant focus:ring-0" placeholder="Start typing your next memory..." rows="8"></textarea>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Suppressed for focused journaling, but keeping semantic for structure) -->
+<footer class="md:ml-64 w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-highest border-t border-outline-variant/50">
+<div class="font-display text-headline-md font-bold text-primary">Traveloop</div>
+<p class="font-body-md text-label-sm text-on-surface-variant">© 2024 Traveloop. Explore with precision.</p>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-secondary underline transition-all font-body-md text-label-sm" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-secondary underline transition-all font-body-md text-label-sm" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-secondary underline transition-all font-body-md text-label-sm" href="#">Help Center</a>
+</div>
+</footer>
+</body></html>

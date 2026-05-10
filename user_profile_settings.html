@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "error-container": "#ffdad6",
+                    "background": "#f8f9ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container-high": "#dce9ff",
+                    "inverse-surface": "#213145",
+                    "outline-variant": "#c6c6cd",
+                    "on-error": "#ffffff",
+                    "primary-container": "#131b2e",
+                    "secondary-fixed": "#89f5e7",
+                    "surface": "#f8f9ff",
+                    "primary": "#000000",
+                    "inverse-primary": "#bec6e0",
+                    "surface-dim": "#cbdbf5",
+                    "on-tertiary-fixed": "#341100",
+                    "on-surface-variant": "#45464d",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed-dim": "#ffb690",
+                    "tertiary-container": "#341100",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#76777d",
+                    "on-secondary-fixed": "#00201d",
+                    "on-primary-container": "#7c839b",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#131b2e",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#006f66",
+                    "surface-container": "#e5eeff",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#ffdbca",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-fixed-variant": "#783200",
+                    "primary-fixed-dim": "#bec6e0",
+                    "tertiary": "#000000",
+                    "secondary": "#006a61",
+                    "primary-fixed": "#dae2fd",
+                    "on-tertiary-container": "#d95f00",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#565e74",
+                    "on-surface": "#0b1c30",
+                    "secondary-container": "#86f2e4",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-background": "#0b1c30",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-secondary-fixed-variant": "#005049"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "margin-mobile": "20px",
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "section-gap": "80px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "headline-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- TopAppBar Navigation -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md dark:bg-inverse-surface/80 shadow-sm border-b border-outline-variant/20">
+<div class="flex items-center gap-8">
+<span class="font-display text-headline-md font-bold text-primary dark:text-inverse-primary">Traveloop</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-label-lg" href="traveloop_dashboard.html">Dashboard</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-label-lg" href="my_trips.html">My Trips</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-label-lg" href="city_activity_search.html">Explore</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-bold font-label-lg" href="user_profile_settings.html">Profile</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant/50 rounded-full transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-secondary-container">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young woman with a friendly expression, set against a softly blurred urban backdrop. The lighting is natural and high-key, emphasizing a clean and modern aesthetic. She is wearing a stylish blazer, suggesting a persona of an organized and sophisticated traveler. The image is crisp with a shallow depth of field, maintaining a premium, high-fidelity look consistent with a high-end travel planning application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_hH8CdgZO0TKvjfQFdCO-tgt_e5wgEoaT--4MulFR3AUxc7Ug16NN4kymS8SAdf-VXpYxD8Bs_RLK_vsNMQaVHwoSU3sURLbcbBACGniNyoUp1FJJzulKI34hiQCZt-cPay0cPNOPQOKCkYa9VaruQxj3yKxaYabnfOv1tqDx_eH8x_RlD3A9PGQHZCZ8kDpe8-IyogSa84EX4pGTKmkjC6IwO6-a-TBo80Avzh_BXG6MQHX9smmYVHDwkwP7MJG99GJ3CyndI8A"/>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Sidebar Profile Info -->
+<aside class="lg:col-span-4 space-y-gutter">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 text-center">
+<div class="relative w-32 h-32 mx-auto mb-6">
+<img alt="Profile" class="w-full h-full object-cover rounded-full border-4 border-surface shadow-md" data-alt="A close-up studio portrait of a woman with vibrant energy and a bright smile. The lighting is studio-quality, soft, and wrap-around, highlighting her features with a clean, high-contrast look. The background is a minimalist, solid off-white, keeping the focus entirely on the subject. The style is modern, professional, and evocative of a high-end lifestyle brand, perfectly aligning with an upscale travel utility's aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcOZLRqTaOhW9JssmGzOznB95JiBsBujZ6nXJRwDOOARJeywiThhGiZ9Hu21qN6XGSBEVsnMUlt0jVKPeZ-7oVyH0v7FuNg4NKTtpRQjXvjq1gmFvUkxeGt00imp32DpmVT52iu8WapYFZbfxV0HtL-UPssLw_y5tzDvE6yDjuJZNy5UsA1riktPrSvLit_0fpHZg_Z0WNf1dP2ZOl5oXW2jMpbFUSjLCL-bCVQYrDbGvPMS84yHOhe3vEakcLOZFyOfNoKQgTJFY"/>
+<button class="absolute bottom-0 right-0 p-2 bg-secondary text-on-secondary rounded-full shadow-lg hover:bg-on-secondary-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+<h1 class="font-display text-headline-md font-semibold text-on-surface">Elena Rodriguez</h1>
+<p class="text-on-surface-variant font-body-md mt-1">elena.rodriguez@traveloop.com</p>
+<div class="mt-6 flex flex-wrap justify-center gap-2">
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-label-sm">Explorer Level 4</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-label-sm">Pro Member</span>
+</div>
+</div>
+<nav class="bg-surface-container-low rounded-xl border border-outline-variant/20 overflow-hidden">
+<a class="flex items-center gap-3 px-6 py-4 bg-secondary-container text-on-secondary-container font-semibold border-l-4 border-secondary" href="#account">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-lg">Account Information</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-on-surface-variant hover:bg-surface-variant/30 transition-all" href="#preferences">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-lg">Preferences</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-on-surface-variant hover:bg-surface-variant/30 transition-all" href="#security">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-lg">Security</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-on-surface-variant hover:bg-surface-variant/30 transition-all" href="#saved">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-label-lg">Saved Destinations</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<div class="lg:col-span-8 space-y-section-gap">
+<!-- Account Settings Section -->
+<section class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10" id="account">
+<div class="flex items-center gap-3 mb-8 border-b border-outline-variant/20 pb-4">
+<span class="material-symbols-outlined text-secondary">manage_accounts</span>
+<h2 class="font-display text-headline-md font-semibold">User Profile &amp; Settings</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+<div class="flex flex-col gap-2">
+<label class="text-label-lg text-on-surface-variant px-1">Full Name</label>
+<input class="h-12 px-4 rounded-lg border border-outline-variant/40 bg-surface focus:border-secondary focus:ring-1 focus:ring-secondary transition-all outline-none" type="text" value="Elena Rodriguez"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-lg text-on-surface-variant px-1">Email Address</label>
+<input class="h-12 px-4 rounded-lg border border-outline-variant/40 bg-surface focus:border-secondary focus:ring-1 focus:ring-secondary transition-all outline-none" type="email" value="elena.rodriguez@traveloop.com"/>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="text-label-lg text-on-surface-variant px-1">Bio</label>
+<textarea class="p-4 rounded-lg border border-outline-variant/40 bg-surface focus:border-secondary focus:ring-1 focus:ring-secondary transition-all outline-none" rows="3">Avid world traveler and landscape photographer. Always looking for the next hidden gem in Southeast Asia.</textarea>
+</div>
+</div>
+<div class="space-y-6 mb-10" id="preferences">
+<h3 class="font-display text-headline-sm font-semibold border-b border-outline-variant/10 pb-2">Language Preferences</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-label-lg text-on-surface-variant px-1">Primary Language</label>
+<select class="h-12 px-4 rounded-lg border border-outline-variant/40 bg-surface focus:border-secondary transition-all outline-none">
+<option>English (US)</option>
+<option>Spanish (ES)</option>
+<option>French (FR)</option>
+<option>German (DE)</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-lg text-on-surface-variant px-1">Currency Display</label>
+<select class="h-12 px-4 rounded-lg border border-outline-variant/40 bg-surface focus:border-secondary transition-all outline-none">
+<option>USD ($)</option>
+<option>EUR (€)</option>
+<option>GBP (£)</option>
+</select>
+</div>
+</div>
+</div>
+<div class="space-y-6 mb-10" id="security">
+<h3 class="font-display text-headline-sm font-semibold border-b border-outline-variant/10 pb-2">Security Settings</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface rounded-lg border border-outline-variant/20">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline">vibration</span>
+<div>
+<p class="font-label-lg text-on-surface">Two-Factor Authentication</p>
+<p class="text-label-sm text-on-surface-variant">Secure your account with SMS or Authenticator App</p>
+</div>
+</div>
+<button class="px-4 py-2 text-label-lg text-secondary border border-secondary rounded-lg hover:bg-secondary/5 transition-all">Enable</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface rounded-lg border border-outline-variant/20">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline">key</span>
+<div>
+<p class="font-label-lg text-on-surface">Change Password</p>
+<p class="text-label-sm text-on-surface-variant">Last changed 4 months ago</p>
+</div>
+</div>
+<button class="px-4 py-2 text-label-lg text-on-surface-variant hover:text-on-surface transition-all">Update</button>
+</div>
+</div>
+</div>
+<!-- Saved Destinations - Bento Style -->
+<div class="space-y-6" id="saved">
+<div class="flex items-center justify-between">
+<h3 class="font-display text-headline-sm font-semibold">Saved Destinations</h3>
+<a class="text-label-lg text-secondary hover:underline" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="group relative overflow-hidden rounded-xl h-48 shadow-sm">
+<img alt="Sydney" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A wide panoramic view of the Sydney Opera House at twilight, with the city lights beginning to glimmer against a deep indigo sky. The water in the foreground reflects the warm orange glow of the harbor lights. The image is captured with a high-fidelity, wide-angle lens, providing a majestic and inviting atmosphere that evokes the excitement of international travel and exploration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUl7Y63-IUxn3_w2NcHpsw94Ziz6kED-VhFHDZecvSIuqHC6EI4NzuZqR408whnvdefJSGK58PyoytBMBFV8rZ52A-Uv6brnfW5z7njzCRVDfPcgmTNBC8rr36Bs7iIb2Jr-seGiE5L29yu5K4xecqYPHro5eUDzb0K9jJQn8bwPPR3d-2eMb1znSUg71qxYG1RPCmhA1o6u_uYPSyIatiJo55IhqWTbZ7E2yRZ0TiR5LnbbBF8YRa1X2C8wreFr3RnW-UV_8rixI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-6">
+<span class="text-on-primary font-display text-headline-sm font-bold">Sydney, Australia</span>
+<span class="text-on-primary/80 text-label-sm">Added on June 12</span>
+</div>
+<button class="absolute top-4 right-4 p-2 bg-surface/20 backdrop-blur-md rounded-full text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="group relative overflow-hidden rounded-xl h-48 shadow-sm">
+<img alt="Kyoto" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A serene temple garden in Kyoto, Japan, during the peak of autumn. The vibrant red maple leaves frame a traditional pagoda reflected in a still koi pond. The lighting is soft and golden, characteristic of a late afternoon sun. The atmosphere is peaceful and contemplative, with rich textures and deep colors that embody the essence of discovery and cultural travel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkNCWhR9CnYAF0xmgtr-Q3eJ_BPGLEwcbPq-nk5fSgt1sYqhdXbeVR6b8SUPmy3z2Ygx3eaBX-8L--h7daJcz6RyKNV8yDLS8xYJ6HIEZSL3M7BZY6-vil8Dkuo91bgwXubSHljIftwvP9sD60LPDblYEkz1Ai0YfKSDSJTTbCTriHuIas6GTyOLxtWtG_VQ4feurW8idZ8e0yuU5DM-1Yqe_a5Dty6TtmvUcZFqxrMBAvgTXfdYAPUo1xdJAHNbAhJhYbp1WAsps"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-6">
+<span class="text-on-primary font-display text-headline-sm font-bold">Kyoto, Japan</span>
+<span class="text-on-primary/80 text-label-sm">Added on May 24</span>
+</div>
+<button class="absolute top-4 right-4 p-2 bg-surface/20 backdrop-blur-md rounded-full text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Action Bar -->
+<div class="mt-12 pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-end items-center gap-4">
+<button class="w-full md:w-auto px-8 py-3 text-label-lg font-semibold text-on-surface-variant hover:text-on-surface transition-all">Discard Changes</button>
+<button class="w-full md:w-auto px-10 py-3 bg-secondary text-on-secondary rounded-lg font-semibold shadow-md hover:bg-on-secondary-container transition-all active:scale-95 duration-200">Save Changes</button>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-highest dark:bg-surface-variant border-t border-outline-variant/50">
+<div class="flex flex-col items-center md:items-start gap-1">
+<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
+<span class="text-on-surface-variant dark:text-on-surface text-label-sm">© 2024 Traveloop. Explore with precision.</span>
+</div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant text-label-sm hover:text-secondary underline transition-all" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant text-label-sm hover:text-secondary underline transition-all" href="#">Terms of Service</a>
+<a class="text-on-surface-variant text-label-sm hover:text-secondary underline transition-all" href="#">Help Center</a>
+</div>
+</footer>
+</body></html>

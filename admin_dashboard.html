@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Traveloop Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+        }
+        .font-display { font-family: 'Montserrat', sans-serif; }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "error-container": "#ffdad6",
+                    "background": "#f8f9ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container-high": "#dce9ff",
+                    "inverse-surface": "#213145",
+                    "outline-variant": "#c6c6cd",
+                    "on-error": "#ffffff",
+                    "primary-container": "#131b2e",
+                    "secondary-fixed": "#89f5e7",
+                    "surface": "#f8f9ff",
+                    "primary": "#000000",
+                    "inverse-primary": "#bec6e0",
+                    "surface-dim": "#cbdbf5",
+                    "on-tertiary-fixed": "#341100",
+                    "on-surface-variant": "#45464d",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed-dim": "#ffb690",
+                    "tertiary-container": "#341100",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#76777d",
+                    "on-secondary-fixed": "#00201d",
+                    "on-primary-container": "#7c839b",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#131b2e",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#006f66",
+                    "surface-container": "#e5eeff",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#ffdbca",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-fixed-variant": "#783200",
+                    "primary-fixed-dim": "#bec6e0",
+                    "tertiary": "#000000",
+                    "secondary": "#006a61",
+                    "primary-fixed": "#dae2fd",
+                    "on-tertiary-container": "#d95f00",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#565e74",
+                    "on-surface": "#0b1c30",
+                    "secondary-container": "#86f2e4",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-background": "#0b1c30",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-secondary-fixed-variant": "#005049"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "margin-mobile": "20px",
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "section-gap": "80px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "headline-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md dark:bg-inverse-surface/80 shadow-sm border-b border-outline-variant/20">
+<div class="flex items-center gap-8">
+<h1 class="font-display text-headline-md font-bold text-primary dark:text-inverse-primary">Traveloop</h1>
+<div class="hidden md:flex items-center gap-6">
+<span class="text-secondary dark:text-secondary-fixed-dim font-bold font-body-md text-label-lg cursor-pointer">Dashboard</span>
+<span class="text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-md text-label-lg cursor-pointer">Analytics</span>
+<span class="text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-md text-label-lg cursor-pointer">Users</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant/20 rounded-full transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant/30">
+<div class="text-right hidden sm:block">
+<p class="font-label-lg text-label-lg text-on-surface">Admin User</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Super Admin</p>
+</div>
+<img alt="User profile" class="w-10 h-10 rounded-full border-2 border-surface shadow-sm" data-alt="A professional headshot of a middle-aged man with a friendly expression, wearing a minimalist navy blue blazer. The lighting is soft and studio-quality, creating a clean light-mode aesthetic against a neutral light gray background. The overall style is corporate yet approachable, aligning with a modern digital platform's administrator profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB_Ym0Z7XB8O48ruiiYhLSy4SgJYsHv7icpAbBOfSuuL_tDGK662ZkHBp9lxtj3eDmGc_0JDC-BPOfE34_YfubmNXJFvvz1UzL-iAIKSicR3YdtN5p4yTDDpgoZhyBD-2Wcisxe6gqfeOsdzjHoLhMqPl3stfL3TJpvMPQf9KaxHGg59h8gFrd4XHili7Oo64tppnHdUXyXMM-e4UlzCPnBjg69cdxg2cOazoYvCY3LQERZ4Zf004bks6_UtrB5aZjOYG1XMpay_w"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col p-6 pt-24 bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant/30 shadow-sm hidden md:flex">
+<nav class="flex flex-col gap-2 flex-1">
+<div class="flex items-center gap-3 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg px-4 py-3 font-semibold shadow-sm transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-label-lg">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300 active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-body-md text-label-lg">My Trips</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300 active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-body-md text-label-lg">Explore</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300 active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-body-md text-label-lg">Budget</span>
+</div>
+</nav>
+<div class="mt-auto">
+<button class="w-full py-3 px-4 bg-secondary text-on-secondary rounded-lg font-label-lg flex items-center justify-center gap-2 shadow-md hover:opacity-90 transition-all active:scale-95" onclick="window.location.href='create_new_trip.html'">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                    New Trip
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-8 md:p-12 overflow-y-auto">
+<!-- Breadcrumbs -->
+<div class="mb-8 flex items-center gap-2 text-label-sm font-label-sm text-outline">
+<span>Platform</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface">Dashboard Overview</span>
+</div>
+<!-- Page Header -->
+<div class="mb-10">
+<h2 class="font-display text-headline-lg text-on-surface mb-2">System Analytics</h2>
+<p class="font-body-md text-on-surface-variant">Real-time performance monitoring and user engagement metrics for Traveloop.</p>
+</div>
+<!-- Analytics Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-section-gap">
+<!-- Stat Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_15px_30px_rgba(0,106,97,0.04)] border border-outline-variant/10 flex flex-col justify-between h-40 group hover:border-secondary/30 transition-all duration-300">
+<div class="flex justify-between items-start">
+<span class="p-2 bg-secondary-container rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="flight_takeoff">flight_takeoff</span>
+</span>
+<span class="text-secondary font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span> +12%
+                        </span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-1">Total Trips</p>
+<h3 class="font-display text-headline-md text-on-surface">14,284</h3>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_15px_30px_rgba(0,106,97,0.04)] border border-outline-variant/10 flex flex-col justify-between h-40 group hover:border-secondary/30 transition-all duration-300">
+<div class="flex justify-between items-start">
+<span class="p-2 bg-surface-container-high rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+</span>
+<span class="text-secondary font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span> +8.4%
+                        </span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-1">Active Users</p>
+<h3 class="font-display text-headline-md text-on-surface">3,912</h3>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_15px_30px_rgba(0,106,97,0.04)] border border-outline-variant/10 flex flex-col justify-between h-40 group hover:border-secondary/30 transition-all duration-300">
+<div class="flex justify-between items-start">
+<span class="p-2 bg-tertiary-fixed rounded-lg text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined" data-icon="location_city">location_city</span>
+</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Top: Tokyo</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider mb-1">Cities Indexed</p>
+<h3 class="font-display text-headline-md text-on-surface">1,105</h3>
+</div>
+</div>
+</div>
+<!-- Visualization Row -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-section-gap">
+<!-- Bar Chart (Asymmetric Span) -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 shadow-sm">
+<div class="flex justify-between items-center mb-10">
+<div>
+<h4 class="font-display text-headline-md text-on-surface mb-1">Monthly Growth</h4>
+<p class="text-label-sm text-on-surface-variant">User registration vs. trip bookings</p>
+</div>
+<div class="flex gap-2">
+<div class="flex items-center gap-2 text-label-sm">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span>Trips</span>
+</div>
+<div class="flex items-center gap-2 text-label-sm">
+<span class="w-3 h-3 rounded-full bg-surface-variant"></span>
+<span>Users</span>
+</div>
+</div>
+</div>
+<!-- Simulated Bar Chart -->
+<div class="flex items-end justify-between gap-4 h-64 w-full">
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full flex gap-1 justify-center items-end h-full">
+<div class="bg-surface-variant w-1/3 rounded-t-sm" style="height: 40%;"></div>
+<div class="bg-secondary w-1/3 rounded-t-sm" style="height: 60%;"></div>
+</div>
+<span class="text-label-sm text-outline">Jan</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full flex gap-1 justify-center items-end h-full">
+<div class="bg-surface-variant w-1/3 rounded-t-sm" style="height: 50%;"></div>
+<div class="bg-secondary w-1/3 rounded-t-sm" style="height: 75%;"></div>
+</div>
+<span class="text-label-sm text-outline">Feb</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full flex gap-1 justify-center items-end h-full">
+<div class="bg-surface-variant w-1/3 rounded-t-sm" style="height: 45%;"></div>
+<div class="bg-secondary w-1/3 rounded-t-sm" style="height: 85%;"></div>
+</div>
+<span class="text-label-sm text-outline">Mar</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full flex gap-1 justify-center items-end h-full">
+<div class="bg-surface-variant w-1/3 rounded-t-sm" style="height: 60%;"></div>
+<div class="bg-secondary w-1/3 rounded-t-sm" style="height: 95%;"></div>
+</div>
+<span class="text-label-sm text-outline">Apr</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full flex gap-1 justify-center items-end h-full">
+<div class="bg-surface-variant w-1/3 rounded-t-sm" style="height: 70%;"></div>
+<div class="bg-secondary w-1/3 rounded-t-sm" style="height: 80%;"></div>
+</div>
+<span class="text-label-sm text-outline">May</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full flex gap-1 justify-center items-end h-full">
+<div class="bg-surface-variant w-1/3 rounded-t-sm" style="height: 85%;"></div>
+<div class="bg-secondary w-1/3 rounded-t-sm" style="height: 100%;"></div>
+</div>
+<span class="text-label-sm text-outline font-bold text-on-surface">Jun</span>
+</div>
+</div>
+</div>
+<!-- Top Cities Card -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col">
+<h4 class="font-display text-headline-md text-on-surface mb-6">Top Cities</h4>
+<div class="space-y-6 flex-1">
+<div class="flex items-center gap-4">
+<img class="w-20 h-12 rounded-lg object-cover shadow-sm" data-alt="A wide-angle cinematic shot of the Tokyo skyline at dusk, featuring the Tokyo Tower illuminated in warm orange against a deep purple and blue horizon. The city lights twinkle with a high-fidelity modern aesthetic, capturing the essence of a premium travel destination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmH2whIFQazzfSCGyff7GDxK8LR2EgsADo_cItmM_SfHIsn_Q1iYrg2BEW1Jngb4srupL_m7EKt8MzZPlB0h7EKo5yViTmFMm01NCuMjgwyYe4q9SLe3QLJY6GTf7Dst1IG5kUPUUXRFuQ8HBA53WZcKqudHmoB7IJXcmeX0n0dp17Peu0Hva-WGqhatEEjjoewUPa_v7428dc5Uqe9WIFr4xMcUy3_z3_jcGnkYgHXf_LS4aPRWLc3TLjo3tVhOGolIghVD1BWGc"/>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-lg text-on-surface">Tokyo, Japan</span>
+<span class="text-label-sm text-secondary">42%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 42%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<img class="w-20 h-12 rounded-lg object-cover shadow-sm" data-alt="A bright and airy morning shot of a typical London street scene with a red double-decker bus passing a classic stone building. The lighting is crisp and natural, with a modern clean aesthetic emphasizing the travel Loop's sophisticated exploration theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-ALZNUjUuCr9-UZDmNMluot02vSmjRdM3y1t_0YQK6i_yz1WD-q58Vm3ITzO2GZqsvACMckTHZyGOoRSJItX82gs2fE9Xc42TwXfPUZFGQ5aKDw1ulfjC6Mg0tc1c2rh7z3gJ8xX2BX58Ol4vM2HzX7s5k8mHTtIxEE_32goM1Ssdzw2Z8V_hLBrn0sD7tQDKXXxtAJOEtVfBlbIy0V1Yp0qXmsPJe9E2VByMh0xmFxcl50GPrIoSGMCXjBAgHXZ1xaMiPyZNmN0"/>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-lg text-on-surface">London, UK</span>
+<span class="text-label-sm text-secondary">38%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 38%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<img class="w-20 h-12 rounded-lg object-cover shadow-sm" data-alt="An atmospheric, romantic view of the Eiffel Tower framed by spring blossoms in Paris. The color palette is soft with pastels and a light-filled horizon, evoking a sense of wanderlust and elegant travel planning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0ookDek157TBKTtJ3T46xjkH283wRsR7gsxVtlxlurahTzQApZr5EiUqw5NsZUScTa8iI7GG6nrR3VusnecMZ_5f3xT5EUTS9xYZSSRLftAtNdhn1SfMHEGDCs3TG6fsMjNZJNfoGOuVi3xzQciym6ALvEnW9wRmUKToGDWrM_TM9GJ_TDmCIN7ONkn8176nYfx_vMQyoC_jsaMSZK32njthP7bt23q3zSYXFeblUnlck3-SFrA_iQInWrWB-Pk-7Af9hIh0sISQ"/>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-lg text-on-surface">Paris, France</span>
+<span class="text-label-sm text-secondary">31%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 31%"></div>
+</div>
+</div>
+</div>
+</div>
+<button class="mt-8 text-secondary font-label-lg text-label-lg hover:underline transition-all self-center">View Full Report</button>
+</div>
+</div>
+<!-- Table View: Recent User Activity -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm overflow-hidden mb-section-gap">
+<div class="p-8 border-b border-outline-variant/20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<h4 class="font-display text-headline-md text-on-surface">Recent User Activity</h4>
+<div class="flex items-center gap-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 rounded-lg border border-outline-variant/30 text-label-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 bg-surface" placeholder="Search activity..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg border border-outline-variant/30 text-label-sm font-label-lg hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+                            Filter
+                        </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-8 py-4 text-label-sm font-label-lg text-on-surface-variant uppercase tracking-wider">User</th>
+<th class="px-8 py-4 text-label-sm font-label-lg text-on-surface-variant uppercase tracking-wider">Action</th>
+<th class="px-8 py-4 text-label-sm font-label-lg text-on-surface-variant uppercase tracking-wider">Destination</th>
+<th class="px-8 py-4 text-label-sm font-label-lg text-on-surface-variant uppercase tracking-wider">Time</th>
+<th class="px-8 py-4 text-label-sm font-label-lg text-on-surface-variant uppercase tracking-wider text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-variant/10 transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-bold text-xs">EK</div>
+<div>
+<p class="font-label-lg text-on-surface">Elena Kostic</p>
+<p class="text-[12px] text-outline">elena@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5 text-body-md text-on-surface">Booked a Flight</td>
+<td class="px-8 py-5 text-body-md text-on-surface">Athens, GR</td>
+<td class="px-8 py-5 text-body-md text-on-surface-variant">2 mins ago</td>
+<td class="px-8 py-5 text-right">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[12px] font-bold">Confirmed</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/10 transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant font-bold text-xs">MR</div>
+<div>
+<p class="font-label-lg text-on-surface">Marcus Reed</p>
+<p class="text-[12px] text-outline">m.reed@agency.com</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5 text-body-md text-on-surface">Created Itinerary</td>
+<td class="px-8 py-5 text-body-md text-on-surface">Rome, IT</td>
+<td class="px-8 py-5 text-body-md text-on-surface-variant">14 mins ago</td>
+<td class="px-8 py-5 text-right">
+<span class="px-3 py-1 rounded-full bg-surface-container-high text-primary text-[12px] font-bold">Draft</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/10 transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-bold text-xs">SL</div>
+<div>
+<p class="font-label-lg text-on-surface">Sarah Lopez</p>
+<p class="text-[12px] text-outline">sarah.l@webmail.com</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5 text-body-md text-on-surface">Upgraded Plan</td>
+<td class="px-8 py-5 text-body-md text-on-surface">N/A</td>
+<td class="px-8 py-5 text-body-md text-on-surface-variant">45 mins ago</td>
+<td class="px-8 py-5 text-right">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[12px] font-bold">Pro</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 bg-surface-container-low border-t border-outline-variant/20 flex justify-center">
+<button class="text-secondary font-label-lg text-label-lg hover:underline transition-all">View All Activity</button>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-highest dark:bg-surface-variant border-t border-outline-variant/50 shadow-[flat_no_shadows]">
+<div class="flex flex-col md:flex-row items-center gap-8">
+<h3 class="font-display text-headline-md font-bold text-primary dark:text-inverse-primary">Traveloop</h3>
+<p class="font-body-md text-label-sm text-on-surface-variant">© 2024 Traveloop. Explore with precision.</p>
+</div>
+<div class="flex items-center gap-6">
+<a class="text-on-surface-variant font-body-md text-label-sm hover:text-secondary underline transition-all cursor-pointer" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-body-md text-label-sm hover:text-secondary underline transition-all cursor-pointer" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-body-md text-label-sm hover:text-secondary underline transition-all cursor-pointer" href="#">Help Center</a>
+</div>
+</footer>
+<!-- FAB (Suppressed on Admin/Settings as per Mandate, but defined here for structure) -->
+<!-- <button class="fixed bottom-8 right-8 w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform z-40">
+        <span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+    </button> -->
+</body></html>

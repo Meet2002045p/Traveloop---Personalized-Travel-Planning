@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Traveloop - Trip Itinerary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 24px;
+            bottom: 0;
+            width: 2px;
+            background-image: linear-gradient(to bottom, #006a61 50%, transparent 50%);
+            background-size: 2px 8px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-surface": "#213145",
+                        "outline-variant": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "secondary-fixed": "#89f5e7",
+                        "surface": "#f8f9ff",
+                        "primary": "#000000",
+                        "inverse-primary": "#bec6e0",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary-fixed": "#341100",
+                        "on-surface-variant": "#45464d",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "tertiary-container": "#341100",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#76777d",
+                        "on-secondary-fixed": "#00201d",
+                        "on-primary-container": "#7c839b",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#131b2e",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#006f66",
+                        "surface-container": "#e5eeff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdbca",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary": "#000000",
+                        "secondary": "#006a61",
+                        "primary-fixed": "#dae2fd",
+                        "on-tertiary-container": "#d95f00",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#565e74",
+                        "on-surface": "#0b1c30",
+                        "secondary-container": "#86f2e4",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-background": "#0b1c30",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#005049"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "section-gap": "80px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md dark:bg-inverse-surface/80 shadow-sm border-b border-outline-variant/20">
+<div class="flex items-center gap-6">
+<span class="font-display text-headline-md font-bold text-primary dark:text-inverse-primary">Traveloop</span>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body-md text-label-lg text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="traveloop_dashboard.html">Dashboard</a>
+<a class="font-body-md text-label-lg text-secondary dark:text-secondary-fixed-dim font-bold transition-colors" href="my_trips.html">My Trips</a>
+<a class="font-body-md text-label-lg text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="city_activity_search.html">Explore</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">favorite</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-secondary-container">
+<img alt="User profile" data-alt="Close up portrait of a stylish young adult man with a friendly expression. The lighting is soft and golden, characteristic of a high-end photography studio. The overall aesthetic is modern and professional, matching the clean and airy UI design with subtle warm tones and a minimalist background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAINkIzqJLrdCGAzShZXQKNpc1sy-0hRgiKZePxsrMI-DN2E1A1Gj96_pGfKhhwavsnplegkPAmRjdJVBaZod4uMNgBXRbOwq2j6lKHY5ARjM_PqpQeuHUZ_ncrWKeVzugb56UeCaC39DV0ulnqvbQO6z6ciiyMwJB8d_yNRVOwGfKKyHPzg1YSUeFqialhV2K4SytrctyW6Jmk3tPUqZA9kN9mIOUByXBLo_HK0RaSfJYl691REEeO9nHbmqFK6LZScSAQhieiBEo"/>
+</div>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- SideNavBar (Hidden on small screens) -->
+<aside class="hidden lg:flex fixed left-0 top-0 h-screen w-64 flex-col p-6 pt-24 bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant/30 shadow-sm z-40">
+<div class="mb-8 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-on-secondary">
+<span class="material-symbols-outlined">map</span>
+</div>
+<div>
+<p class="font-display text-label-lg font-bold text-primary">Traveloop</p>
+<p class="text-xs text-on-surface-variant">Trip Planner</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300" href="traveloop_dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-lg">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg px-4 py-3 font-semibold shadow-sm transition-transform active:scale-[0.98]" href="my_trips.html">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-lg">My Trips</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300" href="city_activity_search.html">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-lg">Explore</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300" href="trip_budget_breakdown.html">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-lg">Budget</span>
+</a>
+</nav>
+<button class="mt-auto bg-primary text-on-primary font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all active:scale-95" onclick="window.location.href='create_new_trip.html'">
+<span class="material-symbols-outlined">add</span>
+                New Trip
+            </button>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 lg:ml-64 w-full">
+<!-- Hero Header Section -->
+<div class="relative h-[300px] md:h-[400px] w-full">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Breathtaking wide-angle shot of the Amalfi Coast at sunset, featuring tiered pastel-colored buildings clinging to dramatic cliffs overlooking the shimmering Tyrrhenian Sea. The lighting is warm and atmospheric, with soft oranges and deep teals reflecting the horizon. The style is high-fidelity travel photography with a serene, expansive mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTooQiHwcHkCvnrfQ0JwRb4qbwhXFZ5rluKRGP_px1taEnuNMh7s5AQi0iHP56cHzG3tRgO7jILXg4ic6D2OuqxOmmoqK1m2RQd4TKbme8BTjImkw_EYOsPJLS3qrIom_XBeEWxvixOboEtZZcO-lzLkbG-CNfKizRaV7QMIcTKSiWGtaW2YJvsdxjo5MrzgteCaIxiaoD7M7Pbh15c5R0lREt6bworDV-HA_yjHfptJeRzY5nF8zSMAhylSz0BKJ5W2rrq8Z9qbY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full px-margin-desktop pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<nav class="flex items-center gap-2 text-label-sm text-secondary font-semibold mb-2">
+<span>Completed Trip</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Summer 2024</span>
+</nav>
+<h1 class="font-display text-display text-on-surface">Italian Riviera Odyssey</h1>
+<p class="flex items-center gap-2 text-on-surface-variant mt-2">
+<span class="material-symbols-outlined">calendar_today</span>
+                            June 12 — June 22, 2024 (10 Days)
+                        </p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-white" data-alt="Portrait of a person." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_eDJ-xtZtvTiO9lT27Y0Z_UkgJgaOIt1I9UvuMb32cfpSFvEuMAS_pPwHHhamDCcCDGnugZNkqlL1O-gJdhEz-4SszxpRV8a5iT9c43lMMsEpyEzpN4b2msxLGbL-JxdJCE0sH718yINkmhcJOACYlxi0ymsRpdU-hJtmge9nwu9C7uut5fcK08HxkDKpYZ9l2l20JbTLiwB-zOUATHzcHt9OUyi_w_CbKMebT92-IKKy0yEXl6toOIdFzcUwd8dI8B7_5k66NIo"/>
+<img class="w-10 h-10 rounded-full border-2 border-white" data-alt="Portrait of a person." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFM6TUXFg-gXQBvBdBpo5L6XS_UhXZ8C0h417IkMBxtoYWtBWWGvevHWw8ROMSaLtZALskFwnk7xqKfCzsybO5kNO74Wdf50XfoXXCJejYBTgsjvhGaqIjih4B29E3A21vNwVG-BLbQQyk8CugcUkVJcmEyRfdBbzeJPxvtRHb_4yCl4g0jtWZhjD0EosdoPMGIErp7BDbkKyoa9p-pBL8ChQJawg5udczDRwVxx7K-7rv_o_AqjlirYcCqOvKuuNIz_0s2mtAXKw"/>
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-xs font-bold border-2 border-white">+2</div>
+</div>
+<div class="h-10 w-px bg-outline-variant/30 mx-2"></div>
+<div class="flex bg-surface-container-high rounded-full p-1 shadow-inner">
+<button class="px-4 py-1.5 rounded-full bg-surface-container-lowest text-primary shadow-sm font-semibold flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">list</span>
+                                List
+                            </button>
+<button class="px-4 py-1.5 rounded-full text-on-surface-variant hover:text-primary font-semibold flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">calendar_view_month</span>
+                                Calendar
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<section class="px-margin-desktop py-section-gap max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Itinerary Timeline -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Day Header -->
+<div class="flex items-center gap-4 mb-8">
+<div class="bg-primary text-on-primary w-14 h-14 rounded-2xl flex flex-col items-center justify-center font-display shadow-lg">
+<span class="text-xs uppercase font-bold tracking-widest">Day</span>
+<span class="text-xl font-bold">01</span>
+</div>
+<div>
+<h3 class="font-display text-headline-md text-primary">Arrival in Portofino</h3>
+<p class="text-on-surface-variant">Monday, June 12</p>
+</div>
+</div>
+<!-- Timeline Block 1 -->
+<div class="relative pl-12 timeline-line">
+<div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-on-secondary z-10 shadow-md">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">flight_land</span>
+</div>
+<div class="glass-card border border-outline-variant/20 rounded-xl p-6 shadow-sm hover:shadow-md transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold">Transportation</div>
+<div class="text-label-lg font-bold text-secondary">€120.00</div>
+</div>
+<h4 class="font-display text-headline-md mb-2">Genoa Airport Transfer</h4>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">schedule</span> 10:30 AM</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">location_on</span> Genoa Cristoforo Colombo Airport</span>
+</div>
+<p class="mt-4 text-body-md text-on-surface-variant leading-relaxed">
+                                    Private chauffeur met us at the arrivals terminal. Seamless 45-minute drive along the coastline to the hotel.
+                                </p>
+</div>
+</div>
+<!-- Timeline Block 2 -->
+<div class="relative pl-12 timeline-line">
+<div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-on-secondary z-10 shadow-md">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div class="glass-card border border-outline-variant/20 rounded-xl p-6 shadow-sm hover:shadow-md transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-xs font-bold">Dining</div>
+<div class="text-label-lg font-bold text-secondary">€85.00</div>
+</div>
+<h4 class="font-display text-headline-md mb-2">Lunch at Da Delfino</h4>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">schedule</span> 1:00 PM</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">location_on</span> Piazza Martiri dell'Olivetta</span>
+</div>
+<p class="mt-4 text-body-md text-on-surface-variant leading-relaxed">
+                                    First meal in Italy! Incredible Trofie al Pesto and local Vermentino wine. The view of the harbor was spectacular.
+                                </p>
+<div class="mt-4 flex gap-2">
+<img class="w-32 h-20 rounded-lg object-cover" data-alt="Top down shot of a gourmet Italian pasta dish served on a rustic ceramic plate, surrounded by a glass of white wine and a scenic coastal harbor in the blurred background. The lighting is bright and natural, evoking a breezy midday lunch in the Mediterranean." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAREPUezELw3EI6B4ssvTwYRs1vUFj4LOnesWAkcO9GPRWCJGGRutlP-WQRlEVa5AVglKyKdI_VAsnwM4YQybGJ2q-pKsGuuwa96k8xwVjeG0VxRMBF1UDqy2FLd-BXGdxYdQPLWz6KbnJoyYwRRNT4NkSFfTzjB6OtSNwtsPvLapdo2WCH8-s039utrFkxQQ2OQD8r545SzSNmQ4WIloPF4k7zX3VMVlkfAj7A3LfgyJZUBCEmuE454eyh0NnhUKczHBfaTQuUpRQ"/>
+<img class="w-32 h-20 rounded-lg object-cover" data-alt="Lush outdoor restaurant terrace overlooking a serene turquoise harbor filled with luxury yachts. The lighting is warm afternoon sun, creating a high-contrast and vivid landscape. The style is luxury lifestyle photography with an focus on horizon and distance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSvmo-rsEKfkhkKAy-TkbMXzMtxCudukQWy3AiKUmZCLMaO1vTtVJz08MvUYko1pFXaIcZw6rfT_n4PLrioiahFQN8gL4bQO1H9n6DxRiLKnis0p71AZ3pcauITNIUIYeSH-fukRexJoi7Ig5wmWBURjnhWGCaAMwAgBxOMZzokXsHS1pPsxFNB3-1IQNeBtPStLqiQp_V5wbfOT68O3MVzLW_PVEOmDA4L5HVCDPR0NVuJJpSvXwm45iPakNkEes35Bo6cRU1qXM"/>
+</div>
+</div>
+</div>
+<!-- Day Header 2 -->
+<div class="flex items-center gap-4 mt-20 mb-8">
+<div class="bg-surface-container-high text-primary w-14 h-14 rounded-2xl flex flex-col items-center justify-center font-display border border-outline-variant/30">
+<span class="text-xs uppercase font-bold tracking-widest">Day</span>
+<span class="text-xl font-bold">02</span>
+</div>
+<div>
+<h3 class="font-display text-headline-md text-primary">San Fruttuoso Boat Trip</h3>
+<p class="text-on-surface-variant">Tuesday, June 13</p>
+</div>
+</div>
+<!-- Timeline Block 3 -->
+<div class="relative pl-12">
+<div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-on-secondary z-10 shadow-md">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">sailing</span>
+</div>
+<div class="glass-card border border-outline-variant/20 rounded-xl p-6 shadow-sm hover:shadow-md transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold">Activity</div>
+<div class="text-label-lg font-bold text-secondary">€45.00</div>
+</div>
+<h4 class="font-display text-headline-md mb-2">Abbey &amp; Underwater Christ</h4>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">schedule</span> 9:30 AM</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">location_on</span> Portofino Ferry Dock</span>
+</div>
+<p class="mt-4 text-body-md text-on-surface-variant leading-relaxed">
+                                    Morning ferry to the hidden bay of San Fruttuoso. Visited the 10th-century abbey and snorkeled to see the Christ of the Abyss statue.
+                                </p>
+</div>
+</div>
+</div>
+<!-- Sidebar Stats -->
+<div class="lg:col-span-4 space-y-gutter">
+<div class="bg-primary text-on-primary rounded-2xl p-8 shadow-xl">
+<h4 class="font-display text-label-lg uppercase tracking-widest text-secondary-fixed mb-6">Trip Summary</h4>
+<div class="space-y-6">
+<div class="flex justify-between items-center border-b border-on-primary-container/30 pb-4">
+<span class="text-on-primary-container">Total Spend</span>
+<span class="text-2xl font-bold font-display">€4,280</span>
+</div>
+<div class="flex justify-between items-center border-b border-on-primary-container/30 pb-4">
+<span class="text-on-primary-container">Avg Daily Spend</span>
+<span class="font-semibold">€428</span>
+</div>
+<div class="flex justify-between items-center border-b border-on-primary-container/30 pb-4">
+<span class="text-on-primary-container">Activities Logged</span>
+<span class="font-semibold">24</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-primary-container">Photos Captured</span>
+<span class="font-semibold">842</span>
+</div>
+</div>
+<button class="w-full mt-8 py-3 bg-secondary text-on-secondary rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-secondary/90 transition-all">
+<span class="material-symbols-outlined">ios_share</span>
+                                Export Report
+                            </button>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/30">
+<h4 class="font-display text-headline-md mb-4">Location Map</h4>
+<div class="w-full h-48 rounded-xl overflow-hidden mb-4 bg-surface-container">
+<img class="w-full h-full object-cover grayscale opacity-60" data-alt="Aerial topographic-style view of a Mediterranean coastal map, emphasizing the intricate shorelines and rugged terrain. The image uses a minimal, cool-toned color palette of blues and greys, reflecting a professional navigation tool aesthetic. High-key lighting creates a clean, sophisticated atmosphere." data-location="Portofino" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi3Y3FSu6lpnptkyIC8Li89HoMBR1bBfu9itfyrJ5olb46HioyuR-8M_kPqR_GJuXUaKSBTpncQo0VJX6XXCYnI5oNb5jtxDhIofjPsjbl0PtbGOTkWhn_yhnaw83TjwvAoyO1pOWXcFBXh7aCDt3r5uJzvCfzZ1__58apLfFC6IWJiLiujS96CXM-rtajy9UcN4MEgqNy0s9csvDzY61KVd6wfGFcncrKSqC0Z-NQvAaH2SdUC_fHPzbBoB6SOix2j_grP6iCTkk"/>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<p class="text-sm font-semibold">Portofino <span class="text-on-surface-variant font-normal">3 Days</span></p>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<p class="text-sm font-semibold">Cinque Terre <span class="text-on-surface-variant font-normal">4 Days</span></p>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<p class="text-sm font-semibold">La Spezia <span class="text-on-surface-variant font-normal">3 Days</span></p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-highest/30 rounded-2xl p-6 border border-dashed border-outline-variant/50">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary">verified_user</span>
+<h4 class="font-display font-bold">Trip Insights</h4>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                You stayed 15% under your budget for dining and walked an average of 12,500 steps daily. Your favorite city was Portofino based on photo volume.
+                            </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-highest dark:bg-surface-variant border-t border-outline-variant/50">
+<div class="flex flex-col items-center md:items-start gap-1">
+<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
+<p class="font-body-md text-label-sm text-on-surface-variant dark:text-on-surface">© 2024 Traveloop. Explore with precision.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-body-md text-label-sm text-on-surface-variant hover:text-secondary underline transition-all" href="#">Privacy Policy</a>
+<a class="font-body-md text-label-sm text-on-surface-variant hover:text-secondary underline transition-all" href="#">Terms of Service</a>
+<a class="font-body-md text-label-sm text-on-surface-variant hover:text-secondary underline transition-all" href="#">Help Center</a>
+</div>
+</footer>
+</body></html>

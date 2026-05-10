@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Packing Checklist - Traveloop</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-surface": "#213145",
+                        "outline-variant": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "secondary-fixed": "#89f5e7",
+                        "surface": "#f8f9ff",
+                        "primary": "#000000",
+                        "inverse-primary": "#bec6e0",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary-fixed": "#341100",
+                        "on-surface-variant": "#45464d",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "tertiary-container": "#341100",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#76777d",
+                        "on-secondary-fixed": "#00201d",
+                        "on-primary-container": "#7c839b",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#131b2e",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#006f66",
+                        "surface-container": "#e5eeff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdbca",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary": "#000000",
+                        "secondary": "#006a61",
+                        "primary-fixed": "#dae2fd",
+                        "on-tertiary-container": "#d95f00",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#565e74",
+                        "on-surface": "#0b1c30",
+                        "secondary-container": "#86f2e4",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-background": "#0b1c30",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#005049"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "section-gap": "80px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-margin-desktop py-4 w-full bg-surface/80 backdrop-blur-md shadow-sm border-b border-outline-variant/20">
+<div class="flex items-center gap-6">
+<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
+<nav class="hidden md:flex gap-8">
+<a class="font-label-lg text-label-lg text-secondary font-bold hover:text-secondary transition-colors" href="traveloop_dashboard.html">Dashboard</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-secondary transition-colors" href="my_trips.html">My Trips</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-secondary transition-colors" href="city_activity_search.html">Explore</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/30 items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-sm w-48" placeholder="Search items..." type="text"/>
+</div>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-variant rounded-full transition-all">notifications</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-secondary/20">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a smiling young adult with a friendly expression. The person is set against a brightly lit, clean studio background with soft, modern high-key lighting. The overall aesthetic is contemporary and minimalist, maintaining a premium light-mode feel with a focus on crisp details and natural skin tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsSJoMQQS72X6nGw4fhCdA_nu62_XWeVnXpxVjHGBeaOWF9KPxsderqQiBcqeDxAd2RmDOn4GVepqLl80DUY-h3xstd-AJhC81Hd6ZjUxCrAkHInYp8f8VeJCesX7p6mYzAIWb1KHsAC2KF5hwTcAcmz2kYaPlBSrkm6A9C-6ThIWUiguTGK8epXhiy5-jqBPfvDWNmler5gaGAZUEswjUZ3UCqNRSDPQiLsmPt_mmyGPS_YgYePeFdCbTwvsS2KmmwhBYadc-IJQ"/>
+</div>
+</div>
+</header>
+<main class="flex min-h-[calc(100vh-80px)]">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col p-6 pt-24 bg-surface-container-low border-r border-outline-variant/30 shadow-sm hidden lg:flex">
+<div class="mb-8 flex items-center gap-3">
+<div class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary">travel_explore</span>
+</div>
+<div>
+<h2 class="font-display text-label-lg font-bold text-primary">Traveloop</h2>
+<p class="text-label-sm text-on-surface-variant opacity-70">Trip Planner</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mb-auto">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300" href="traveloop_dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-label-lg">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 font-semibold shadow-sm transition-transform active:scale-[0.98]" href="packing_checklist.html">
+<span class="material-symbols-outlined">checklist</span>
+<span class="font-body-md text-label-lg">Packing List</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300" href="city_activity_search.html">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-body-md text-label-lg">Explore</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-variant/50 transition-all duration-300" href="trip_budget_breakdown.html">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-body-md text-label-lg">Budget</span>
+</a>
+</nav>
+<button class="mt-8 w-full bg-secondary text-on-secondary py-3 rounded-lg font-label-lg flex items-center justify-center gap-2 shadow-sm hover:opacity-90 transition-all" onclick="window.location.href='create_new_trip.html'">
+<span class="material-symbols-outlined">add</span>
+                New Trip
+            </button>
+</aside>
+<!-- Content Canvas -->
+<div class="flex-1 lg:ml-64 p-margin-mobile md:p-margin-desktop bg-gradient-to-br from-background to-surface-container-low">
+<!-- Hero Section / Trip Info -->
+<section class="max-w-container-max mx-auto mb-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div>
+<nav class="flex gap-2 text-label-sm text-on-surface-variant mb-2">
+<span>My Trips</span> / <span>Swiss Alps Expedition</span>
+</nav>
+<h1 class="font-display text-headline-lg text-on-surface">Packing Checklist</h1>
+</div>
+<div class="glass-card p-6 rounded-xl border border-outline-variant/20 shadow-sm flex-1 max-w-md">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-lg text-on-surface">Packing Progress</span>
+<span class="font-label-lg text-secondary">68%</span>
+</div>
+<div class="w-full bg-surface-container-high h-2.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 68%"></div>
+</div>
+<p class="text-label-sm text-on-surface-variant mt-2 italic">18 of 26 items packed</p>
+</div>
+</div>
+<!-- Main Layout: Bento Grid Style -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-gutter">
+<!-- Left Column: Primary Categories -->
+<div class="xl:col-span-2 flex flex-col gap-gutter">
+<!-- Clothing Category -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm border border-outline-variant/10">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">apparel</span>
+</div>
+<h3 class="font-headline-md text-on-surface">Clothing</h3>
+</div>
+<span class="text-label-sm px-3 py-1 bg-surface-container-high rounded-full text-on-surface-variant">8 items</span>
+</div>
+<div class="space-y-2">
+<!-- Checklist Item -->
+<div class="flex items-center gap-4 p-4 rounded-lg hover:bg-surface-container-low transition-colors group">
+<button class="w-6 h-6 rounded-md border-2 border-secondary flex items-center justify-center text-white bg-secondary">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<span class="flex-1 font-body-md text-on-surface line-through opacity-50">Thermal base layers (Top &amp; Bottom)</span>
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 cursor-pointer">drag_indicator</span>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-lg hover:bg-surface-container-low transition-colors group">
+<button class="w-6 h-6 rounded-md border-2 border-outline-variant flex items-center justify-center bg-transparent transition-all hover:border-secondary"></button>
+<span class="flex-1 font-body-md text-on-surface">Waterproof shell jacket</span>
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 cursor-pointer">drag_indicator</span>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-lg hover:bg-surface-container-low transition-colors group">
+<button class="w-6 h-6 rounded-md border-2 border-secondary flex items-center justify-center text-white bg-secondary">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<span class="flex-1 font-body-md text-on-surface line-through opacity-50">Hiking boots (Gore-Tex)</span>
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 cursor-pointer">drag_indicator</span>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-3">
+<input class="flex-1 h-12 bg-surface rounded-lg border border-outline-variant/30 px-4 focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" placeholder="Add clothing item..." type="text"/>
+<button class="h-12 w-12 bg-surface-container text-secondary rounded-lg flex items-center justify-center hover:bg-secondary-container transition-all active:scale-95">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Electronics Category -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm border border-outline-variant/10">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">devices</span>
+</div>
+<h3 class="font-headline-md text-on-surface">Electronics</h3>
+</div>
+<span class="text-label-sm px-3 py-1 bg-surface-container-high rounded-full text-on-surface-variant">5 items</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-4 p-4 rounded-lg hover:bg-surface-container-low transition-colors group">
+<button class="w-6 h-6 rounded-md border-2 border-outline-variant flex items-center justify-center bg-transparent transition-all hover:border-secondary"></button>
+<span class="flex-1 font-body-md text-on-surface">Universal travel adapter</span>
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 cursor-pointer">drag_indicator</span>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-lg hover:bg-surface-container-low transition-colors group">
+<button class="w-6 h-6 rounded-md border-2 border-secondary flex items-center justify-center text-white bg-secondary">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<span class="flex-1 font-body-md text-on-surface line-through opacity-50">Power bank (20,000mAh)</span>
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 cursor-pointer">drag_indicator</span>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-3">
+<input class="flex-1 h-12 bg-surface rounded-lg border border-outline-variant/30 px-4 focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" placeholder="Add electronics item..." type="text"/>
+<button class="h-12 w-12 bg-surface-container text-secondary rounded-lg flex items-center justify-center hover:bg-secondary-container transition-all active:scale-95">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Documents & Quick Actions -->
+<div class="flex flex-col gap-gutter">
+<!-- Documents Glass Card -->
+<div class="glass-card rounded-xl p-8 border border-outline-variant/20 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">description</span>
+</div>
+<h3 class="font-headline-md text-on-surface">Documents</h3>
+</div>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-label-lg line-through">Passport &amp; Visa</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-label-lg line-through">Travel Insurance</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-outline">radio_button_unchecked</span>
+<span class="text-label-lg">Hotel Bookings (Printed)</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-outline">radio_button_unchecked</span>
+<span class="text-label-lg">Emergency Contacts</span>
+</li>
+</ul>
+</div>
+<!-- Collaborative Planning Section -->
+<div class="bg-surface-container-high/40 rounded-xl p-8 border border-outline-variant/10">
+<h4 class="font-label-lg text-on-surface mb-4">Trip Participants</h4>
+<div class="flex -space-x-3 mb-6">
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Close-up portrait of a woman with a confident smile, set against a softly blurred urban sunset background. The lighting is warm and golden, complementing the airy and premium UI design. The photo is professionally edited with high clarity and a modern, minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsSqgUXUe5Uu1zyB10pKH1AE9ElIk58sf02wArPR6wmGKdAXwJkUxLXUEEtv4UZeIGf5pt14ZoFTzeEuJVlfb1Q9q3R8MnnUF_LOEVM3qZwIm53XGnq8MVaEBp8wcxHbVwIOuTQI5oNeRwjUqIkizYjfCX1ov7xxzO6Z_VXoGEwTGd36OAGRbu5IZJ02JD51GFM4n0hbjA_YWyKo5Ii_sPR-5n7cA-Ta7u_BWj_jpishv2M9qCyhN4aBZlw67khNPO4_K0DEo7GL0"/>
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="A smiling young man with a clear, vibrant complexion, looking directly at the camera in a modern office environment. The scene is illuminated by soft, natural window light, emphasizing a bright and professional tone. The image style is crisp and modern, fitting perfectly within a high-end collaborative travel application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmmN158Epw4xyahuo8BiVCImjjut7cjvx6xrO95yZcXyrW3HtoTx2jqcq6KNBFUPGBScReWYNZlLKXKQ4ZxJ4sUsX7Ux5j2KR1gU95BdDJBFZwi-nZ4TGYjQYUnWV8L2umdw3IUiN71vWVUKoW7mEBjqFi-sQLjHiw5Xoq8qxVGx5LRqOBZbWuQOMqzpeGg-iINFscb_Arh108c6UfBW5vXQF8g77ow9R2XAGMyfOljBoRC-mj6cq9G3Cr8GS1X2OKqGTyIfhbiSU"/>
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Portrait of a young professional woman in a serene, minimalist setting. High-key, atmospheric lighting creates a sense of openness and modernity. The color palette is muted and sophisticated, reflecting a premium digital experience and collaborative atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArN7EmIAUoCPQaHOlpFzcpddNnPfMkguSHFTKekT5g2iDwfOdJX3Wzskb_HoGrprt-N97YuyXKl6GTeyzIRS3U_BQqSx3EZ86M7XFvW6tE_5wHo8UqK25sU9g8MsP-lKv3_DVmGNiD7ImTTEE6eV100wOjWDIqAPK4v-7VqKgHvS7cMSJmReVdGy1Ve_J79DrZB8Edc3D6ocuUTcQw9wahj-lcnaqRPfkHf-ukMOWhqzHPFjaC0bf5s91xsLk291lf3pxcXqqrxF0"/>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-secondary flex items-center justify-center text-[12px] text-on-secondary font-bold">+2</div>
+</div>
+<p class="text-label-sm text-on-surface-variant mb-6">Alex and 4 others are editing this list live.</p>
+<button class="w-full py-3 rounded-lg border-2 border-secondary text-secondary font-bold hover:bg-secondary hover:text-white transition-all active:scale-95" onclick="window.location.href='packing_checklist.html'">
+                                Share Checklist
+                            </button>
+</div>
+<!-- Weather Widget -->
+<div class="bg-gradient-to-br from-secondary to-on-secondary-container rounded-xl p-8 text-on-secondary shadow-lg">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="text-label-sm opacity-80">Destination Weather</p>
+<h4 class="font-headline-md">Zermatt, CH</h4>
+</div>
+<span class="material-symbols-outlined text-[40px]">cloudy_snowing</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-display">-2°C</span>
+<div class="h-10 w-[1px] bg-white/30"></div>
+<p class="text-label-sm leading-tight opacity-90">Expect snow.<br/>Pack heavy layers.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-highest border-t border-outline-variant/50">
+<span class="font-display text-headline-md font-bold text-primary">Traveloop</span>
+<p class="font-body-md text-label-sm text-on-surface-variant">© 2024 Traveloop. Explore with precision.</p>
+<div class="flex gap-6">
+<a class="text-label-sm text-on-surface-variant hover:text-secondary underline transition-all cursor-pointer" href="#">Privacy Policy</a>
+<a class="text-label-sm text-on-surface-variant hover:text-secondary underline transition-all cursor-pointer" href="#">Terms of Service</a>
+<a class="text-label-sm text-on-surface-variant hover:text-secondary underline transition-all cursor-pointer" href="#">Help Center</a>
+</div>
+</footer>
+<!-- FAB (Suppressed on Details/List screens as per rules, but shown here as it is the core "Action" of this specific screen - Adding Category) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-[28px]">post_add</span>
+</button>
+</body></html>
