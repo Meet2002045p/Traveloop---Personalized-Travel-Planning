@@ -12,6 +12,13 @@
 <script src="../js/tailwind-config.js"></script>
     <script src="../js/transition.js"></script>
 </head>
+
+    <script>
+        if (!localStorage.getItem('traveloop_token')) {
+            window.location.href = 'login_signup.html';
+        }
+    </script>
+    
 <body class="bg-surface text-on-surface font-body-md min-h-screen overflow-x-hidden">
 <!-- Top Navbar -->
 <header class="sticky top-0 z-50 w-full bg-surface/95 backdrop-blur-md border-b border-outline-variant/20 shadow-sm flex flex-col">

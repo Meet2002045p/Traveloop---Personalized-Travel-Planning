@@ -1,19 +1,23 @@
 const express = require('express');
 const router = express.Router();
 const Activity = require('../models/Activity');
+const auth = require('../middleware/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
-        const activities = await Activity.find().sort({ time: 1 });
+        const activities = await Activity.find({ userId: req.user.id }).sort({ time: 1 });
         res.json(activities);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 });
 
-router.post('/', async (req, res) => {
-    const activity = new Activity(req.body);
+router.post('/', auth, async (req, res) => {
     try {
+        const activity = new Activity({
+            ...req.body,
+            userId: req.user.id
+        });
         const newActivity = await activity.save();
         res.status(201).json(newActivity);
     } catch (err) {
@@ -21,9 +25,13 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
     try {
-        await Activity.findByIdAndDelete(req.params.id);
+        const activity = await Activity.findById(req.params.id);
+        if (!activity) return res.status(404).json({ message: 'Activity not found' });
+        if (activity.userId.toString() !== req.user.id) return res.status(401).json({ message: 'Not authorized' });
+
+        await activity.deleteOne();
         res.json({ message: 'Activity deleted' });
     } catch (err) {
         res.status(500).json({ message: err.message });

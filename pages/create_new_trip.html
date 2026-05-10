@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html class="light" lang="en"><head>
+<script src="../js/auth-guard.js"></script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Create Your Trip | Traveloop</title>
@@ -73,7 +74,7 @@
 <h1 class="font-display text-headline-lg text-primary">Start a New Journey</h1>
 <p class="text-on-surface-variant font-body-md">Capture the essence of your next big adventure.</p>
 </div>
-<form class="space-y-6">
+<form id="create-trip-form" class="space-y-6">
 <!-- Trip Name -->
 <div class="space-y-2">
 <label class="font-label-lg text-on-surface-variant block px-1" for="trip-name">Trip Name</label>
@@ -232,5 +233,54 @@
     #chat-messages::-webkit-scrollbar { width: 4px; }
     #chat-messages::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
 </style>
+
+
+<script>
+    const API_URL = 'http://localhost:5000/api/trips';
+    const form = document.getElementById('create-trip-form');
+    let selectedImage = "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=2070";
+
+    // Handle form submission
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const tripData = {
+            title: document.getElementById('trip-name').value,
+            destination: document.getElementById('trip-name').value, // Simple mapping for now
+            startDate: document.getElementById('start-date').value,
+            endDate: document.getElementById('end-date').value,
+            description: document.getElementById('description').value,
+            budget: 5000, // Default budget
+            coverPhoto: selectedImage
+        };
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.innerText = "Creating Journey...";
+        submitBtn.disabled = true;
+
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: window.getAuthHeaders(),
+                body: JSON.stringify(tripData)
+            });
+
+            if (response.ok) {
+                alert('Trip Created Successfully! 🌍');
+                window.location.href = 'my_trips.html';
+            } else {
+                const err = await response.json();
+                alert('Error: ' + err.message);
+                submitBtn.innerText = "Save & Continue";
+                submitBtn.disabled = false;
+            }
+        } catch (err) {
+            console.error(err);
+            alert('Failed to connect to backend.');
+            submitBtn.innerText = "Save & Continue";
+            submitBtn.disabled = false;
+        }
+    });
+</script>
 
 </body></html>

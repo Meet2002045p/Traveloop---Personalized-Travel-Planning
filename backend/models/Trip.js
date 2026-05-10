@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
 const tripSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Optional for now if testing without auth
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     title: { type: String, required: true },
-    destinations: [String],
+    destination: String,
     startDate: Date,
     endDate: Date,
     budget: Number,
-    coverPhoto: String, // Base64 string or URL
+    coverPhoto: String,
     createdAt: { type: Date, default: Date.now }
 });
 

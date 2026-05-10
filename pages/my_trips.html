@@ -11,6 +11,13 @@
 <script src="../js/tailwind-config.js"></script>
     <script src="../js/transition.js"></script>
 </head>
+
+    <script>
+        if (!localStorage.getItem('traveloop_token')) {
+            window.location.href = 'login_signup.html';
+        }
+    </script>
+    
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
 <!-- Top Navbar -->
 <header class="sticky top-0 z-50 w-full bg-surface/95 backdrop-blur-md border-b border-outline-variant/20 shadow-sm flex flex-col">
@@ -486,7 +493,7 @@
     }
 
     function saveTrip(trip) {
-        let trips = JSON.parse(localStorage.getItem('traveloop_trips') || '[]');
+        let trips = await (await fetch('http://localhost:5000/api/trips', {headers: {'x-auth-token': localStorage.getItem('traveloop_token')}})).json();
         trips.push(trip);
         localStorage.setItem('traveloop_trips', JSON.stringify(trips));
     }
@@ -532,7 +539,7 @@
 
     function deleteTrip(id, btn) {
         if(confirm('Delete this trip?')) {
-            let trips = JSON.parse(localStorage.getItem('traveloop_trips') || '[]');
+            let trips = await (await fetch('http://localhost:5000/api/trips', {headers: {'x-auth-token': localStorage.getItem('traveloop_token')}})).json();
             trips = trips.filter(t => t.id !== id);
             localStorage.setItem('traveloop_trips', JSON.stringify(trips));
             btn.closest('.group').remove();
@@ -540,7 +547,7 @@
     }
 
     function openGeneratedModal(id) {
-        let trips = JSON.parse(localStorage.getItem('traveloop_trips') || '[]');
+        let trips = await (await fetch('http://localhost:5000/api/trips', {headers: {'x-auth-token': localStorage.getItem('traveloop_token')}})).json();
         const trip = trips.find(t => t.id === id);
         if (trip) {
             // Populate and show the modal
@@ -551,7 +558,7 @@
 
     // Load existing trips on start
     document.addEventListener('DOMContentLoaded', () => {
-        let trips = JSON.parse(localStorage.getItem('traveloop_trips') || '[]');
+        let trips = await (await fetch('http://localhost:5000/api/trips', {headers: {'x-auth-token': localStorage.getItem('traveloop_token')}})).json();
         trips.forEach(renderTripCard);
     });
 </script>

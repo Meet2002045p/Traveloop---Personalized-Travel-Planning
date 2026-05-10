@@ -362,6 +362,15 @@
         renderAll();
     }
 
+    // Helper to get auth token
+    function getAuthHeaders() {
+        const token = localStorage.getItem('traveloop_token');
+        return {
+            'Content-Type': 'application/json',
+            'x-auth-token': token
+        };
+    }
+
     function updateGoal() {
         const val = document.getElementById('input-goal').value;
         localStorage.setItem(GOAL_KEY, val);
@@ -382,10 +391,10 @@
             };
             
             try {
-                // Send data to MongoDB Backend
+                // Send data to MongoDB Backend with AUTH TOKEN
                 const response = await fetch(API_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: getAuthHeaders(),
                     body: JSON.stringify(expense)
                 });
                 
@@ -393,11 +402,13 @@
                     this.reset();
                     document.getElementById('modal-add-expense').classList.add('hidden');
                     renderAll();
-                    alert('Expense saved to MongoDB Database! 🚀');
+                    alert('Expense saved securely to Database! 🔐');
+                } else if (response.status === 401) {
+                    alert('Session expired. Please log in again.');
+                    window.location.href = 'login_signup.html';
                 }
             } catch (err) {
                 console.error('Failed to save to DB', err);
-                alert('Error connecting to backend database.');
             }
         });
     }
@@ -405,8 +416,11 @@
     async function deleteExpense(id) {
         if(confirm('Delete this expense permanently from database?')) {
             try {
-                await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-                renderAll();
+                const response = await fetch(`${API_URL}/${id}`, { 
+                    method: 'DELETE',
+                    headers: getAuthHeaders()
+                });
+                if (response.ok) renderAll();
             } catch (err) {
                 console.error('Failed to delete', err);
             }
@@ -416,8 +430,16 @@
     async function renderAll() {
         let expenses = [];
         try {
-            // Fetch data from MongoDB Backend
-            const response = await fetch(API_URL);
+            // Fetch data from MongoDB Backend with AUTH TOKEN
+            const response = await fetch(API_URL, {
+                headers: getAuthHeaders()
+            });
+            
+            if (response.status === 401) {
+                window.location.href = 'login_signup.html';
+                return;
+            }
+            
             expenses = await response.json();
         } catch (err) {
             console.error('Failed to fetch expenses', err);
@@ -583,6 +605,15 @@
         renderAll();
     }
 
+    // Helper to get auth token
+    function getAuthHeaders() {
+        const token = localStorage.getItem('traveloop_token');
+        return {
+            'Content-Type': 'application/json',
+            'x-auth-token': token
+        };
+    }
+
     function updateGoal() {
         const val = document.getElementById('input-goal').value;
         localStorage.setItem(GOAL_KEY, val);
@@ -603,10 +634,10 @@
             };
             
             try {
-                // Send data to MongoDB Backend
+                // Send data to MongoDB Backend with AUTH TOKEN
                 const response = await fetch(API_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: getAuthHeaders(),
                     body: JSON.stringify(expense)
                 });
                 
@@ -614,11 +645,13 @@
                     this.reset();
                     document.getElementById('modal-add-expense').classList.add('hidden');
                     renderAll();
-                    alert('Expense saved to MongoDB Database! 🚀');
+                    alert('Expense saved securely to Database! 🔐');
+                } else if (response.status === 401) {
+                    alert('Session expired. Please log in again.');
+                    window.location.href = 'login_signup.html';
                 }
             } catch (err) {
                 console.error('Failed to save to DB', err);
-                alert('Error connecting to backend database.');
             }
         });
     }
@@ -626,8 +659,11 @@
     async function deleteExpense(id) {
         if(confirm('Delete this expense permanently from database?')) {
             try {
-                await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-                renderAll();
+                const response = await fetch(`${API_URL}/${id}`, { 
+                    method: 'DELETE',
+                    headers: getAuthHeaders()
+                });
+                if (response.ok) renderAll();
             } catch (err) {
                 console.error('Failed to delete', err);
             }
@@ -637,8 +673,16 @@
     async function renderAll() {
         let expenses = [];
         try {
-            // Fetch data from MongoDB Backend
-            const response = await fetch(API_URL);
+            // Fetch data from MongoDB Backend with AUTH TOKEN
+            const response = await fetch(API_URL, {
+                headers: getAuthHeaders()
+            });
+            
+            if (response.status === 401) {
+                window.location.href = 'login_signup.html';
+                return;
+            }
+            
             expenses = await response.json();
         } catch (err) {
             console.error('Failed to fetch expenses', err);

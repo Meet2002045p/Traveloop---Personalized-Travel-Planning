@@ -22,7 +22,7 @@
 <h2 class="font-display text-headline-lg text-on-surface">Welcome Back</h2>
 <p class="font-body-md text-on-surface-variant">Precision planning meets your next great discovery. Log in to your itinerary.</p>
 </div>
-<form class="space-y-6">
+<form id="login-form" class="space-y-6">
 <div class="space-y-4">
 <div class="group">
 <label class="block font-label-lg text-on-surface mb-2" for="email">Email Address</label>
@@ -46,8 +46,8 @@
 <input class="w-5 h-5 rounded border-outline-variant text-secondary focus:ring-secondary" id="remember" type="checkbox"/>
 <label class="font-body-md text-on-surface-variant select-none" for="remember">Remember me for 30 days</label>
 </div>
-<button class="w-full h-12 bg-gradient-to-r from-secondary to-secondary-fixed-dim text-on-secondary font-label-lg rounded-lg shadow-md hover:shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2" onclick="window.location.href=\'traveloop_dashboard.html\'" type="submit">
-<span>Login</span>
+<button id="login-btn" class="w-full h-12 bg-gradient-to-r from-secondary to-secondary-fixed-dim text-on-secondary font-label-lg rounded-lg shadow-md hover:shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="submit">
+<span id="login-btn-text">Login</span>
 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
 </button>
 </form>
@@ -56,11 +56,11 @@
 <div class="relative flex justify-center text-label-sm"><span class="bg-surface-container-lowest px-4 text-outline">OR CONTINUE WITH</span></div>
 </div>
 <div class="grid grid-cols-2 gap-4">
-<button onclick="window.location.href='traveloop_dashboard.html'" type="button" class="flex items-center justify-center gap-2 h-12 border border-outline-variant/30 rounded-lg hover:bg-surface-variant/20 transition-all active:scale-95">
+<button  type="button" class="flex items-center justify-center gap-2 h-12 border border-outline-variant/30 rounded-lg hover:bg-surface-variant/20 transition-all active:scale-95">
 <img alt="Google Logo" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2rgYFig9JMUTeT4tAKPvTPbNWJn0vqVQTNf3lmFAZTPMedHOR6XokQ-CbWjUx7uWNsaxbEfJ2kGcShtXjQXyWj7XX7Bn2E0ue4Icl15cd-5VOFOlLv3eUDJrSQz-gqYz2PYAhhmPFBZHHFWwQjDz_yDgPeXXtv8WXcneDuvxGsc3kLGqzcJiI_VOPB_WD003_mizyTx3agDGRghMvPwVEUpRIsrXn_GcgAYPbPBuPKl6oZshdjhq8uudTlGdHC9nXakTczBWpmKQ"/>
 <span class="font-label-lg text-on-surface">Google</span>
 </button>
-<button onclick="window.location.href='traveloop_dashboard.html'" type="button" class="flex items-center justify-center gap-2 h-12 border border-outline-variant/30 rounded-lg hover:bg-surface-variant/20 transition-all active:scale-95">
+<button  type="button" class="flex items-center justify-center gap-2 h-12 border border-outline-variant/30 rounded-lg hover:bg-surface-variant/20 transition-all active:scale-95">
 <span class="material-symbols-outlined text-primary" data-weight="fill">ios</span>
 <span class="font-label-lg text-on-surface">Apple</span>
 </button>
@@ -121,4 +121,101 @@
 <a class="font-body-md text-label-sm text-on-surface-variant hover:text-secondary underline transition-all" href="#">Help Center</a>
 </div>
 </footer>
+
+
+<script>
+    const API_URL = 'http://localhost:5000/api/auth';
+    let isLoginMode = true;
+
+    const loginForm = document.getElementById('login-form');
+    const titleEl = document.querySelector('h2');
+    const subtitleEl = document.querySelector('p.font-body-md');
+    const loginBtn = document.getElementById('login-btn');
+    const loginBtnText = document.getElementById('login-btn-text');
+    const signupToggleLink = document.querySelector('a.text-secondary.font-bold');
+
+    // Function to toggle between Login and Signup
+    function toggleAuthMode(e) {
+        if (e) e.preventDefault();
+        isLoginMode = !isLoginMode;
+        
+        if (!isLoginMode) {
+            titleEl.innerText = 'Create Account';
+            subtitleEl.innerText = 'Join Traveloop to start planning your next precision adventure.';
+            loginBtnText.innerText = 'Sign Up';
+            signupToggleLink.closest('p').innerHTML = 'Already have an account? <a href="#" class="text-secondary font-bold hover:underline" id="auth-toggle">Login</a>';
+            
+            // Add Name field
+            if (!document.getElementById('name-container')) {
+                const nameField = document.createElement('div');
+                nameField.id = 'name-container';
+                nameField.className = 'group';
+                nameField.innerHTML = `
+                    <label class="block font-label-lg text-on-surface mb-2" for="name">Full Name</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">person</span>
+                        <input class="w-full h-12 pl-12 pr-4 bg-surface border border-outline-variant/30 rounded-lg focus:ring-2 focus:ring-secondary outline-none" id="name" placeholder="Meet Shingala" type="text" required/>
+                    </div>
+                `;
+                document.querySelector('#login-form .space-y-4').prepend(nameField);
+            }
+        } else {
+            location.reload(); // Simplest way to reset to login mode
+        }
+        
+        // Re-bind the new toggle link if it was replaced
+        const newToggle = document.getElementById('auth-toggle');
+        if (newToggle) newToggle.onclick = toggleAuthMode;
+    }
+
+    if (signupToggleLink) signupToggleLink.onclick = toggleAuthMode;
+
+    // Handle Form Submission
+    loginForm.onsubmit = async function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const name = document.getElementById('name') ? document.getElementById('name').value : null;
+
+        loginBtn.disabled = true;
+        loginBtnText.innerText = isLoginMode ? 'Logging in...' : 'Registering...';
+
+        try {
+            const endpoint = isLoginMode ? '/login' : '/register';
+            const body = isLoginMode ? { email, password } : { name, email, password };
+
+            const response = await fetch(`${API_URL}${endpoint}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                if (isLoginMode) {
+                    localStorage.setItem('traveloop_user', JSON.stringify(data.user));
+                    localStorage.setItem('traveloop_token', data.token);
+                    alert('Login Successful!');
+                    window.location.href = 'traveloop_dashboard.html';
+                } else {
+                    alert('Registration Successful! Please log in.');
+                    location.reload();
+                }
+            } else {
+                alert(data.message || 'Error occurred.');
+                loginBtn.disabled = false;
+                loginBtnText.innerText = isLoginMode ? 'Login' : 'Sign Up';
+            }
+        } catch (err) {
+            console.error(err);
+            alert('Server error. Make sure your backend is running on port 5000.');
+            loginBtn.disabled = false;
+            loginBtnText.innerText = isLoginMode ? 'Login' : 'Sign Up';
+        }
+    };
+</script>
+
+
 </body></html>

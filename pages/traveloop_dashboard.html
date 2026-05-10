@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html class="light" lang="en"><head>
+<script src="../js/auth-guard.js"></script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Traveloop Dashboard</title>
@@ -13,6 +14,16 @@
     <script src="../js/transition.js"></script>
 </head>
 <body class="bg-background text-on-surface font-body-md min-h-screen">
+<script>
+    // AUTH GUARD: Check if user is logged in
+    const user = JSON.parse(localStorage.getItem('traveloop_user'));
+    const token = localStorage.getItem('traveloop_token');
+    
+    if (!user || !token) {
+        window.location.href = 'login_signup.html';
+    }
+</script>
+
 
 <!-- Top Navbar -->
 <header class="sticky top-0 z-50 w-full bg-surface/95 backdrop-blur-md border-b border-outline-variant/20 shadow-sm flex flex-col">
@@ -32,7 +43,7 @@
                 <input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary w-64 text-label-lg" placeholder="Search trips..." type="text"/>
             </div>
             <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">notifications</span>
-            <a href="login_signup.html" class="text-on-surface-variant cursor-pointer hover:text-secondary transition-colors flex items-center" title="Sign Out"><span class="material-symbols-outlined">logout</span></a>
+            <a href="javascript:logout()" class="text-on-surface-variant cursor-pointer hover:text-secondary transition-colors flex items-center" title="Sign Out"><span class="material-symbols-outlined">logout</span></a>
             <a href="user_profile_settings.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-highest shadow-sm block">
                 <img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpeCLalZVh7yZJgXsPIh7d0N5bIJiZQT65pCySTUxiQGPTl3236Xv9e-Q8ghq28TuSiZ1sO_j9W4IxtJaoYSAB7mHBLBgGJhBlx9DOccpv1WFlrK5ExH5xKhtUh9uhf3kDc5q3O9kzkGzrUSN9y0GR9fT4fEHWa3KQTeBN3hghAcC67XGUD5JltH8iRXzcE_vHxzrfSz_HkxGo8CUc_KeoyzSvaACz_wa66xrFkB0pSJDj2oD0x0rhNpx8dr1KiuWBhxD-rWirIQ4"/>
             </a>
@@ -63,7 +74,7 @@
 <div class="absolute inset-0 bg-gradient-to-r from-on-background/80 via-on-background/40 to-transparent"></div>
 </div>
 <div class="relative z-10 space-y-4 max-w-lg">
-<h1 class="font-display text-display leading-tight">Ready for your next adventure?</h1>
+<h1 id="user-greeting" class="font-display text-display leading-tight">Ready for your next adventure?</h1>
 <p class="font-body-lg text-surface-variant/90">Your journey starts here. Collaborative planning, precise budgeting, and unforgettable memories await.</p>
 <button class="mt-6 px-8 py-4 bg-secondary-container text-on-secondary-container rounded-full font-bold text-label-lg flex items-center gap-3 hover:shadow-xl hover:scale-105 active:scale-95 transition-all" onclick="window.location.href='create_new_trip.html'">
 <span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
@@ -83,7 +94,7 @@
 </div>
 <div>
 <p class="text-label-sm text-on-surface-variant uppercase tracking-wider font-bold">Current Trip Budget</p>
-<h3 class="text-headline-lg font-display text-on-surface">$2,450.00 <span class="text-label-lg font-normal text-outline">/ $3,500</span></h3>
+<h3 class="text-headline-lg font-display text-on-surface"><span id="total-spent-dashboard">$0.00</span> <span class="text-label-lg font-normal text-outline">/ <span id="total-budget-dashboard">$5,000</span></span></h3>
 </div>
 <div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
 <div class="bg-secondary h-full w-2/3"></div>
@@ -361,5 +372,58 @@
     #chat-messages::-webkit-scrollbar { width: 4px; }
     #chat-messages::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
 </style>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const user = JSON.parse(localStorage.getItem('traveloop_user'));
+        if (user && user.name) {
+            const greeting = document.getElementById('user-greeting');
+            if (greeting) {
+                greeting.innerText = `Welcome back, ${user.name}!`;
+            }
+            
+            // Optional: Update profile tooltip or name elsewhere
+            console.log('Dashboard personalized for:', user.name);
+        }
+    });
+    
+    // Logout function
+    function logout() {
+        localStorage.removeItem('traveloop_user');
+        localStorage.removeItem('traveloop_token');
+        window.location.href = 'login_signup.html';
+    }
+</script>
+
+
+<script>
+    async function loadStats() {
+        try {
+            // Fetch real data from Backend
+            const tripRes = await fetch('http://localhost:5000/api/trips', { headers: window.getAuthHeaders() });
+            const trips = await tripRes.json();
+            
+            const budgetRes = await fetch('http://localhost:5000/api/budget', { headers: window.getAuthHeaders() });
+            const expenses = await budgetRes.json();
+
+            // Update Trip Count
+            const tripCountEl = document.getElementById('trip-count-badge');
+            if (tripCountEl) tripCountEl.innerText = trips.length;
+
+            // Update Budget Stats
+            let totalSpent = 0;
+            expenses.forEach(e => totalSpent += e.amount);
+            
+            const spentEl = document.getElementById('total-spent-dashboard');
+            if (spentEl) spentEl.innerText = `$${totalSpent.toLocaleString()}`;
+
+        } catch (err) {
+            console.error('Stats load failed', err);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadStats);
+</script>
 
 </body></html>
