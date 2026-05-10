@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traveloop - Redirecting...</title>
-    <meta http-equiv="refresh" content="0; url=pages/traveloop_dashboard.html">
     <script>
-        window.location.href = "pages/traveloop_dashboard.html";
+        if (localStorage.getItem('traveloop_token')) {
+            window.location.href = "pages/traveloop_dashboard.html";
+        } else {
+            window.location.href = "pages/login_signup.html";
+        }
     </script>
 </head>
 <body>
-    <p>If you are not redirected automatically, follow this <a href="pages/traveloop_dashboard.html">link to the dashboard</a>.</p>
+    <p>Redirecting to Traveloop...</p>
 </body>
 </html>

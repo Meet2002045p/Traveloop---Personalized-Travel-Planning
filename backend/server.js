@@ -16,7 +16,11 @@ const limiter = rateLimit({
 app.use('/api/', limiter); // Apply rate limiting to all API routes
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+    origin: 'http://localhost:8000', // Restrict to frontend URL
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 app.use(express.json({ limit: '50mb' })); // Increased limit for base64 images
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
@@ -28,11 +32,14 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log('MongoDB Connected successfully to Traveloop DB'))
 .catch(err => console.log('MongoDB Connection Error:', err));
 
-// Routes (We will import these below)
+// Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/trips', require('./routes/trips'));
 app.use('/api/itinerary', require('./routes/itinerary'));
 app.use('/api/budget', require('./routes/budget'));
+app.use('/api/notes', require('./routes/notes'));
+app.use('/api/packing', require('./routes/packing'));
+app.use('/api/ai', require('./routes/ai'));
 
 // Base route
 app.get('/', (req, res) => {

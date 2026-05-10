@@ -33,7 +33,7 @@
                 <input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary w-64 text-label-lg" placeholder="Search trips..." type="text"/>
             </div>
             <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">notifications</span>
-            <a href="login_signup.html" class="text-on-surface-variant cursor-pointer hover:text-secondary transition-colors flex items-center" title="Sign Out"><span class="material-symbols-outlined">logout</span></a>
+            <a href="javascript:logout()" title="Sign Out"><span class="material-symbols-outlined">logout</span></a>
             <a href="user_profile_settings.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-highest shadow-sm block">
                 <img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpeCLalZVh7yZJgXsPIh7d0N5bIJiZQT65pCySTUxiQGPTl3236Xv9e-Q8ghq28TuSiZ1sO_j9W4IxtJaoYSAB7mHBLBgGJhBlx9DOccpv1WFlrK5ExH5xKhtUh9uhf3kDc5q3O9kzkGzrUSN9y0GR9fT4fEHWa3KQTeBN3hghAcC67XGUD5JltH8iRXzcE_vHxzrfSz_HkxGo8CUc_KeoyzSvaACz_wa66xrFkB0pSJDj2oD0x0rhNpx8dr1KiuWBhxD-rWirIQ4"/>
             </a>
@@ -59,15 +59,18 @@
 <!-- Form Card -->
 <div class="bg-surface-container-lowest rounded-xl shadow-[0_15px_30px_-10px_rgba(0,106,97,0.08)] overflow-hidden">
 <!-- Cover Photo Upload Section -->
+
 <div class="relative h-64 bg-surface-container-high group cursor-pointer border-b border-outline-variant/10">
-<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="A wide panoramic shot of a serene mountain lake at dawn, with mist rising from the water and deep teal mountain silhouettes in the distance. The lighting is soft and ethereal, using a palette of cool blues and gentle sunrise oranges to create a sense of vast exploration and tranquility. The visual style is high-fidelity travel photography with an airy, modern atmospheric depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn7_iGtkdOID4Dosy0AlrXEa0Xk7QeGzMjHYekYr1fkS4C0Nyc1il8ST2DFlamvJ1-iHTsvPxscC8qRyLbHq8QRnSkdo9ylc-Rje8UI11peGP8-9938fNEhjVdpKrrZydLJtK3U8aZ874sBbyM7YOoIwEgZfXS0WkAJkA8ZTT0vRXO9z03DQLuRAiOYJmPNZuAMDpcTVN45cpMNWR2y7gYKNC1JwnineZFUwpAXB3L4a-Hknnd3gyf9zby_ACGdSSWnE3pzFVmh1I"/>
-<div class="absolute inset-0 flex flex-col items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
+<input type="file" id="trip-image" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer z-10">
+<img id="image-preview" class="w-full h-full object-cover transition-opacity duration-500" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=2070"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center bg-black/40 group-hover:bg-black/50 transition-colors">
 <div class="bg-surface/90 backdrop-blur-sm p-4 rounded-full shadow-lg active:scale-95 duration-200">
 <span class="material-symbols-outlined text-secondary text-4xl" data-icon="add_a_photo">add_a_photo</span>
 </div>
-<p class="mt-4 text-white font-label-lg drop-shadow-md">Change Cover Photo</p>
+<p class="mt-4 text-white font-label-lg drop-shadow-md">Upload Cover Photo</p>
 </div>
 </div>
+
 <!-- Form Content -->
 <div class="p-8 md:p-12 space-y-8">
 <div class="space-y-2">
@@ -235,15 +238,74 @@
 </style>
 
 
+
 <script>
     const API_URL = 'http://localhost:5000/api/trips';
     const form = document.getElementById('create-trip-form');
-    let selectedImage = "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=2070";
+    const imageInput = document.getElementById('trip-image');
+    const imagePreview = document.getElementById('image-preview');
+
+    async function compressImage(base64Str, maxWidth = 800, maxHeight = 800) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.src = base64Str;
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+
+                if (width > height) {
+                    if (width > maxWidth) {
+                        height *= maxWidth / width;
+                        width = maxWidth;
+                    }
+                } else {
+                    if (height > maxHeight) {
+                        width *= maxHeight / height;
+                        height = maxHeight;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+                resolve(canvas.toDataURL('image/jpeg', 0.6));
+            };
+        });
+    }
+
+    imageInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            if (file.size > 5 * 1024 * 1024) {
+                alert('Image too large. Please select an image under 5MB.');
+                this.value = '';
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 
     // Handle form submission
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.innerText = "Creating Journey...";
+        submitBtn.disabled = true;
+
+        let finalImage = imagePreview.src;
+        if (finalImage && !finalImage.includes('unsplash.com')) {
+            try {
+                finalImage = await compressImage(finalImage);
+            } catch(e) { console.error('Compression failed', e); }
+        }
+
         const tripData = {
             title: document.getElementById('trip-name').value,
             destination: document.getElementById('trip-name').value, // Simple mapping for now
@@ -251,12 +313,8 @@
             endDate: document.getElementById('end-date').value,
             description: document.getElementById('description').value,
             budget: 5000, // Default budget
-            coverPhoto: selectedImage
+            coverPhoto: finalImage
         };
-
-        const submitBtn = form.querySelector('button[type="submit"]');
-        submitBtn.innerText = "Creating Journey...";
-        submitBtn.disabled = true;
 
         try {
             const response = await fetch(API_URL, {
@@ -282,5 +340,6 @@
         }
     });
 </script>
+
 
 </body></html>

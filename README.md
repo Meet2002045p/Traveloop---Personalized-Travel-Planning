@@ -6,26 +6,32 @@ Traveloop is a professional **Full-Stack MERN Application** designed for precisi
 
 ## 🚀 Key Features
 
-### 🔐 Secure Authentication
+### 🔐 Secure Authentication & Personalization
 * **JWT-Based Security:** Industry-standard JSON Web Tokens for secure session management.
 * **Password Hashing:** Passwords are never stored in plain text; they are hashed using `bcryptjs`.
-* **Private Data:** Every user has their own private space. Your trips and budgets are invisible to everyone else.
+* **Private Data:** Every user has their own private space. Your trips and budgets are completely isolated and secure.
 * **Protected Routes:** Advanced middleware prevents unauthorized access to any part of the app.
+* **Dynamic Avatars:** Automatically generates customized user avatars based on profile names using the UI Avatars API.
 
-### 📅 Trip & Itinerary Management
-* **Cloud Storage:** Create trips that are instantly saved to MongoDB.
-* **Smart Builder:** Build detailed daily plans with locations, times, and categories.
-* **Personalized Dashboard:** A high-end greeting system that welcomes you by name and shows real-time stats from the database.
+### 📅 Advanced Trip Management
+* **Cloud Storage:** Create trips with detailed descriptions and dates that instantly save to MongoDB.
+* **Custom Image Uploads:** Upload your own cover photos for your trips. Includes smart client-side image compression to optimize database payload sizes.
+* **Dynamic Modals:** Beautiful, responsive UI popups for viewing trip overviews, budgets, and quick actions.
+* **Smart Itinerary Builder:** Build detailed daily plans with locations, times, and categories mapped to specific trips.
 
-### 💰 Budget Tracking
+### 💰 Real-Time Budget Tracking
 * **Live Expense Sync:** Add expenses in real-time and see them instantly reflected in your database.
-* **Progress Tracking:** Interactive progress bars show exactly how much of your budget remains.
-* **Category Breakdown:** Visualize your spending across Transport, Food, Activities, and more.
+* **Progress Tracking:** Interactive progress bars automatically calculate and display exactly how much of your allocated trip budget remains.
+* **Category Breakdown:** Visualize your spending dynamically across categories like Transport, Food, and Activities.
+
+### 🤖 AI-Powered Travel Assistant
+* **Interactive AI Chat:** A floating, responsive AI assistant embedded in the application.
+* **Backend Integration:** Communicates with a dedicated `/api/ai/generate` backend route to provide travel suggestions, insights, and assistance.
 
 ### 🛡️ Backend Security
 * **Helmet.js:** Hardened HTTP headers to prevent XSS and Clickjacking.
-* **Rate Limiting:** Prevents brute-force attacks on the API.
-* **CORS Enabled:** Seamless and secure communication between the Frontend and Backend.
+* **Rate Limiting:** Prevents brute-force attacks on the API authentication endpoints.
+* **CORS Enabled:** Strict and secure cross-origin communication between the frontend and backend.
 
 ---
 
@@ -82,20 +88,23 @@ To run this project locally, follow these steps:
 ```text
 ├── backend/
 │   ├── middleware/    # Auth & Security logic
-│   ├── models/        # MongoDB Schemas (User, Trip, etc.)
-│   ├── routes/        # API Endpoints
-│   ├── server.js      # Main entry point
+│   ├── models/        # MongoDB Schemas (User, Trip, Activity, Expense)
+│   ├── routes/        # API Endpoints (auth, trips, itinerary, budget, ai)
+│   ├── server.js      # Main Express application
 │   └── .env           # Private environment variables
 ├── pages/             # Frontend HTML pages
-├── js/                # Shared frontend scripts (Auth Guard, etc.)
-├── css/               # Styling
+├── js/                # Shared frontend scripts (auth-guard.js, UI transitions)
+├── css/               # Global styling
 └── README.md          # Project documentation
 ```
 
 ---
 
-## 📝 License
-This project is for educational and portfolio purposes. Feel free to use and modify it!
+## 📝 Future Implementations
+* **Socket.io:** Real-time collaborative itinerary editing.
+* **Leaflet.js Map Integration:** Visualize saved trip locations on an interactive map.
+* **PDF Export:** Allow users to export completed itineraries and budgets via jsPDF.
 
 ---
+
 **Plan your next adventure with precision. Plan with Traveloop.**
